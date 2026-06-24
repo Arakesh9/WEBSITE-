@@ -1,170 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tachyon Font Demo</title>
-    <style>
-        /* Define the font - using the exact name from your image */
-        @font-face {
-            font-family: 'TachyonW00-Regular';
-            src: url('TachyonW00-Regular.woff2') format('woff2'),
-                 url('TachyonW00-Regular.woff') format('woff'),
-                 url('TachyonW00-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tachyon Font Test</title>
 
-        /* Apply font to everything */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    @font-face {
+        font-family: 'Tachyon';
+        src: url('./Tachyon-W00-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
 
-        body {
-            font-family: 'TachyonW00-Regular', 'Arial Black', sans-serif;
-            background: #1a1a2e;
-            color: #ffffff;
-            padding: 40px;
-            line-height: 1.6;
-        }
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #16213e;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        }
+    body{
+        background:#111827;
+        color:#ffffff;
+        font-family:'Tachyon', sans-serif;
+        padding:40px;
+    }
 
-        h1 {
-            font-family: 'TachyonW00-Regular', 'Arial Black', sans-serif;
-            font-size: 3.5rem;
-            text-align: center;
-            color: #f5c842;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
+    .container{
+        max-width:1000px;
+        margin:auto;
+    }
 
-        .subtitle {
-            text-align: center;
-            font-size: 1rem;
-            color: #a8a8b8;
-            margin-bottom: 40px;
-            font-family: 'TachyonW00-Regular', 'Arial Black', sans-serif;
-        }
+    .card{
+        background:#1f2937;
+        padding:30px;
+        border-radius:15px;
+        margin-bottom:25px;
+    }
 
-        .demo-section {
-            margin: 30px 0;
-            padding: 20px;
-            background: #1a1a3e;
-            border-radius: 10px;
-            border-left: 4px solid #f5c842;
-        }
+    h1{
+        text-align:center;
+        font-size:3rem;
+        margin-bottom:10px;
+        color:#fbbf24;
+    }
 
-        .demo-section label {
-            display: block;
-            font-size: 0.8rem;
-            color: #f5c842;
-            margin-bottom: 5px;
-            font-family: 'TachyonW00-Regular', 'Arial Black', sans-serif;
-            letter-spacing: 1px;
-        }
+    .subtitle{
+        text-align:center;
+        color:#9ca3af;
+        margin-bottom:40px;
+    }
 
-        /* Font size demonstrations */
-        .size-12 { font-size: 12px; }
-        .size-18 { font-size: 18px; }
-        .size-24 { font-size: 24px; }
-        .size-36 { font-size: 36px; }
-        .size-48 { font-size: 48px; }
-        .size-72 { font-size: 72px; }
+    .label{
+        color:#fbbf24;
+        margin-bottom:10px;
+        font-size:14px;
+        text-transform:uppercase;
+        letter-spacing:2px;
+    }
 
-        /* Character showcase */
-        .chars {
-            font-family: 'TachyonW00-Regular', 'Arial Black', sans-serif;
-            font-size: 2rem;
-            word-break: break-all;
-            color: #e0e0ff;
-        }
+    .logo-test{
+        font-size:72px;
+        text-align:center;
+        letter-spacing:5px;
+        color:#5b4cff;
+        margin:20px 0;
+    }
 
-        .alphabet {
-            font-family: 'TachyonW00-Regular', 'Arial Black', sans-serif;
-            font-size: 1.8rem;
-            color: #f5c842;
-            letter-spacing: 2px;
-        }
+    .alphabet{
+        font-size:32px;
+        line-height:1.8;
+        word-break:break-word;
+    }
 
-        hr {
-            border: 1px solid #2a2a5e;
-            margin: 30px 0;
-        }
+    .sample{
+        margin:15px 0;
+    }
 
-        .info {
-            font-family: 'TachyonW00-Regular', 'Arial Black', sans-serif;
-            color: #8888aa;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-    </style>
+    .s12{font-size:12px;}
+    .s18{font-size:18px;}
+    .s24{font-size:24px;}
+    .s36{font-size:36px;}
+    .s48{font-size:48px;}
+
+    .footer{
+        text-align:center;
+        color:#9ca3af;
+        margin-top:30px;
+    }
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>TachyonW00-Regular</h1>
-        <p class="subtitle">Version 1.00 · OpenType Layout, TrueType Outlines</p>
 
-        <hr>
+<div class="container">
 
-        <!-- Alphabet Section -->
-        <div class="demo-section">
-            <label>Uppercase & Lowercase</label>
-            <div class="alphabet">
-                ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
-                abcdefghijklmnopqrstuvwxyz
-            </div>
-        </div>
+    <h1>Tachyon Font Test</h1>
+    <div class="subtitle">
+        Testing Tachyon-W00-Regular.ttf
+    </div>
 
-        <!-- Numbers & Symbols -->
-        <div class="demo-section">
-            <label>Numbers & Symbols</label>
-            <div class="chars">
-                1234567890 .:; ' "()+-*/=+
-            </div>
-        </div>
+    <div class="card">
+        <div class="label">Logo Comparison</div>
 
-        <!-- Font Size Demonstrations -->
-        <div class="demo-section">
-            <label>Font Size 12px</label>
-            <div class="size-12">The quick brown fox jumps over the lazy dog. 1234567890</div>
-        </div>
-
-        <div class="demo-section">
-            <label>Font Size 18px</label>
-            <div class="size-18">The quick brown fox jumps over the lazy dog. 1234567890</div>
-        </div>
-
-        <div class="demo-section">
-            <label>Font Size 24px</label>
-            <div class="size-24">The quick brown fox jumps over the lazy dog. 1234567890</div>
-        </div>
-
-        <div class="demo-section">
-            <label>Font Size 36px</label>
-            <div class="size-36">The quick brown fox jumps over the lazy dog. 1234567890</div>
-        </div>
-
-        <div class="demo-section">
-            <label>Font Size 48px</label>
-            <div class="size-48">The quick brown fox jumps over the lazy dog. 1234567890</div>
-        </div>
-
-        <hr>
-
-        <div class="info">
-            TachyonW00-Regular · The quick brown fox jumps over the lazy dog
+        <div class="logo-test">
+            LEVI INTERIOR
         </div>
     </div>
+
+    <div class="card">
+        <div class="label">Alphabet</div>
+
+        <div class="alphabet">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br><br>
+            abcdefghijklmnopqrstuvwxyz<br><br>
+            1234567890<br><br>
+            !@#$%^&*()_+-=[]{}|;:',.<>/?
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">Font Sizes</div>
+
+        <div class="sample s12">
+            The quick brown fox jumps over the lazy dog 1234567890
+        </div>
+
+        <div class="sample s18">
+            The quick brown fox jumps over the lazy dog 1234567890
+        </div>
+
+        <div class="sample s24">
+            The quick brown fox jumps over the lazy dog 1234567890
+        </div>
+
+        <div class="sample s36">
+            The quick brown fox jumps over the lazy dog 1234567890
+        </div>
+
+        <div class="sample s48">
+            The quick brown fox jumps over the lazy dog 1234567890
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="label">Custom Test Text</div>
+
+        <div style="font-size:60px; text-align:center;">
+            YOUR TEXT HERE
+        </div>
+    </div>
+
+    <div class="footer">
+        Tachyon-W00-Regular • Font Preview
+    </div>
+
+</div>
+
 </body>
 </html>
