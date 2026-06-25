@@ -1682,6 +1682,25 @@
                         <div class="error-message" id="popupLocationError">Please select a location</div>
                     </div>
 
+                    <!-- Budget Range -->
+                    <div class="form-group">
+                        <label>Budget Range <span style="color: #e74c3c;">*</span></label>
+                        <select id="popupBudgetRange">
+                            <option value="">Select your budget range</option>
+                            <option value="₹2 Lakhs - ₹5 Lakhs">₹2 Lakhs - ₹5 Lakhs</option>
+                            <option value="₹5 Lakhs - ₹10 Lakhs">₹5 Lakhs - ₹10 Lakhs</option>
+                            <option value="₹10 Lakhs - ₹15 Lakhs">₹10 Lakhs - ₹15 Lakhs</option>
+                            <option value="₹15 Lakhs - ₹20 Lakhs">₹15 Lakhs - ₹20 Lakhs</option>
+                            <option value="₹20 Lakhs - ₹30 Lakhs">₹20 Lakhs - ₹30 Lakhs</option>
+                            <option value="₹30 Lakhs - ₹50 Lakhs">₹30 Lakhs - ₹50 Lakhs</option>
+                            <option value="₹50 Lakhs - ₹75 Lakhs">₹50 Lakhs - ₹75 Lakhs</option>
+                            <option value="₹75 Lakhs - ₹1 Crore">₹75 Lakhs - ₹1 Crore</option>
+                            <option value="₹1 Crore+">₹1 Crore+</option>
+                            <option value="Not Sure">Not Sure / Flexible</option>
+                        </select>
+                        <div class="error-message" id="popupBudgetError">Please select your budget range</div>
+                    </div>
+
                     <!-- Name -->
                     <div class="form-group">
                         <label>Name</label>
@@ -2420,6 +2439,17 @@
                         document.getElementById('popupLocationError').style.display = 'none';
                     }
 
+                    // Validate Budget Range
+                    var budgetRange = document.getElementById('popupBudgetRange');
+                    if (!budgetRange.value) {
+                        budgetRange.classList.add('error');
+                        document.getElementById('popupBudgetError').style.display = 'block';
+                        isValid = false;
+                    } else {
+                        budgetRange.classList.remove('error');
+                        document.getElementById('popupBudgetError').style.display = 'none';
+                    }
+
                     // Validate Name
                     var name = document.getElementById('popupCustomerName');
                     if (!name.value.trim()) {
@@ -2451,6 +2481,7 @@
                         var formData = {
                             propertyType: selectedPropertyType.value,
                             location: location.value,
+                            budgetRange: budgetRange.value,
                             name: name.value.trim(),
                             mobile: mobile.value.trim(),
                             whatsappUpdates: document.getElementById('whatsappUpdates').checked
@@ -2458,7 +2489,7 @@
                         
                         console.log('Form Data:', formData);
                         
-                        var message = '🏡 *LEVI INTERIORS - NEW CONSULTATION REQUEST* 🏡%0A%0A*Property Type:* ' + formData.propertyType + '%0A*Location:* ' + formData.location + '%0A*Name:* ' + formData.name + '%0A*Mobile:* ' + formData.mobile + '%0A*WhatsApp Updates:* ' + (formData.whatsappUpdates ? 'Yes ✅' : 'No ❌') + '%0A%0A_This request was submitted via the website consultation popup._';
+                        var message = '🏡 *LEVI INTERIORS - NEW CONSULTATION REQUEST* 🏡%0A%0A*Property Type:* ' + formData.propertyType + '%0A*Location:* ' + formData.location + '%0A*Budget Range:* ' + formData.budgetRange + '%0A*Name:* ' + formData.name + '%0A*Mobile:* ' + formData.mobile + '%0A*WhatsApp Updates:* ' + (formData.whatsappUpdates ? 'Yes ✅' : 'No ❌') + '%0A%0A_This request was submitted via the website consultation popup._';
                         
                         window.open('https://wa.me/917674095888?text=' + message, '_blank');
                     }
