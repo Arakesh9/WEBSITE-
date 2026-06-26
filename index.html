@@ -106,7 +106,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
+            height: 4px;
             background: var(--gradient-gold);
             border-radius: 2px;
         }
@@ -115,7 +115,7 @@
             font-size: 1.3rem;
             color: var(--dark-gray);
             max-width: 800px;
-            margin: 20px auto 0;
+            margin: 30px auto 0;
             line-height: 1.8;
         }
 
@@ -123,7 +123,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 12px;
             padding: 18px 42px;
             background: var(--gradient);
             color: var(--white);
@@ -615,14 +615,13 @@
             transform: rotate(-5deg);
         }
 
-        /* ===== HEADER TEXT WITH TACHYON FONT - INCREASED SIZE ===== */
+        /* ===== HEADER TEXT WITH TACHYON FONT ===== */
         .logo-text {
             font-family: var(--header-font);
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             font-weight: 400;
             color: var(--primary);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
+            letter-spacing: 0.px;
         }
 
         .logo-text span {
@@ -1647,7 +1646,6 @@
             text-decoration: underline;
         }
 
-        /* ===== RESPONSIVE - INCREASED HEADER TEXT SIZES ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
@@ -1750,10 +1748,8 @@
                 grid-template-columns: 1fr 1fr;
             }
 
-            /* Increased header text for tablet */
             .logo-text {
-                font-size: 1.9rem;
-                letter-spacing: 0.5px;
+                font-size: 1.8rem;
             }
         }
 
@@ -1767,7 +1763,11 @@
             }
             
             .featured-cards {
-                grid-template-columns: 2fr;
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
             }
             
             .logo-img {
@@ -1862,10 +1862,13 @@
                 font-size: 0.95rem;
             }
 
-            /* Increased header text for mobile */
-            .logo-text {
-                font-size: 1.8rem;
-                letter-spacing: 0.8px;
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .review-card .work-photo {
+                height: 120px;
             }
         }
     </style>
