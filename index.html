@@ -891,6 +891,238 @@
             font-size: 1.1rem;
         }
 
+        /* ===== CUSTOMER REVIEWS CAROUSEL ===== */
+        .reviews-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path d="M30 5 L35 20 L50 20 L38 30 L42 45 L30 35 L18 45 L22 30 L10 20 L25 20 Z" fill="%232A4B8C" opacity="0.03"/></svg>');
+            pointer-events: none;
+        }
+
+        .reviews-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .reviews-carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 30px;
+        }
+
+        .review-card {
+            flex: 0 0 calc(33.333% - 20px);
+            min-width: calc(33.333% - 20px);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(42, 75, 140, 0.08);
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .review-card .customer-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .review-card .customer-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-card .customer-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .review-card .customer-location {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .review-card .stars {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .review-card .review-text {
+            color: var(--dark-gray);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .review-card .work-photo {
+            margin-top: 20px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 160px;
+            box-shadow: var(--shadow);
+        }
+
+        .review-card .work-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .review-card .work-photo img:hover {
+            transform: scale(1.05);
+        }
+
+        .review-card .project-tag {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .review-card .quote-icon {
+            font-size: 2rem;
+            color: rgba(212, 175, 55, 0.2);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        /* Carousel Navigation */
+        .reviews-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .reviews-nav-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reviews-nav-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.1);
+            box-shadow: var(--shadow);
+        }
+
+        .reviews-nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .reviews-nav-btn:disabled:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .reviews-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .reviews-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .reviews-dot.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+
+        .reviews-dot:hover {
+            background: var(--secondary);
+        }
+
+        .reviews-counter {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        @media (max-width: 992px) {
+            .review-card {
+                flex: 0 0 calc(50% - 15px);
+                min-width: calc(50% - 15px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .review-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+            
+            .review-card .work-photo {
+                height: 120px;
+            }
+
+            .reviews-nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+
         /* ===== PREMIUM HERO SECTION ===== */
         .hero {
             padding-top: 180px;
@@ -1687,15 +1919,11 @@
                         <label>Budget Range <span style="color: #e74c3c;">*</span></label>
                         <select id="popupBudgetRange">
                             <option value="">Select your budget range</option>
-                            <option value="₹2 Lakhs - ₹5 Lakhs">₹2 Lakhs - ₹5 Lakhs</option>
+                            <option value="₹3 Lakhs - ₹5 Lakhs">₹3 Lakhs - ₹5 Lakhs</option>
                             <option value="₹5 Lakhs - ₹10 Lakhs">₹5 Lakhs - ₹10 Lakhs</option>
-                            <option value="₹10 Lakhs - ₹15 Lakhs">₹10 Lakhs - ₹15 Lakhs</option>
-                            <option value="₹15 Lakhs - ₹20 Lakhs">₹15 Lakhs - ₹20 Lakhs</option>
+                            <option value="₹10 Lakhs - ₹20 Lakhs">₹10 Lakhs - ₹20 Lakhs</option>
                             <option value="₹20 Lakhs - ₹30 Lakhs">₹20 Lakhs - ₹30 Lakhs</option>
-                            <option value="₹30 Lakhs - ₹50 Lakhs">₹30 Lakhs - ₹50 Lakhs</option>
-                            <option value="₹50 Lakhs - ₹75 Lakhs">₹50 Lakhs - ₹75 Lakhs</option>
-                            <option value="₹75 Lakhs - ₹1 Crore">₹75 Lakhs - ₹1 Crore</option>
-                            <option value="₹1 Crore+">₹1 Crore+</option>
+                            <option value="₹30 Lakhs+">₹30 Lakhs+</option>
                             <option value="Not Sure">Not Sure / Flexible</option>
                         </select>
                         <div class="error-message" id="popupBudgetError">Please select your budget range</div>
@@ -2280,6 +2508,181 @@
         </div>
     </section>
 
+    <!-- ===== CUSTOMER REVIEWS CAROUSEL ===== -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+                <p>Real stories from our happy customers across India</p>
+            </div>
+
+            <div class="reviews-carousel-wrapper">
+                <div class="reviews-carousel-track" id="reviewsTrack">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="customer-photo">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Rajesh Kumar">
+                        </div>
+                        <h4 class="customer-name">Mr. Rajesh Kumar</h4>
+                        <p class="customer-location">📍 Mumbai, Maharashtra</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Levi Interiors transformed our 3BHK apartment into a luxury haven. The 45-day delivery was spot on, and the quality exceeded our expectations. Highly recommend!"</p>
+                        <div class="work-photo">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project Work">
+                        </div>
+                        <span class="project-tag">🏠 3BHK Luxury Apartment</span>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="customer-photo">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Priya Sharma">
+                        </div>
+                        <h4 class="customer-name">Mrs. Priya Sharma</h4>
+                        <p class="customer-location">📍 Bangalore, Karnataka</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The team at Levi Interiors understood our vision perfectly. Our villa's interiors now reflect our personality with elegance. The attention to detail is remarkable!"</p>
+                        <div class="work-photo">
+                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa Project">
+                        </div>
+                        <span class="project-tag">🏡 Luxury Villa</span>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="customer-photo">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Amit Patel">
+                        </div>
+                        <h4 class="customer-name">Mr. Amit Patel</h4>
+                        <p class="customer-location">📍 Ahmedabad, Gujarat</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The modular kitchen and living room designs are stunning. Levi Interiors made our dream home a reality with their innovative designs and professional execution."</p>
+                        <div class="work-photo">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kitchen Design">
+                        </div>
+                        <span class="project-tag">🍳 Modular Kitchen</span>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="customer-photo">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Ananya Reddy">
+                        </div>
+                        <h4 class="customer-name">Mrs. Ananya Reddy</h4>
+                        <p class="customer-location">📍 Hyderabad, Telangana</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"From consultation to delivery, the experience was seamless. Our master bedroom now feels like a 5-star suite. Thank you Levi Interiors for the exceptional work!"</p>
+                        <div class="work-photo">
+                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bedroom Design">
+                        </div>
+                        <span class="project-tag">🛏️ Master Bedroom Suite</span>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="customer-photo">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Deepak Gupta">
+                        </div>
+                        <h4 class="customer-name">Mr. Deepak Gupta</h4>
+                        <p class="customer-location">📍 Delhi</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The hotel-style interiors for our penthouse are breathtaking. Levi Interiors delivered exactly what they promised - luxury, quality, and on-time completion."</p>
+                        <div class="work-photo">
+                            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse Design">
+                        </div>
+                        <span class="project-tag">✨ Luxury Penthouse</span>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="customer-photo">
+                            <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Sneha Nair">
+                        </div>
+                        <h4 class="customer-name">Mrs. Sneha Nair</h4>
+                        <p class="customer-location">📍 Pune, Maharashtra</p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Absolutely loved the interior design for our new home. The team was professional, creative, and delivered beyond our expectations. 10/10 recommended!"</p>
+                        <div class="work-photo">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living Room Design">
+                        </div>
+                        <span class="project-tag">🛋️ Modern Living Room</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Navigation -->
+            <div class="reviews-nav">
+                <button class="reviews-nav-btn" id="reviewsPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="reviews-dots" id="reviewsDots">
+                    <button class="reviews-dot active" data-index="0"></button>
+                    <button class="reviews-dot" data-index="1"></button>
+                    <button class="reviews-dot" data-index="2"></button>
+                </div>
+                
+                <button class="reviews-nav-btn" id="reviewsNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -2656,6 +3059,78 @@
                     slideInterval = setInterval(nextSlide, 5000);
                 });
             });
+
+            // ===== REVIEWS CAROUSEL =====
+            var track = document.getElementById('reviewsTrack');
+            var prevBtn = document.getElementById('reviewsPrev');
+            var nextBtn = document.getElementById('reviewsNext');
+            var dots = document.querySelectorAll('.reviews-dot');
+            
+            if (track && prevBtn && nextBtn) {
+                var cards = track.querySelectorAll('.review-card');
+                var cardsPerView = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
+                var totalSlides = Math.ceil(cards.length / cardsPerView);
+                var currentIndex = 0;
+                
+                function updateCarousel() {
+                    var slideWidth = cards[0].offsetWidth + 30; // card width + gap
+                    var offset = currentIndex * slideWidth * cardsPerView;
+                    track.style.transform = 'translateX(-' + offset + 'px)';
+                    
+                    // Update dots
+                    dots.forEach(function(dot, index) {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                    
+                    // Update buttons
+                    prevBtn.disabled = currentIndex === 0;
+                    nextBtn.disabled = currentIndex >= totalSlides - 1;
+                }
+                
+                function goToSlide(index) {
+                    if (index < 0) index = 0;
+                    if (index >= totalSlides) index = totalSlides - 1;
+                    currentIndex = index;
+                    updateCarousel();
+                }
+                
+                // Navigation buttons
+                prevBtn.addEventListener('click', function() {
+                    if (currentIndex > 0) {
+                        goToSlide(currentIndex - 1);
+                    }
+                });
+                
+                nextBtn.addEventListener('click', function() {
+                    if (currentIndex < totalSlides - 1) {
+                        goToSlide(currentIndex + 1);
+                    }
+                });
+                
+                // Dot navigation
+                dots.forEach(function(dot) {
+                    dot.addEventListener('click', function() {
+                        var index = parseInt(this.getAttribute('data-index'));
+                        goToSlide(index);
+                    });
+                });
+                
+                // Responsive
+                window.addEventListener('resize', function() {
+                    var newCardsPerView = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
+                    if (newCardsPerView !== cardsPerView) {
+                        cardsPerView = newCardsPerView;
+                        totalSlides = Math.ceil(cards.length / cardsPerView);
+                        // Reset to first slide
+                        goToSlide(0);
+                    } else {
+                        updateCarousel();
+                    }
+                });
+                
+                // Initial update
+                setTimeout(updateCarousel, 100);
+            }
         });
     </script>
 </body>
