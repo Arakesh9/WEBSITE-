@@ -17,7 +17,7 @@
         /* ===== CUSTOM FONT - TACHYON ===== */
         @font-face {
             font-family: 'Tachyon';
-            src: url('fonts/Tachyon-W00-Regular.ttf') format('truetype');
+            src: url('Tachyon-W00-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
@@ -97,6 +97,7 @@
             color: var(--dark);
             position: relative;
             display: inline-block;
+            white-space: nowrap;  /* Keeps headline on single line */
         }
 
         .section-title h2:after {
@@ -615,13 +616,14 @@
             transform: rotate(-5deg);
         }
 
-        /* ===== HEADER TEXT WITH TACHYON FONT ===== */
+        /* ===== HEADER TEXT WITH TACHYON FONT - INCREASED SIZE ===== */
         .logo-text {
             font-family: var(--header-font);
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             font-weight: 400;
             color: var(--primary);
-            letter-spacing: 0.5px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
         .logo-text span {
@@ -635,7 +637,7 @@
             bottom: 2px;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: var(--primary);
             border-radius: 2px;
         }
@@ -683,6 +685,7 @@
             gap: 25px;
         }
 
+        /* ===== MOBILE MENU BUTTON - MOVED DOWN ===== */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -693,6 +696,8 @@
             padding: 10px;
             border-radius: var(--radius);
             transition: var(--transition);
+            align-self: flex-end;
+            margin-bottom: -8px;
         }
 
         .mobile-menu-btn:hover {
@@ -1646,6 +1651,7 @@
             text-decoration: underline;
         }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
@@ -1673,6 +1679,8 @@
             
             .mobile-menu-btn {
                 display: block;
+                align-self: flex-end;
+                margin-bottom: -5px;
             }
             
             .hero {
@@ -1748,8 +1756,20 @@
                 grid-template-columns: 1fr 1fr;
             }
 
+            /* Header text for tablet */
             .logo-text {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
+                letter-spacing: 1px;
+            }
+
+            /* Section title - keeps on single line */
+            .section-title h2 {
+                font-size: 2.5rem;
+                white-space: nowrap;
+            }
+
+            .section-title p {
+                font-size: 1.1rem;
             }
         }
 
@@ -1764,10 +1784,6 @@
             
             .featured-cards {
                 grid-template-columns: 1fr;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
             }
             
             .logo-img {
@@ -1862,13 +1878,29 @@
                 font-size: 0.95rem;
             }
 
-            .reviews-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
+            /* Header text for mobile */
+            .logo-text {
+                font-size: 1.8rem;
+                letter-spacing: 0.8px;
             }
-            
-            .review-card .work-photo {
-                height: 120px;
+
+            /* Mobile menu button */
+            .mobile-menu-btn {
+                align-self: flex-end;
+                margin-bottom: -3px;
+                font-size: 1.5rem;
+                padding: 8px;
+            }
+
+            /* Section title - keeps on single line */
+            .section-title h2 {
+                font-size: 1.8rem;
+                white-space: nowrap;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+                padding: 0 10px;
             }
         }
     </style>
@@ -1880,23 +1912,7 @@
             <div class="logo-container">
                 <img src="https://i.imgur.com/g05r9kZ.png" alt="Levi Interiors Logo" class="logo-img">
                 <div class="logo-text">LEVI <span>INTERIOR</span></div>
-            </div>
-            
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#photo-gallery">Our Designs</a></li>
-                    <li><a href="#designs">Services</a></li>
-                    <li><a href="#cities">Cities</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-cta">
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
+            </div>              
     </header>
 
     <!-- FLOATING CONSULTATION BUTTON - TOP LEFT -->
