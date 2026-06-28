@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Levi Interiors</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* ===== CUSTOM FONT - TACHYON ===== */
         @font-face {
@@ -51,6 +51,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -64,9 +65,15 @@
             line-height: 1.8;
             overflow-x: hidden;
             background-color: var(--white);
+            -webkit-overflow-scrolling: touch;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
             line-height: 1.9;
@@ -213,8 +220,13 @@
         }
 
         @keyframes floatPulse {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         /* ===== POPUP OVERLAY ===== */
@@ -250,8 +262,14 @@
         }
 
         @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .popup-close {
@@ -664,6 +682,7 @@
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-xl);
+            touch-action: pan-y;
         }
 
         .slider-container {
@@ -671,24 +690,28 @@
             width: 100%;
             height: 500px;
             overflow: hidden;
+            touch-action: pan-y;
         }
 
         .slider-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
             height: 100%;
+            will-change: transform;
         }
 
         .slide {
             min-width: 100%;
             height: 100%;
             position: relative;
+            flex-shrink: 0;
         }
 
         .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            pointer-events: none;
         }
 
         .slide-overlay {
@@ -701,6 +724,7 @@
             padding: 30px;
             transform: translateY(0);
             opacity: 1;
+            pointer-events: none;
         }
 
         .slide-overlay h4 {
@@ -722,6 +746,7 @@
             padding: 0 20px;
             transform: translateY(-50%);
             z-index: 10;
+            pointer-events: none;
         }
 
         .slider-btn {
@@ -738,12 +763,19 @@
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            pointer-events: auto;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .slider-btn:hover {
             background: var(--white);
             transform: scale(1.1);
             color: var(--secondary);
+        }
+
+        .slider-btn:active {
+            transform: scale(0.95);
         }
 
         .slider-dots {
@@ -754,6 +786,7 @@
             display: flex;
             gap: 10px;
             z-index: 10;
+            pointer-events: none;
         }
 
         .slider-dot {
@@ -764,6 +797,8 @@
             border: none;
             cursor: pointer;
             transition: var(--transition);
+            pointer-events: auto;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .slider-dot.active {
@@ -847,6 +882,8 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .gallery-filter-btn:hover {
@@ -886,6 +923,7 @@
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             gap: 25px;
             cursor: grab;
+            will-change: transform;
         }
 
         .gallery-slider-track.dragging {
@@ -922,6 +960,7 @@
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
+            pointer-events: none;
         }
 
         .gallery-card:hover .gallery-card-image img {
@@ -1014,6 +1053,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .gallery-nav-btn:hover {
@@ -1049,6 +1090,7 @@
             background: var(--gray);
             cursor: pointer;
             transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
         }
 
         .gallery-dot.active {
@@ -1106,6 +1148,7 @@
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             gap: 30px;
             cursor: grab;
+            will-change: transform;
         }
 
         .reviews-carousel-track.dragging {
@@ -1191,6 +1234,7 @@
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
+            pointer-events: none;
         }
 
         .review-card .work-photo img:hover {
@@ -1240,6 +1284,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .reviews-nav-btn:hover {
@@ -1275,6 +1321,7 @@
             background: var(--gray);
             cursor: pointer;
             transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
         }
 
         .reviews-dot.active {
@@ -1333,8 +1380,13 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .hero-badge i {
@@ -1510,11 +1562,20 @@
             position: relative;
             z-index: 99999 !important;
             border: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         @keyframes pulse-green {
-            0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); }
-            50% { transform: scale(1.1); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+            }
         }
 
         .whatsapp-toggle:hover {
@@ -1567,6 +1628,8 @@
             cursor: pointer;
             transition: var(--transition);
             border: 2px solid transparent;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .whatsapp-option:hover {
@@ -1639,6 +1702,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
         }
 
         .close-popup:hover {
@@ -1796,11 +1860,11 @@
             .container {
                 padding: 0 30px;
             }
-            
+
             .hero-content h1 {
                 font-size: 3.5rem;
             }
-            
+
             .section-title h2 {
                 font-size: 2.8rem;
             }
@@ -1810,80 +1874,80 @@
             .hero:before {
                 display: none;
             }
-            
+
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
-            
+
             .hero-content h1 {
                 font-size: 3rem;
             }
-            
+
             .hero-content p {
                 font-size: 1.2rem;
             }
-            
+
             .hero-stats {
                 gap: 30px;
             }
-            
+
             .slider-container {
                 height: 400px;
             }
-            
+
             .slider-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
             }
-            
+
             .featured-cards {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .gallery-card {
                 flex: 0 0 calc(50% - 13px);
                 min-width: calc(50% - 13px);
             }
-            
+
             .gallery-card-image {
                 height: 240px;
             }
-            
+
             .review-card {
                 flex: 0 0 calc(50% - 15px);
                 min-width: calc(50% - 15px);
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 40px;
             }
-            
+
             .room-title h2 {
                 font-size: 2.5rem;
             }
-            
+
             .whatsapp-options {
                 width: 320px;
                 right: 0;
             }
-            
+
             .consultation-float {
                 top: 110px;
                 left: 15px;
             }
-            
+
             .consultation-toggle {
                 padding: 14px 28px;
                 font-size: 1rem;
             }
-            
+
             .gallery-filters {
                 gap: 8px;
             }
-            
+
             .gallery-filter-btn {
                 padding: 8px 16px;
                 font-size: 0.75rem;
@@ -1894,191 +1958,191 @@
             .container {
                 padding: 0 20px;
             }
-            
+
             section {
                 padding: 70px 0;
             }
-            
+
             .section-title {
                 margin-bottom: 50px;
             }
-            
+
             .section-title h2 {
                 font-size: 2.2rem;
             }
-            
+
             .section-title p {
                 font-size: 1.1rem;
             }
-            
+
             .hero {
                 padding-top: 140px;
                 padding-bottom: 100px;
             }
-            
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero-content p {
                 font-size: 1.1rem;
             }
-            
+
             .hero-btns {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .hero-stats {
                 flex-direction: row;
                 gap: 20px;
                 flex-wrap: wrap;
             }
-            
+
             .stat-number {
                 font-size: 2rem;
             }
-            
+
             .photo-gallery {
                 padding-top: 140px;
             }
-            
+
             .slider-container {
                 height: 350px;
             }
-            
+
             .slider-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 1rem;
             }
-            
+
             .features-list {
                 grid-template-columns: 1fr;
             }
-            
+
             .room-title h2 {
                 font-size: 2rem;
             }
-            
+
             .room-description {
                 padding: 30px;
             }
-            
+
             .room-description h3 {
                 font-size: 1.5rem;
             }
-            
+
             .featured-cards {
                 grid-template-columns: 1fr 1fr;
                 gap: 20px;
             }
-            
+
             .gallery-card {
                 flex: 0 0 calc(50% - 13px);
                 min-width: calc(50% - 13px);
             }
-            
+
             .gallery-card-image {
                 height: 200px;
             }
-            
+
             .gallery-filters {
                 gap: 6px;
             }
-            
+
             .gallery-filter-btn {
                 padding: 6px 14px;
                 font-size: 0.7rem;
             }
-            
+
             .review-card {
                 flex: 0 0 100%;
                 min-width: 100%;
             }
-            
+
             .review-card .work-photo {
                 height: 120px;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 35px;
             }
-            
+
             .footer-col:first-child {
                 grid-column: span 1;
             }
-            
+
             .whatsapp-options {
                 width: 290px;
                 right: -10px;
                 padding: 25px;
             }
-            
+
             .whatsapp-toggle {
                 width: 60px;
                 height: 60px;
                 font-size: 1.6rem;
             }
-            
+
             .whatsapp-popup {
                 bottom: 20px;
                 right: 20px;
             }
-            
+
             .consultation-float {
                 top: 100px;
                 left: 10px;
             }
-            
+
             .consultation-toggle {
                 padding: 12px 20px;
                 font-size: 0.85rem;
                 border-radius: 8px;
             }
-            
+
             header {
                 height: 80px;
                 padding: 15px 0;
             }
-            
+
             .logo-img {
                 height: 60px;
             }
-            
+
             .logo-text {
                 font-size: 1.6rem;
             }
-            
+
             .popup-container {
                 padding: 30px 20px;
                 width: 95%;
             }
-            
+
             .popup-title {
                 font-size: 1.4rem;
             }
-            
+
             .property-types {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .popup-features {
                 grid-template-columns: 1fr 1fr 1fr;
                 gap: 8px;
             }
-            
+
             .popup-features .feature {
                 font-size: 0.7rem;
             }
-            
+
             .gallery-nav-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 1rem;
             }
-            
+
             .reviews-nav-btn {
                 width: 45px;
                 height: 45px;
@@ -2090,327 +2154,327 @@
             .container {
                 padding: 0 15px;
             }
-            
+
             section {
                 padding: 60px 0;
             }
-            
+
             .section-title h2 {
                 font-size: 1.8rem;
             }
-            
+
             .section-title p {
                 font-size: 0.95rem;
             }
-            
+
             .hero {
                 padding-top: 120px;
                 padding-bottom: 70px;
             }
-            
+
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
             .hero-content p {
                 font-size: 1rem;
             }
-            
+
             .hero-stats {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .hero-badge {
                 padding: 10px 18px;
                 font-size: 0.85rem;
             }
-            
+
             .hero-badge i {
                 font-size: 1.2rem;
             }
-            
+
             .photo-gallery {
                 padding-top: 120px;
             }
-            
+
             .slider-container {
                 height: 250px;
             }
-            
+
             .slider-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 0.85rem;
             }
-            
+
             .slider-nav {
                 padding: 0 10px;
             }
-            
+
             .slide-overlay {
                 padding: 15px;
             }
-            
+
             .slide-overlay h4 {
                 font-size: 1rem;
             }
-            
+
             .slide-overlay p {
                 font-size: 0.8rem;
             }
-            
+
             .room-title h2 {
                 font-size: 1.5rem;
             }
-            
+
             .room-title h2 i {
                 font-size: 1.5rem;
             }
-            
+
             .room-title p {
                 font-size: 0.95rem;
             }
-            
+
             .room-description {
                 padding: 20px 15px;
             }
-            
+
             .room-description h3 {
                 font-size: 1.2rem;
             }
-            
+
             .room-description p {
                 font-size: 0.95rem;
             }
-            
+
             .featured-cards {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-            
+
             .featured-card {
                 padding: 30px 20px;
             }
-            
+
             .featured-card i {
                 font-size: 2.5rem;
             }
-            
+
             .featured-card h3 {
                 font-size: 1.2rem;
             }
-            
+
             .gallery-card {
                 flex: 0 0 100%;
                 min-width: 100%;
             }
-            
+
             .gallery-card-image {
                 height: 200px;
             }
-            
+
             .gallery-filters {
                 gap: 5px;
             }
-            
+
             .gallery-filter-btn {
                 padding: 5px 10px;
                 font-size: 0.65rem;
             }
-            
+
             .gallery-nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 0.85rem;
             }
-            
+
             .gallery-dot {
                 width: 10px;
                 height: 10px;
             }
-            
+
             .review-card {
                 padding: 25px 20px;
             }
-            
+
             .review-card .customer-photo {
                 width: 80px;
                 height: 80px;
             }
-            
+
             .review-card .customer-name {
                 font-size: 1.1rem;
             }
-            
+
             .review-card .work-photo {
                 height: 100px;
             }
-            
+
             .reviews-nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 0.85rem;
             }
-            
+
             .whatsapp-options {
                 width: 260px;
                 right: -15px;
                 padding: 20px;
             }
-            
+
             .whatsapp-options h3 {
                 font-size: 1.2rem;
             }
-            
+
             .whatsapp-option {
                 padding: 15px;
                 gap: 12px;
             }
-            
+
             .option-avatar {
                 width: 45px;
                 height: 45px;
                 font-size: 1.2rem;
             }
-            
+
             .option-details h4 {
                 font-size: 1rem;
             }
-            
+
             .option-details p {
                 font-size: 0.8rem;
             }
-            
+
             .option-cta {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
             }
-            
+
             .whatsapp-toggle {
                 width: 55px;
                 height: 55px;
                 font-size: 1.4rem;
             }
-            
+
             .consultation-float {
                 top: 90px;
                 left: 5px;
             }
-            
+
             .consultation-toggle {
                 padding: 8px 14px;
                 font-size: 0.7rem;
                 border-radius: 6px;
             }
-            
+
             header {
                 height: 70px;
                 padding: 10px 0;
             }
-            
+
             .header-container {
                 height: 50px;
             }
-            
+
             .logo-container {
                 gap: 10px;
             }
-            
+
             .logo-img {
                 height: 45px;
             }
-            
+
             .logo-text {
                 font-size: 1.2rem;
             }
-            
+
             .popup-container {
                 padding: 20px 15px;
                 width: 98%;
             }
-            
+
             .popup-badge {
                 font-size: 0.65rem;
                 padding: 4px 12px;
             }
-            
+
             .popup-title {
                 font-size: 1.1rem;
             }
-            
+
             .popup-form .form-group {
                 margin-bottom: 15px;
             }
-            
+
             .property-types {
                 grid-template-columns: 1fr 1fr;
                 gap: 5px;
             }
-            
+
             .property-type-btn {
                 padding: 6px 0;
                 font-size: 0.7rem;
             }
-            
+
             .popup-features {
                 grid-template-columns: 1fr 1fr 1fr;
                 gap: 5px;
             }
-            
+
             .popup-features .feature {
                 font-size: 0.6rem;
             }
-            
+
             .popup-features .feature i {
                 font-size: 1rem;
             }
-            
+
             .popup-offer {
                 padding: 10px 15px;
             }
-            
+
             .popup-offer .offer-text {
                 font-size: 0.9rem;
             }
-            
+
             .popup-offer .offer-sub {
                 font-size: 0.75rem;
             }
-            
+
             .popup-submit {
                 padding: 14px;
                 font-size: 0.95rem;
             }
-            
+
             .footer-logo-text {
                 font-size: 1.4rem;
             }
-            
+
             .footer-col h3 {
                 font-size: 1.2rem;
             }
-            
+
             .footer-links li {
                 margin-bottom: 10px;
             }
-            
+
             .copyright {
                 font-size: 0.8rem;
                 padding-top: 30px;
             }
-            
+
             .slider-dots {
                 gap: 6px;
                 bottom: 10px;
             }
-            
+
             .slider-dot {
                 width: 8px;
                 height: 8px;
             }
-            
+
             .features-list .feature-item {
                 font-size: 0.85rem;
             }
@@ -2420,45 +2484,45 @@
             .container {
                 padding: 0 10px;
             }
-            
+
             .logo-text {
                 font-size: 1rem;
             }
-            
+
             .logo-img {
                 height: 38px;
             }
-            
+
             .hero-content h1 {
                 font-size: 1.6rem;
             }
-            
+
             .section-title h2 {
                 font-size: 1.5rem;
             }
-            
+
             .section-title h2:after {
                 width: 50px;
                 bottom: -10px;
             }
-            
+
             .gallery-filter-btn {
                 font-size: 0.6rem;
                 padding: 4px 8px;
             }
-            
+
             .whatsapp-options {
                 width: 240px;
                 right: -20px;
                 padding: 15px;
             }
-            
+
             .whatsapp-toggle {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
             }
-            
+
             .consultation-toggle {
                 font-size: 0.6rem;
                 padding: 6px 10px;
@@ -2472,7 +2536,7 @@
         <div class="container header-container">
             <div class="logo-container">
                 <img src="https://i.imgur.com/g05r9kZ.png" alt="Levi Interiors Logo" class="logo-img">
-                <div class="logo-text">LEVI <span>INTERIORS</span></div>
+                <div class="logo-text">LEVI <span>INTERIOR</span></div>
             </div>
         </div>
     </header>
@@ -2667,7 +2731,7 @@
                     <h2><i class="fas fa-hotel"></i> Luxury Hotel Interiors</h2>
                     <p>Experience opulent hotel-style living with our premium interior designs that combine luxury with functionality</p>
                 </div>
-                
+
                 <div class="photo-slider" id="hotelSlider">
                     <div class="slider-container">
                         <div class="slider-track">
@@ -2724,7 +2788,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="room-description">
                     <h3><i class="fas fa-star"></i> Hotel Luxury Design Features</h3>
                     <p>Transform your home into a 5-star luxury hotel experience with our premium hotel interior designs. We bring the opulence of world-class hotels to your residence with meticulous attention to detail and premium materials.</p>
@@ -2740,14 +2804,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Villa Section -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-home"></i> Luxury Villa Interiors</h2>
                     <p>Grand villa designs that embody luxury living with spacious layouts and premium finishes</p>
                 </div>
-                
+
                 <div class="photo-slider" id="villaSlider">
                     <div class="slider-container">
                         <div class="slider-track">
@@ -2804,7 +2868,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="room-description">
                     <h3><i class="fas fa-crown"></i> Villa Design Excellence</h3>
                     <p>Experience grand living with our villa interior designs that combine traditional elegance with modern luxury. Each villa project is customized to reflect your personal style while maintaining architectural integrity.</p>
@@ -2820,14 +2884,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Master Bedroom Section -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-bed"></i> Master Bedroom Designs</h2>
                     <p>Create your personal sanctuary with our luxurious master bedroom designs</p>
                 </div>
-                
+
                 <div class="photo-slider" id="bedroomSlider">
                     <div class="slider-container">
                         <div class="slider-track">
@@ -2884,7 +2948,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="room-description">
                     <h3><i class="fas fa-heart"></i> Your Personal Sanctuary</h3>
                     <p>Transform your master bedroom into a luxurious retreat with our customized designs. We focus on creating spaces that promote relaxation, comfort, and elegance while incorporating smart storage solutions and premium amenities.</p>
@@ -2900,14 +2964,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Kitchen Section -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-utensils"></i> Modular Kitchen Designs</h2>
                     <p>State-of-the-art kitchen designs that combine functionality with aesthetic appeal</p>
                 </div>
-                
+
                 <div class="photo-slider" id="kitchenSlider">
                     <div class="slider-container">
                         <div class="slider-track">
@@ -2964,7 +3028,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="room-description">
                     <h3><i class="fas fa-chef-hat"></i> Culinary Excellence</h3>
                     <p>Our modular kitchen designs are engineered for both functionality and style. We create kitchens that are not just cooking spaces but the heart of your home, where memories are made and shared.</p>
@@ -2980,14 +3044,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Living Room Section -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-couch"></i> Living Room Designs</h2>
                     <p>Create impressive living spaces that reflect your style and personality</p>
                 </div>
-                
+
                 <div class="photo-slider" id="livingSlider">
                     <div class="slider-container">
                         <div class="slider-track">
@@ -3044,7 +3108,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="room-description">
                     <h3><i class="fas fa-home-heart"></i> Heart of Your Home</h3>
                     <p>The living room is where families gather, guests are entertained, and memories are created. Our designs focus on creating spaces that are both beautiful and functional, reflecting your personal style while maximizing comfort and utility.</p>
@@ -3166,11 +3230,11 @@
                 <button class="gallery-nav-btn" id="galleryPrev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                
+
                 <div class="gallery-dots" id="galleryDots">
                     <!-- Dots will be dynamically generated -->
                 </div>
-                
+
                 <button class="gallery-nav-btn" id="galleryNext">
                     <i class="fas fa-chevron-right"></i>
                 </button>
@@ -3339,13 +3403,13 @@
                 <button class="reviews-nav-btn" id="reviewsPrev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                
+
                 <div class="reviews-dots" id="reviewsDots">
                     <button class="reviews-dot active" data-index="0"></button>
                     <button class="reviews-dot" data-index="1"></button>
                     <button class="reviews-dot" data-index="2"></button>
                 </div>
-                
+
                 <button class="reviews-nav-btn" id="reviewsNext">
                     <i class="fas fa-chevron-right"></i>
                 </button>
@@ -3412,10 +3476,7 @@
     </footer>
 
     <script>
-        // Wait for DOM to load
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded - popup script ready');
-            
             // ===== POPUP ELEMENTS =====
             var popupOverlay = document.getElementById('consultationPopup');
             var openPopupBtn = document.getElementById('openPopupBtn');
@@ -3425,16 +3486,6 @@
             var popupSuccess = document.getElementById('popupSuccess');
             var consultationForm = document.getElementById('consultationForm');
 
-            // ===== OPEN POPUP =====
-            if (openPopupBtn) {
-                openPopupBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    popupOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-
-            // ===== CLOSE POPUP =====
             function closePopup() {
                 popupOverlay.classList.remove('active');
                 document.body.style.overflow = '';
@@ -3447,21 +3498,25 @@
                 document.querySelectorAll('.error-message').forEach(function(el) { el.style.display = 'none'; });
             }
 
+            if (openPopupBtn) {
+                openPopupBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    popupOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
             if (closePopupBtn) closePopupBtn.addEventListener('click', closePopup);
             if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closePopup);
 
             if (popupOverlay) {
                 popupOverlay.addEventListener('click', function(e) {
-                    if (e.target === popupOverlay) {
-                        closePopup();
-                    }
+                    if (e.target === popupOverlay) closePopup();
                 });
             }
 
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-                    closePopup();
-                }
+                if (e.key === 'Escape' && popupOverlay.classList.contains('active')) closePopup();
             });
 
             // ===== PROPERTY TYPE SELECTION =====
@@ -3534,7 +3589,7 @@
                     if (isValid) {
                         popupFormContent.style.display = 'none';
                         popupSuccess.style.display = 'block';
-                        
+
                         var formData = {
                             propertyType: selectedPropertyType.value,
                             location: location.value,
@@ -3543,9 +3598,13 @@
                             mobile: mobile.value.trim(),
                             whatsappUpdates: document.getElementById('whatsappUpdates').checked
                         };
-                        
-                        var message = '🏡 *LEVI INTERIORS - NEW CONSULTATION REQUEST* 🏡%0A%0A*Property Type:* ' + formData.propertyType + '%0A*Location:* ' + formData.location + '%0A*Budget Range:* ' + formData.budgetRange + '%0A*Name:* ' + formData.name + '%0A*Mobile:* ' + formData.mobile + '%0A*WhatsApp Updates:* ' + (formData.whatsappUpdates ? 'Yes ✅' : 'No ❌') + '%0A%0A_This request was submitted via the website consultation popup._';
-                        
+
+                        var message = '🏡 *LEVI INTERIORS - NEW CONSULTATION REQUEST* 🏡%0A%0A*Property Type:* ' +
+                            formData.propertyType + '%0A*Location:* ' + formData.location + '%0A*Budget Range:* ' +
+                            formData.budgetRange + '%0A*Name:* ' + formData.name + '%0A*Mobile:* ' + formData.mobile +
+                            '%0A*WhatsApp Updates:* ' + (formData.whatsappUpdates ? 'Yes ✅' : 'No ❌') +
+                            '%0A%0A_This request was submitted via the website consultation popup._';
+
                         window.open('https://wa.me/917674095888?text=' + message, '_blank');
                     }
                 });
@@ -3571,21 +3630,21 @@
             var whatsappToggle = document.getElementById('whatsappToggle');
             var whatsappOptions = document.getElementById('whatsappOptions');
             var closePopup = document.getElementById('closePopup');
-            
+
             if (whatsappToggle) {
                 whatsappToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     whatsappOptions.classList.toggle('active');
                 });
             }
-            
+
             if (closePopup) {
                 closePopup.addEventListener('click', function(e) {
                     e.stopPropagation();
                     whatsappOptions.classList.remove('active');
                 });
             }
-            
+
             document.addEventListener('click', function(e) {
                 if (whatsappOptions && whatsappToggle) {
                     if (!whatsappOptions.contains(e.target) && !whatsappToggle.contains(e.target)) {
@@ -3600,7 +3659,7 @@
                 option.addEventListener('click', function() {
                     var contactType = this.getAttribute('data-contact');
                     var phoneNumber, message;
-                    
+
                     if (contactType === 'owner') {
                         phoneNumber = '917207885880';
                         message = 'Hello Mr. Arun Reddy, I am interested in Levi Interiors premium home design services. Can you please assist me?';
@@ -3608,7 +3667,7 @@
                         phoneNumber = '917674095888';
                         message = 'Hello Mr. Shiva, I would like to know more about Levi Interiors premium packages. Can you please share details?';
                     }
-                    
+
                     var encodedMessage = encodeURIComponent(message);
                     window.open('https://wa.me/' + phoneNumber + '?text=' + encodedMessage, '_blank');
                     whatsappOptions.classList.remove('active');
@@ -3647,7 +3706,7 @@
                 });
             });
 
-            // ===== PHOTO SLIDER =====
+            // ===== PHOTO SLIDER - TOUCH OPTIMIZED =====
             var sliders = document.querySelectorAll('.photo-slider');
             sliders.forEach(function(slider) {
                 var track = slider.querySelector('.slider-track');
@@ -3655,105 +3714,204 @@
                 var prevBtn = slider.querySelector('.prev-btn');
                 var nextBtn = slider.querySelector('.next-btn');
                 var dots = slider.querySelectorAll('.slider-dot');
-                
+
                 var currentSlide = 0;
                 var totalSlides = slides.length;
-                
+                var isDragging = false;
+                var startX = 0;
+                var diffX = 0;
+                var isSwiping = false;
+
                 function updateSlider() {
                     track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
                     dots.forEach(function(dot, index) {
                         dot.classList.toggle('active', index === currentSlide);
                     });
                 }
-                
+
                 function nextSlide() {
                     currentSlide = (currentSlide + 1) % totalSlides;
                     updateSlider();
                 }
-                
+
                 function prevSlide() {
                     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
                     updateSlider();
                 }
-                
+
                 function goToSlide(index) {
                     currentSlide = index;
                     updateSlider();
                 }
-                
-                if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-                if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-                
+
+                if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation();
+                    nextSlide(); });
+                if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation();
+                    prevSlide(); });
+
                 dots.forEach(function(dot, index) {
-                    dot.addEventListener('click', function() { goToSlide(index); });
+                    dot.addEventListener('click', function(e) { e.stopPropagation();
+                        goToSlide(index); });
                 });
-                
+
+                // Touch events
+                var container = slider.querySelector('.slider-container');
+
+                container.addEventListener('touchstart', function(e) {
+                    isDragging = true;
+                    isSwiping = true;
+                    startX = e.touches[0].clientX;
+                    diffX = 0;
+                    track.style.transition = 'none';
+                }, { passive: true });
+
+                container.addEventListener('touchmove', function(e) {
+                    if (!isDragging) return;
+                    var currentX = e.touches[0].clientX;
+                    diffX = startX - currentX;
+                    var offset = (currentSlide * 100) + (diffX / container.offsetWidth * 100);
+                    track.style.transform = 'translateX(-' + offset + '%)';
+                }, { passive: true });
+
+                container.addEventListener('touchend', function(e) {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    track.style.transition = 'transform 0.5s ease-in-out';
+
+                    var threshold = 50;
+                    if (diffX > threshold && currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                    } else if (diffX < -threshold && currentSlide > 0) {
+                        currentSlide--;
+                    }
+                    updateSlider();
+                    diffX = 0;
+                    startX = 0;
+                    setTimeout(function() { isSwiping = false; }, 300);
+                }, { passive: true });
+
+                // Mouse drag for desktop
+                var isMouseDown = false;
+                var mouseStartX = 0;
+                var mouseDiffX = 0;
+
+                container.addEventListener('mousedown', function(e) {
+                    isMouseDown = true;
+                    mouseStartX = e.clientX;
+                    mouseDiffX = 0;
+                    track.style.transition = 'none';
+                    e.preventDefault();
+                });
+
+                container.addEventListener('mousemove', function(e) {
+                    if (!isMouseDown) return;
+                    var currentX = e.clientX;
+                    mouseDiffX = mouseStartX - currentX;
+                    var offset = (currentSlide * 100) + (mouseDiffX / container.offsetWidth * 100);
+                    track.style.transform = 'translateX(-' + offset + '%)';
+                });
+
+                container.addEventListener('mouseup', function() {
+                    if (!isMouseDown) return;
+                    isMouseDown = false;
+                    track.style.transition = 'transform 0.5s ease-in-out';
+
+                    var threshold = 50;
+                    if (mouseDiffX > threshold && currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                    } else if (mouseDiffX < -threshold && currentSlide > 0) {
+                        currentSlide--;
+                    }
+                    updateSlider();
+                    mouseDiffX = 0;
+                    mouseStartX = 0;
+                });
+
+                container.addEventListener('mouseleave', function() {
+                    if (isMouseDown) {
+                        isMouseDown = false;
+                        track.style.transition = 'transform 0.5s ease-in-out';
+                        updateSlider();
+                    }
+                });
+
                 var slideInterval = setInterval(nextSlide, 5000);
-                
+
                 slider.addEventListener('mouseenter', function() {
                     clearInterval(slideInterval);
                 });
-                
+
                 slider.addEventListener('mouseleave', function() {
                     slideInterval = setInterval(nextSlide, 5000);
                 });
             });
 
-            // ===== PROJECT GALLERY - UPDATED CATEGORIES =====
+            // ===== PROJECT GALLERY =====
             var projects = [
-                // KITCHEN
-                { id: 1, title: 'Modern Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 2, title: 'Italian Kitchen with Island', category: 'kitchen', image: 'https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 3, title: 'Open Plan Kitchen Design', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                { id: 4, title: 'Luxury Kitchen with Premium Appliances', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                
-                // CROCKERY
-                { id: 5, title: 'Elegant Crockery Display Unit', category: 'crockery', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2024' },
-                { id: 6, title: 'Glass Crockery Cabinet', category: 'crockery', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2023' },
-                { id: 7, title: 'Modern Crockery Unit with Lighting', category: 'crockery', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                
-                // TV UNIT
-                { id: 8, title: 'Wall-mounted TV Unit Design', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
-                { id: 9, title: 'Modern Entertainment Wall', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2023' },
-                { id: 10, title: 'Luxury TV Unit with Storage', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                
-                // WARDROBE
-                { id: 11, title: 'Walk-in Wardrobe System', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 12, title: 'Modern Sliding Wardrobe', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2024' },
-                { id: 13, title: 'Custom Wardrobe with Dressing Area', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                
-                // POOJA UNIT
-                { id: 14, title: 'Wooden Pooja Mandir Design', category: 'pooja', image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
-                { id: 15, title: 'Modern Pooja Unit with Backlight', category: 'pooja', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 16, title: 'Traditional Pooja Cabinet', category: 'pooja', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2023' },
-                
-                // STUDY UNIT
-                { id: 17, title: 'Modern Study Desk with Storage', category: 'study', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                { id: 18, title: 'Luxury Home Office Design', category: 'study', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
-                { id: 19, title: 'Study Unit with Bookshelf', category: 'study', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
-                
-                // COT
-                { id: 20, title: 'Luxury King Size Cot', category: 'cot', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 21, title: 'Modern Cot with Storage', category: 'cot', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 22, title: 'Upholstered Bed Design', category: 'cot', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2023' },
-                
-                // SHOE RACK
-                { id: 23, title: 'Modern Shoe Rack with Seating', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
-                { id: 24, title: 'Wall-mounted Shoe Storage', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                { id: 25, title: 'Custom Shoe Cabinet', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
-                
-                // WALL PANELLING
-                { id: 26, title: 'Wooden Wall Panelling Design', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 27, title: 'Modern 3D Wall Panelling', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 28, title: 'Luxury Wall Panelling with Lighting', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                
-                // PARTITION
-                { id: 29, title: 'Modern Glass Partition', category: 'partition', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
-                { id: 30, title: 'Wooden Room Partition Design', category: 'partition', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                { id: 31, title: 'Decorative Partition Wall', category: 'partition', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
+                { id: 1, title: 'Modern Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 2, title: 'Italian Kitchen with Island', category: 'kitchen', image: 'https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 3, title: 'Open Plan Kitchen Design', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2023' },
+                { id: 4, title: 'Luxury Kitchen with Premium Appliances', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 5, title: 'Elegant Crockery Display Unit', category: 'crockery', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2024' },
+                { id: 6, title: 'Glass Crockery Cabinet', category: 'crockery', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2023' },
+                { id: 7, title: 'Modern Crockery Unit with Lighting', category: 'crockery', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 8, title: 'Wall-mounted TV Unit Design', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2024' },
+                { id: 9, title: 'Modern Entertainment Wall', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2023' },
+                { id: 10, title: 'Luxury TV Unit with Storage', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 11, title: 'Walk-in Wardrobe System', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 12, title: 'Modern Sliding Wardrobe', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2024' },
+                { id: 13, title: 'Custom Wardrobe with Dressing Area', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2023' },
+                { id: 14, title: 'Wooden Pooja Mandir Design', category: 'pooja', image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2024' },
+                { id: 15, title: 'Modern Pooja Unit with Backlight', category: 'pooja', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 16, title: 'Traditional Pooja Cabinet', category: 'pooja', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2023' },
+                { id: 17, title: 'Modern Study Desk with Storage', category: 'study', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 18, title: 'Luxury Home Office Design', category: 'study', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2024' },
+                { id: 19, title: 'Study Unit with Bookshelf', category: 'study', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2023' },
+                { id: 20, title: 'Luxury King Size Cot', category: 'cot', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 21, title: 'Modern Cot with Storage', category: 'cot', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 22, title: 'Upholstered Bed Design', category: 'cot', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2023' },
+                { id: 23, title: 'Modern Shoe Rack with Seating', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2024' },
+                { id: 24, title: 'Wall-mounted Shoe Storage', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 25, title: 'Custom Shoe Cabinet', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2023' },
+                { id: 26, title: 'Wooden Wall Panelling Design', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 27, title: 'Modern 3D Wall Panelling', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 28, title: 'Luxury Wall Panelling with Lighting', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2023' },
+                { id: 29, title: 'Modern Glass Partition', category: 'partition', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2024' },
+                { id: 30, title: 'Wooden Room Partition Design', category: 'partition', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 31, title: 'Decorative Partition Wall', category: 'partition', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2023' },
             ];
 
-            // Get elements
             var galleryTrack = document.getElementById('galleryTrack');
             var galleryDotsContainer = document.getElementById('galleryDots');
             var galleryPrevBtn = document.getElementById('galleryPrev');
@@ -3767,7 +3925,6 @@
             var cardsPerView = 3;
             var autoSlideInterval = null;
 
-            // Category labels for badges
             var categoryLabels = {
                 'kitchen': '🍳 Kitchen',
                 'crockery': '🍽️ Crockery',
@@ -3788,14 +3945,15 @@
             }
 
             function renderProjects(category) {
-                var filteredProjects = category === 'all' 
-                    ? projects 
-                    : projects.filter(function(p) { return p.category === category; });
+                var filteredProjects = category === 'all' ? projects : projects.filter(function(p) { return p
+                        .category === category; });
 
-                // Update filter counts
-                var categories = ['all', 'kitchen', 'crockery', 'tv-unit', 'wardrobe', 'pooja', 'study', 'cot', 'shoe-rack', 'wall-panelling', 'partition'];
+                var categories = ['all', 'kitchen', 'crockery', 'tv-unit', 'wardrobe', 'pooja', 'study', 'cot',
+                    'shoe-rack', 'wall-panelling', 'partition'
+                ];
                 categories.forEach(function(cat) {
-                    var count = cat === 'all' ? projects.length : projects.filter(function(p) { return p.category === cat; }).length;
+                    var count = cat === 'all' ? projects.length : projects.filter(function(p) { return p
+                            .category === cat; }).length;
                     var btn = document.querySelector('.gallery-filter-btn[data-category="' + cat + '"] .count');
                     if (btn) btn.textContent = count;
                 });
@@ -3812,11 +3970,11 @@
                 var html = '';
                 filteredProjects.forEach(function(project) {
                     var label = categoryLabels[project.category] || project.category;
-                    
+
                     html += `
                         <div class="gallery-card" data-category="${project.category}">
                             <div class="gallery-card-image">
-                                <img src="${project.image}" alt="${project.title}">
+                                <img src="${project.image}" alt="${project.title}" loading="lazy">
                                 <span class="category-badge">${label}</span>
                                 <div class="overlay-icon">
                                     <i class="fas fa-search-plus"></i>
@@ -3845,39 +4003,36 @@
             function updateGallery() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 if (cards.length === 0) return;
-                
+
                 var cardWidth = cards[0].offsetWidth;
                 var gap = 25;
                 var slideWidth = cardWidth + gap;
                 var totalCards = cards.length;
                 var totalSlides = Math.ceil(totalCards / cardsPerView);
-                
-                if (currentIndex >= totalSlides) {
-                    currentIndex = totalSlides - 1;
-                }
-                if (currentIndex < 0) {
-                    currentIndex = 0;
-                }
-                
+
+                if (currentIndex >= totalSlides) currentIndex = totalSlides - 1;
+                if (currentIndex < 0) currentIndex = 0;
+
                 var offset = currentIndex * slideWidth * cardsPerView;
                 galleryTrack.style.transform = 'translateX(-' + offset + 'px)';
-                
+
                 galleryPrevBtn.disabled = currentIndex === 0;
                 galleryNextBtn.disabled = currentIndex >= totalSlides - 1;
-                
+
                 updateDots();
             }
 
             function updateDots() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 var totalSlides = Math.ceil(cards.length / cardsPerView);
-                
+
                 var dotsHtml = '';
                 for (var i = 0; i < totalSlides; i++) {
-                    dotsHtml += `<button class="gallery-dot${i === currentIndex ? ' active' : ''}" data-index="${i}"></button>`;
+                    dotsHtml +=
+                        `<button class="gallery-dot${i === currentIndex ? ' active' : ''}" data-index="${i}"></button>`;
                 }
                 galleryDotsContainer.innerHTML = dotsHtml;
-                
+
                 galleryDotsContainer.querySelectorAll('.gallery-dot').forEach(function(dot) {
                     dot.addEventListener('click', function() {
                         stopAutoSlide();
@@ -3947,96 +4102,96 @@
             });
 
             // Touch swipe for gallery
-            var isDragging = false;
-            var startX = 0;
-            var diffX = 0;
+            var isDraggingGallery = false;
+            var startXGallery = 0;
+            var diffXGallery = 0;
 
             galleryWrapper.addEventListener('touchstart', function(e) {
                 stopAutoSlide();
-                isDragging = true;
-                startX = e.touches[0].clientX;
+                isDraggingGallery = true;
+                startXGallery = e.touches[0].clientX;
                 galleryTrack.classList.add('dragging');
             }, { passive: true });
 
             galleryWrapper.addEventListener('touchmove', function(e) {
-                if (!isDragging) return;
+                if (!isDraggingGallery) return;
                 var currentX = e.touches[0].clientX;
-                diffX = startX - currentX;
+                diffXGallery = startXGallery - currentX;
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 if (cards.length === 0) return;
                 var cardWidth = cards[0].offsetWidth;
                 var gap = 25;
                 var slideWidth = cardWidth + gap;
                 var baseOffset = currentIndex * slideWidth * cardsPerView;
-                var dragOffset = diffX;
+                var dragOffset = diffXGallery;
                 galleryTrack.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
             }, { passive: true });
 
             galleryWrapper.addEventListener('touchend', function() {
-                if (!isDragging) return;
-                isDragging = false;
+                if (!isDraggingGallery) return;
+                isDraggingGallery = false;
                 galleryTrack.classList.remove('dragging');
-                
+
                 var threshold = 50;
-                if (diffX > threshold) {
+                if (diffXGallery > threshold) {
                     nextSlide();
-                } else if (diffX < -threshold) {
+                } else if (diffXGallery < -threshold) {
                     prevSlide();
                 } else {
                     updateGallery();
                 }
-                diffX = 0;
-                startX = 0;
+                diffXGallery = 0;
+                startXGallery = 0;
                 startAutoSlide();
             }, { passive: true });
 
             // Mouse drag for desktop
-            var isMouseDown = false;
-            var mouseStartX = 0;
-            var mouseDiffX = 0;
+            var isMouseDownGallery = false;
+            var mouseStartXGallery = 0;
+            var mouseDiffXGallery = 0;
 
             galleryWrapper.addEventListener('mousedown', function(e) {
                 stopAutoSlide();
-                isMouseDown = true;
-                mouseStartX = e.clientX;
+                isMouseDownGallery = true;
+                mouseStartXGallery = e.clientX;
                 galleryTrack.classList.add('dragging');
             });
 
             galleryWrapper.addEventListener('mousemove', function(e) {
-                if (!isMouseDown) return;
-                var currentMouseX = e.clientX;
-                mouseDiffX = mouseStartX - currentMouseX;
+                if (!isMouseDownGallery) return;
+                var currentX = e.clientX;
+                mouseDiffXGallery = mouseStartXGallery - currentX;
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 if (cards.length === 0) return;
                 var cardWidth = cards[0].offsetWidth;
                 var gap = 25;
                 var slideWidth = cardWidth + gap;
                 var baseOffset = currentIndex * slideWidth * cardsPerView;
-                var dragOffset = mouseDiffX;
+                var dragOffset = mouseDiffXGallery;
                 galleryTrack.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
             });
 
             galleryWrapper.addEventListener('mouseup', function() {
-                if (!isMouseDown) return;
-                isMouseDown = false;
+                if (!isMouseDownGallery) return;
+                isMouseDownGallery = false;
                 galleryTrack.classList.remove('dragging');
-                
+
                 var threshold = 50;
-                if (mouseDiffX > threshold) {
+                if (mouseDiffXGallery > threshold) {
                     nextSlide();
-                } else if (mouseDiffX < -threshold) {
+                } else if (mouseDiffXGallery < -threshold) {
                     prevSlide();
                 } else {
                     updateGallery();
                 }
-                mouseDiffX = 0;
-                mouseStartX = 0;
+                mouseDiffXGallery = 0;
+                mouseStartXGallery = 0;
                 startAutoSlide();
             });
 
             galleryWrapper.addEventListener('mouseleave', function() {
-                if (isMouseDown) {
-                    isMouseDown = false;
+                if (isMouseDownGallery) {
+                    isMouseDownGallery = false;
                     galleryTrack.classList.remove('dragging');
                     updateGallery();
                     startAutoSlide();
@@ -4053,13 +4208,8 @@
                 }
             });
 
-            galleryWrapper.addEventListener('mouseenter', function() {
-                stopAutoSlide();
-            });
-
-            galleryWrapper.addEventListener('mouseleave', function() {
-                startAutoSlide();
-            });
+            galleryWrapper.addEventListener('mouseenter', function() { stopAutoSlide(); });
+            galleryWrapper.addEventListener('mouseleave', function() { startAutoSlide(); });
 
             renderProjects('all');
 
@@ -4069,39 +4219,36 @@
             var prevBtn = document.getElementById('reviewsPrev');
             var nextBtn = document.getElementById('reviewsNext');
             var dots = document.querySelectorAll('.reviews-dot');
-            
+
             if (track && prevBtn && nextBtn) {
                 var cards = track.querySelectorAll('.review-card');
                 var cardsPerViewReviews = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
                 var totalSlidesReviews = Math.ceil(cards.length / cardsPerViewReviews);
                 var currentIndexReviews = 0;
                 var autoSlideIntervalReviews = null;
-                var isDraggingReviews = false;
-                var startXReviews = 0;
-                var diffXReviews = 0;
-                
+
                 function updateReviewsCarousel() {
                     var cardWidth = cards[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
                     var offset = currentIndexReviews * slideWidth * cardsPerViewReviews;
                     track.style.transform = 'translateX(-' + offset + 'px)';
-                    
+
                     dots.forEach(function(dot, index) {
                         dot.classList.toggle('active', index === currentIndexReviews);
                     });
-                    
+
                     prevBtn.disabled = currentIndexReviews === 0;
                     nextBtn.disabled = currentIndexReviews >= totalSlidesReviews - 1;
                 }
-                
+
                 function goToReviewSlide(index) {
                     if (index < 0) index = 0;
                     if (index >= totalSlidesReviews) index = totalSlidesReviews - 1;
                     currentIndexReviews = index;
                     updateReviewsCarousel();
                 }
-                
+
                 function nextReviewSlide() {
                     if (currentIndexReviews < totalSlidesReviews - 1) {
                         goToReviewSlide(currentIndexReviews + 1);
@@ -4109,37 +4256,32 @@
                         goToReviewSlide(0);
                     }
                 }
-                
-                function prevReviewSlide() {
-                    if (currentIndexReviews > 0) {
-                        goToReviewSlide(currentIndexReviews - 1);
-                    }
-                }
-                
+
                 function startAutoSlideReviews() {
                     if (autoSlideIntervalReviews) clearInterval(autoSlideIntervalReviews);
                     autoSlideIntervalReviews = setInterval(nextReviewSlide, 5000);
                 }
-                
+
                 function stopAutoSlideReviews() {
                     if (autoSlideIntervalReviews) {
                         clearInterval(autoSlideIntervalReviews);
                         autoSlideIntervalReviews = null;
                     }
                 }
-                
+
                 prevBtn.addEventListener('click', function() {
                     stopAutoSlideReviews();
-                    prevReviewSlide();
+                    if (currentIndexReviews > 0) goToReviewSlide(currentIndexReviews - 1);
                     startAutoSlideReviews();
                 });
-                
+
                 nextBtn.addEventListener('click', function() {
                     stopAutoSlideReviews();
-                    nextReviewSlide();
+                    if (currentIndexReviews < totalSlidesReviews - 1) goToReviewSlide(currentIndexReviews + 1);
+                    else goToReviewSlide(0);
                     startAutoSlideReviews();
                 });
-                
+
                 dots.forEach(function(dot) {
                     dot.addEventListener('click', function() {
                         stopAutoSlideReviews();
@@ -4148,19 +4290,23 @@
                         startAutoSlideReviews();
                     });
                 });
-                
+
+                // Touch swipe for reviews
+                var isDraggingReviews = false;
+                var startXReviews = 0;
+                var diffXReviews = 0;
+
                 wrapper.addEventListener('touchstart', function(e) {
                     stopAutoSlideReviews();
                     isDraggingReviews = true;
                     startXReviews = e.touches[0].clientX;
                     track.classList.add('dragging');
                 }, { passive: true });
-                
+
                 wrapper.addEventListener('touchmove', function(e) {
                     if (!isDraggingReviews) return;
                     var currentX = e.touches[0].clientX;
                     diffXReviews = startXReviews - currentX;
-                    
                     var cardWidth = cards[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
@@ -4168,14 +4314,13 @@
                     var dragOffset = diffXReviews;
                     track.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
                 }, { passive: true });
-                
+
                 wrapper.addEventListener('touchend', function() {
                     if (!isDraggingReviews) return;
                     isDraggingReviews = false;
                     track.classList.remove('dragging');
-                    
+
                     var threshold = 50;
-                    
                     if (diffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) {
                         goToReviewSlide(currentIndexReviews + 1);
                     } else if (diffXReviews < -threshold && currentIndexReviews > 0) {
@@ -4183,29 +4328,27 @@
                     } else {
                         updateReviewsCarousel();
                     }
-                    
                     diffXReviews = 0;
                     startXReviews = 0;
-                    
                     startAutoSlideReviews();
                 }, { passive: true });
-                
+
+                // Mouse drag for reviews
                 var isMouseDownReviews = false;
                 var mouseStartXReviews = 0;
                 var mouseDiffXReviews = 0;
-                
+
                 wrapper.addEventListener('mousedown', function(e) {
                     stopAutoSlideReviews();
                     isMouseDownReviews = true;
                     mouseStartXReviews = e.clientX;
                     track.classList.add('dragging');
                 });
-                
+
                 wrapper.addEventListener('mousemove', function(e) {
                     if (!isMouseDownReviews) return;
-                    var currentMouseX = e.clientX;
-                    mouseDiffXReviews = mouseStartXReviews - currentMouseX;
-                    
+                    var currentX = e.clientX;
+                    mouseDiffXReviews = mouseStartXReviews - currentX;
                     var cardWidth = cards[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
@@ -4213,14 +4356,13 @@
                     var dragOffset = mouseDiffXReviews;
                     track.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
                 });
-                
+
                 wrapper.addEventListener('mouseup', function() {
                     if (!isMouseDownReviews) return;
                     isMouseDownReviews = false;
                     track.classList.remove('dragging');
-                    
+
                     var threshold = 50;
-                    
                     if (mouseDiffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) {
                         goToReviewSlide(currentIndexReviews + 1);
                     } else if (mouseDiffXReviews < -threshold && currentIndexReviews > 0) {
@@ -4228,13 +4370,11 @@
                     } else {
                         updateReviewsCarousel();
                     }
-                    
                     mouseDiffXReviews = 0;
                     mouseStartXReviews = 0;
-                    
                     startAutoSlideReviews();
                 });
-                
+
                 wrapper.addEventListener('mouseleave', function() {
                     if (isMouseDownReviews) {
                         isMouseDownReviews = false;
@@ -4243,7 +4383,7 @@
                         startAutoSlideReviews();
                     }
                 });
-                
+
                 window.addEventListener('resize', function() {
                     var newCardsPerView = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
                     if (newCardsPerView !== cardsPerViewReviews) {
@@ -4254,19 +4394,14 @@
                         updateReviewsCarousel();
                     }
                 });
-                
+
                 setTimeout(function() {
                     updateReviewsCarousel();
                     startAutoSlideReviews();
                 }, 100);
-                
-                wrapper.addEventListener('mouseenter', function() {
-                    stopAutoSlideReviews();
-                });
-                
-                wrapper.addEventListener('mouseleave', function() {
-                    startAutoSlideReviews();
-                });
+
+                wrapper.addEventListener('mouseenter', function() { stopAutoSlideReviews(); });
+                wrapper.addEventListener('mouseleave', function() { startAutoSlideReviews(); });
             }
         });
     </script>
