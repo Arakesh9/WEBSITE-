@@ -640,8 +640,6 @@
             border-radius: 2px;
         }
 
-        
-
         /* ===== PHOTO SLIDER SECTION ===== */
         .photo-gallery {
             padding-top: 180px;
@@ -845,6 +843,305 @@
         .feature-item i {
             color: var(--secondary);
             font-size: 1.1rem;
+        }
+
+        /* ===== PROJECT GALLERY SECTION ===== */
+        .project-gallery {
+            background: var(--white);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .gallery-filter-btn {
+            padding: 12px 28px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-filter-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(42, 75, 140, 0.3);
+        }
+
+        .gallery-filter-btn .count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-left: 6px;
+        }
+
+        .gallery-filter-btn.active .count {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .gallery-slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+            touch-action: pan-y;
+        }
+
+        .gallery-slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 25px;
+            cursor: grab;
+        }
+
+        .gallery-slider-track.dragging {
+            cursor: grabbing;
+            transition: none;
+        }
+
+        .gallery-card {
+            flex: 0 0 calc(33.333% - 17px);
+            min-width: calc(33.333% - 17px);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(42, 75, 140, 0.08);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .gallery-card-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .gallery-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-card:hover .gallery-card-image img {
+            transform: scale(1.05);
+        }
+
+        .gallery-card-image .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-gold);
+            color: var(--white);
+            padding: 5px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .gallery-card-image .overlay-icon {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-card-body {
+            padding: 20px 25px 25px;
+        }
+
+        .gallery-card-body h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .gallery-card-body p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .gallery-card-body .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .gallery-card-body .project-meta span {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+        }
+
+        .gallery-card-body .project-meta span i {
+            color: var(--secondary);
+            margin-right: 4px;
+        }
+
+        /* Gallery Navigation */
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .gallery-nav-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            background: var(--white);
+            color: var(--primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-nav-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.1);
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .gallery-nav-btn:disabled:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .gallery-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gallery-dot.active {
+            background: var(--secondary);
+            transform: scale(1.3);
+        }
+
+        .gallery-dot:hover {
+            background: var(--secondary);
+        }
+
+        .gallery-counter {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .no-projects {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray);
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .no-projects i {
+            font-size: 3rem;
+            color: var(--light-gray);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .gallery-card {
+                flex: 0 0 calc(50% - 13px);
+                min-width: calc(50% - 13px);
+            }
+            
+            .gallery-card-image {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+            
+            .gallery-card-image {
+                height: 220px;
+            }
+            
+            .gallery-filter-btn {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+            
+            .gallery-filters {
+                gap: 8px;
+            }
+
+            .gallery-nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
         }
 
         /* ===== CUSTOMER REVIEWS CAROUSEL ===== */
@@ -1593,8 +1890,6 @@
             .container {
                 padding: 0 20px;
             }
-            
-            
             
             .hero:before {
                 display: none;
@@ -2449,6 +2744,56 @@
         </div>
     </section>
 
+    <!-- ===== PROJECT GALLERY SECTION ===== -->
+    <section class="project-gallery" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Projects</h2>
+                <p>Explore our premium interior design portfolio across various categories</p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="gallery-filters" id="galleryFilters">
+                <button class="gallery-filter-btn active" data-category="all">ALL <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="bedroom">Bedroom <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="kitchen">Kitchen <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="tv-unit">TV Unit <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="crockery-unit">Crockery Unit <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="poja-mandir">POJA Mandir <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="fall-ceiling">Fall Ceiling <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="partitions">Partitions <span class="count">0</span></button>
+            </div>
+
+            <!-- Gallery Slider -->
+            <div class="gallery-slider-wrapper" id="galleryWrapper">
+                <div class="gallery-slider-track" id="galleryTrack">
+                    <!-- Projects will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <!-- No Projects Message -->
+            <div class="no-projects" id="noProjects">
+                <i class="fas fa-images"></i>
+                <p>No projects found in this category</p>
+            </div>
+
+            <!-- Gallery Navigation -->
+            <div class="gallery-nav">
+                <button class="gallery-nav-btn" id="galleryPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="gallery-dots" id="galleryDots">
+                    <!-- Dots will be dynamically generated -->
+                </div>
+                
+                <button class="gallery-nav-btn" id="galleryNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== CUSTOMER REVIEWS CAROUSEL ===== -->
     <section class="reviews-section" id="reviews">
         <div class="container">
@@ -3001,6 +3346,346 @@
                 });
             });
 
+            // ===== PROJECT GALLERY =====
+            // Sample project data
+            var projects = [
+                { id: 1, title: 'Modern Master Bedroom Suite', category: 'bedroom', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                { id: 2, title: 'Luxury Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
+                { id: 3, title: 'Elegant TV Unit Design', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
+                { id: 4, title: 'Premium Crockery Display Unit', category: 'crockery-unit', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
+                { id: 5, title: 'Beautiful POJA Mandir', category: 'poja-mandir', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
+                { id: 6, title: 'Stylish Fall Ceiling Design', category: 'fall-ceiling', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
+                { id: 7, title: 'Modern Glass Partitions', category: 'partitions', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                { id: 8, title: 'Contemporary Bedroom with Walk-in', category: 'bedroom', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
+                { id: 9, title: 'Italian Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
+                { id: 10, title: 'Wall-mounted TV Unit with Storage', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2023' },
+                { id: 11, title: 'Elegant Crockery Cabinet', category: 'crockery-unit', image: 'https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Ahmedabad', year: '2024' },
+                { id: 12, title: 'Wooden POJA Mandir Design', category: 'poja-mandir', image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                { id: 13, title: 'Modern Fall Ceiling with Lighting', category: 'fall-ceiling', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
+                { id: 14, title: 'Wooden Room Partitions', category: 'partitions', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
+                { id: 15, title: 'Luxury Master Bedroom', category: 'bedroom', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
+            ];
+
+            // Get elements
+            var galleryTrack = document.getElementById('galleryTrack');
+            var galleryDotsContainer = document.getElementById('galleryDots');
+            var galleryPrevBtn = document.getElementById('galleryPrev');
+            var galleryNextBtn = document.getElementById('galleryNext');
+            var galleryWrapper = document.getElementById('galleryWrapper');
+            var noProjects = document.getElementById('noProjects');
+            var filterBtns = document.querySelectorAll('.gallery-filter-btn');
+
+            var currentCategory = 'all';
+            var currentIndex = 0;
+            var cardsPerView = 3;
+            var autoSlideInterval = null;
+
+            // Function to update cards per view based on screen size
+            function getCardsPerView() {
+                if (window.innerWidth > 992) return 3;
+                if (window.innerWidth > 576) return 2;
+                return 1;
+            }
+
+            // Function to render projects
+            function renderProjects(category) {
+                var filteredProjects = category === 'all' 
+                    ? projects 
+                    : projects.filter(function(p) { return p.category === category; });
+
+                // Update filter counts
+                var categories = ['all', 'bedroom', 'kitchen', 'tv-unit', 'crockery-unit', 'poja-mandir', 'fall-ceiling', 'partitions'];
+                categories.forEach(function(cat) {
+                    var count = cat === 'all' ? projects.length : projects.filter(function(p) { return p.category === cat; }).length;
+                    var btn = document.querySelector('.gallery-filter-btn[data-category="' + cat + '"] .count');
+                    if (btn) btn.textContent = count;
+                });
+
+                // Show/hide no projects message
+                if (filteredProjects.length === 0) {
+                    noProjects.style.display = 'block';
+                    galleryTrack.innerHTML = '';
+                    galleryDotsContainer.innerHTML = '';
+                    return;
+                } else {
+                    noProjects.style.display = 'none';
+                }
+
+                // Build project cards
+                var html = '';
+                filteredProjects.forEach(function(project) {
+                    var categoryLabels = {
+                        'bedroom': '🛏️ Bedroom',
+                        'kitchen': '🍳 Kitchen',
+                        'tv-unit': '📺 TV Unit',
+                        'crockery-unit': '🍽️ Crockery Unit',
+                        'poja-mandir': '🕉️ POJA Mandir',
+                        'fall-ceiling': '✨ Fall Ceiling',
+                        'partitions': '🚪 Partitions'
+                    };
+                    var label = categoryLabels[project.category] || project.category;
+                    
+                    html += `
+                        <div class="gallery-card" data-category="${project.category}">
+                            <div class="gallery-card-image">
+                                <img src="${project.image}" alt="${project.title}">
+                                <span class="category-badge">${label}</span>
+                                <div class="overlay-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                            </div>
+                            <div class="gallery-card-body">
+                                <h4>${project.title}</h4>
+                                <p>${project.location}</p>
+                                <div class="project-meta">
+                                    <span><i class="fas fa-calendar-alt"></i> ${project.year}</span>
+                                    <span><i class="fas fa-tag"></i> ${project.category.replace('-', ' ').toUpperCase()}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                galleryTrack.innerHTML = html;
+                currentIndex = 0;
+                cardsPerView = getCardsPerView();
+                updateGallery();
+                updateDots();
+                startAutoSlide();
+            }
+
+            // Function to update gallery position
+            function updateGallery() {
+                var cards = galleryTrack.querySelectorAll('.gallery-card');
+                if (cards.length === 0) return;
+                
+                var cardWidth = cards[0].offsetWidth;
+                var gap = 25;
+                var slideWidth = cardWidth + gap;
+                var totalCards = cards.length;
+                var totalSlides = Math.ceil(totalCards / cardsPerView);
+                
+                if (currentIndex >= totalSlides) {
+                    currentIndex = totalSlides - 1;
+                }
+                if (currentIndex < 0) {
+                    currentIndex = 0;
+                }
+                
+                var offset = currentIndex * slideWidth * cardsPerView;
+                galleryTrack.style.transform = 'translateX(-' + offset + 'px)';
+                
+                // Update buttons
+                galleryPrevBtn.disabled = currentIndex === 0;
+                galleryNextBtn.disabled = currentIndex >= totalSlides - 1;
+                
+                updateDots();
+            }
+
+            // Function to update dots
+            function updateDots() {
+                var cards = galleryTrack.querySelectorAll('.gallery-card');
+                var totalSlides = Math.ceil(cards.length / cardsPerView);
+                
+                var dotsHtml = '';
+                for (var i = 0; i < totalSlides; i++) {
+                    dotsHtml += `<button class="gallery-dot${i === currentIndex ? ' active' : ''}" data-index="${i}"></button>`;
+                }
+                galleryDotsContainer.innerHTML = dotsHtml;
+                
+                // Add click listeners to dots
+                galleryDotsContainer.querySelectorAll('.gallery-dot').forEach(function(dot) {
+                    dot.addEventListener('click', function() {
+                        stopAutoSlide();
+                        currentIndex = parseInt(this.getAttribute('data-index'));
+                        updateGallery();
+                        startAutoSlide();
+                    });
+                });
+            }
+
+            // Navigation functions
+            function nextSlide() {
+                var cards = galleryTrack.querySelectorAll('.gallery-card');
+                var totalSlides = Math.ceil(cards.length / cardsPerView);
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateGallery();
+                } else {
+                    currentIndex = 0;
+                    updateGallery();
+                }
+            }
+
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateGallery();
+                }
+            }
+
+            // Auto slide
+            function startAutoSlide() {
+                stopAutoSlide();
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = null;
+                }
+            }
+
+            // Event listeners
+            if (galleryPrevBtn) {
+                galleryPrevBtn.addEventListener('click', function() {
+                    stopAutoSlide();
+                    prevSlide();
+                    startAutoSlide();
+                });
+            }
+
+            if (galleryNextBtn) {
+                galleryNextBtn.addEventListener('click', function() {
+                    stopAutoSlide();
+                    nextSlide();
+                    startAutoSlide();
+                });
+            }
+
+            // Filter buttons
+            filterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+                    currentCategory = this.getAttribute('data-category');
+                    stopAutoSlide();
+                    renderProjects(currentCategory);
+                    startAutoSlide();
+                });
+            });
+
+            // Touch swipe for gallery
+            var isDragging = false;
+            var startX = 0;
+            var diffX = 0;
+
+            galleryWrapper.addEventListener('touchstart', function(e) {
+                stopAutoSlide();
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                galleryTrack.classList.add('dragging');
+            }, { passive: true });
+
+            galleryWrapper.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                var currentX = e.touches[0].clientX;
+                diffX = startX - currentX;
+                var cards = galleryTrack.querySelectorAll('.gallery-card');
+                if (cards.length === 0) return;
+                var cardWidth = cards[0].offsetWidth;
+                var gap = 25;
+                var slideWidth = cardWidth + gap;
+                var baseOffset = currentIndex * slideWidth * cardsPerView;
+                var dragOffset = diffX;
+                galleryTrack.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
+            }, { passive: true });
+
+            galleryWrapper.addEventListener('touchend', function() {
+                if (!isDragging) return;
+                isDragging = false;
+                galleryTrack.classList.remove('dragging');
+                
+                var threshold = 50;
+                if (diffX > threshold) {
+                    nextSlide();
+                } else if (diffX < -threshold) {
+                    prevSlide();
+                } else {
+                    updateGallery();
+                }
+                diffX = 0;
+                startX = 0;
+                startAutoSlide();
+            }, { passive: true });
+
+            // Mouse drag for desktop
+            var isMouseDown = false;
+            var mouseStartX = 0;
+            var mouseDiffX = 0;
+
+            galleryWrapper.addEventListener('mousedown', function(e) {
+                stopAutoSlide();
+                isMouseDown = true;
+                mouseStartX = e.clientX;
+                galleryTrack.classList.add('dragging');
+            });
+
+            galleryWrapper.addEventListener('mousemove', function(e) {
+                if (!isMouseDown) return;
+                var currentMouseX = e.clientX;
+                mouseDiffX = mouseStartX - currentMouseX;
+                var cards = galleryTrack.querySelectorAll('.gallery-card');
+                if (cards.length === 0) return;
+                var cardWidth = cards[0].offsetWidth;
+                var gap = 25;
+                var slideWidth = cardWidth + gap;
+                var baseOffset = currentIndex * slideWidth * cardsPerView;
+                var dragOffset = mouseDiffX;
+                galleryTrack.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
+            });
+
+            galleryWrapper.addEventListener('mouseup', function() {
+                if (!isMouseDown) return;
+                isMouseDown = false;
+                galleryTrack.classList.remove('dragging');
+                
+                var threshold = 50;
+                if (mouseDiffX > threshold) {
+                    nextSlide();
+                } else if (mouseDiffX < -threshold) {
+                    prevSlide();
+                } else {
+                    updateGallery();
+                }
+                mouseDiffX = 0;
+                mouseStartX = 0;
+                startAutoSlide();
+            });
+
+            galleryWrapper.addEventListener('mouseleave', function() {
+                if (isMouseDown) {
+                    isMouseDown = false;
+                    galleryTrack.classList.remove('dragging');
+                    updateGallery();
+                    startAutoSlide();
+                }
+            });
+
+            // Responsive
+            window.addEventListener('resize', function() {
+                var newCardsPerView = getCardsPerView();
+                if (newCardsPerView !== cardsPerView) {
+                    cardsPerView = newCardsPerView;
+                    updateGallery();
+                } else {
+                    updateGallery();
+                }
+            });
+
+            // Pause auto slide on hover
+            galleryWrapper.addEventListener('mouseenter', function() {
+                stopAutoSlide();
+            });
+
+            galleryWrapper.addEventListener('mouseleave', function() {
+                startAutoSlide();
+            });
+
+            // Initialize gallery
+            renderProjects('all');
+
             // ===== REVIEWS CAROUSEL WITH TOUCH SWIPE & AUTO SLIDE =====
             var track = document.getElementById('reviewsTrack');
             var wrapper = document.getElementById('reviewsWrapper');
@@ -3010,217 +3695,200 @@
             
             if (track && prevBtn && nextBtn) {
                 var cards = track.querySelectorAll('.review-card');
-                var cardsPerView = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
-                var totalSlides = Math.ceil(cards.length / cardsPerView);
-                var currentIndex = 0;
-                var autoSlideInterval = null;
-                var isDragging = false;
-                var startX = 0;
-                var currentX = 0;
-                var diffX = 0;
+                var cardsPerViewReviews = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
+                var totalSlidesReviews = Math.ceil(cards.length / cardsPerViewReviews);
+                var currentIndexReviews = 0;
+                var autoSlideIntervalReviews = null;
+                var isDraggingReviews = false;
+                var startXReviews = 0;
+                var diffXReviews = 0;
                 
-                function updateCarousel() {
+                function updateReviewsCarousel() {
                     var cardWidth = cards[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
-                    var offset = currentIndex * slideWidth * cardsPerView;
+                    var offset = currentIndexReviews * slideWidth * cardsPerViewReviews;
                     track.style.transform = 'translateX(-' + offset + 'px)';
                     
-                    // Update dots
                     dots.forEach(function(dot, index) {
-                        dot.classList.toggle('active', index === currentIndex);
+                        dot.classList.toggle('active', index === currentIndexReviews);
                     });
                     
-                    // Update buttons
-                    prevBtn.disabled = currentIndex === 0;
-                    nextBtn.disabled = currentIndex >= totalSlides - 1;
+                    prevBtn.disabled = currentIndexReviews === 0;
+                    nextBtn.disabled = currentIndexReviews >= totalSlidesReviews - 1;
                 }
                 
-                function goToSlide(index) {
+                function goToReviewSlide(index) {
                     if (index < 0) index = 0;
-                    if (index >= totalSlides) index = totalSlides - 1;
-                    currentIndex = index;
-                    updateCarousel();
+                    if (index >= totalSlidesReviews) index = totalSlidesReviews - 1;
+                    currentIndexReviews = index;
+                    updateReviewsCarousel();
                 }
                 
-                function nextSlide() {
-                    if (currentIndex < totalSlides - 1) {
-                        goToSlide(currentIndex + 1);
+                function nextReviewSlide() {
+                    if (currentIndexReviews < totalSlidesReviews - 1) {
+                        goToReviewSlide(currentIndexReviews + 1);
                     } else {
-                        goToSlide(0);
+                        goToReviewSlide(0);
                     }
                 }
                 
-                function prevSlide() {
-                    if (currentIndex > 0) {
-                        goToSlide(currentIndex - 1);
+                function prevReviewSlide() {
+                    if (currentIndexReviews > 0) {
+                        goToReviewSlide(currentIndexReviews - 1);
                     }
                 }
                 
-                function startAutoSlide() {
-                    if (autoSlideInterval) clearInterval(autoSlideInterval);
-                    autoSlideInterval = setInterval(nextSlide, 5000);
+                function startAutoSlideReviews() {
+                    if (autoSlideIntervalReviews) clearInterval(autoSlideIntervalReviews);
+                    autoSlideIntervalReviews = setInterval(nextReviewSlide, 5000);
                 }
                 
-                function stopAutoSlide() {
-                    if (autoSlideInterval) {
-                        clearInterval(autoSlideInterval);
-                        autoSlideInterval = null;
+                function stopAutoSlideReviews() {
+                    if (autoSlideIntervalReviews) {
+                        clearInterval(autoSlideIntervalReviews);
+                        autoSlideIntervalReviews = null;
                     }
                 }
                 
-                // Navigation buttons
                 prevBtn.addEventListener('click', function() {
-                    stopAutoSlide();
-                    prevSlide();
-                    startAutoSlide();
+                    stopAutoSlideReviews();
+                    prevReviewSlide();
+                    startAutoSlideReviews();
                 });
                 
                 nextBtn.addEventListener('click', function() {
-                    stopAutoSlide();
-                    nextSlide();
-                    startAutoSlide();
+                    stopAutoSlideReviews();
+                    nextReviewSlide();
+                    startAutoSlideReviews();
                 });
                 
-                // Dot navigation
                 dots.forEach(function(dot) {
                     dot.addEventListener('click', function() {
-                        stopAutoSlide();
+                        stopAutoSlideReviews();
                         var index = parseInt(this.getAttribute('data-index'));
-                        goToSlide(index);
-                        startAutoSlide();
+                        goToReviewSlide(index);
+                        startAutoSlideReviews();
                     });
                 });
                 
-                // ===== TOUCH SWIPE SUPPORT =====
                 wrapper.addEventListener('touchstart', function(e) {
-                    stopAutoSlide();
-                    isDragging = true;
-                    startX = e.touches[0].clientX;
+                    stopAutoSlideReviews();
+                    isDraggingReviews = true;
+                    startXReviews = e.touches[0].clientX;
                     track.classList.add('dragging');
                 }, { passive: true });
                 
                 wrapper.addEventListener('touchmove', function(e) {
-                    if (!isDragging) return;
-                    currentX = e.touches[0].clientX;
-                    diffX = startX - currentX;
-                    
-                    // Apply drag translation
-                    var cardWidth = cards[0].offsetWidth;
-                    var gap = 30;
-                    var slideWidth = cardWidth + gap;
-                    var baseOffset = currentIndex * slideWidth * cardsPerView;
-                    var dragOffset = diffX;
-                    track.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
-                }, { passive: true });
-                
-                wrapper.addEventListener('touchend', function(e) {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    track.classList.remove('dragging');
-                    
-                    var threshold = 50; // Minimum swipe distance
-                    
-                    if (diffX > threshold && currentIndex < totalSlides - 1) {
-                        // Swipe left - next slide
-                        goToSlide(currentIndex + 1);
-                    } else if (diffX < -threshold && currentIndex > 0) {
-                        // Swipe right - previous slide
-                        goToSlide(currentIndex - 1);
-                    } else {
-                        // Return to current slide
-                        updateCarousel();
-                    }
-                    
-                    diffX = 0;
-                    startX = 0;
-                    currentX = 0;
-                    
-                    // Restart auto slide after user interaction
-                    startAutoSlide();
-                }, { passive: true });
-                
-                // Mouse drag support for desktop
-                var isMouseDown = false;
-                var mouseStartX = 0;
-                var mouseDiffX = 0;
-                
-                wrapper.addEventListener('mousedown', function(e) {
-                    stopAutoSlide();
-                    isMouseDown = true;
-                    mouseStartX = e.clientX;
-                    track.classList.add('dragging');
-                });
-                
-                wrapper.addEventListener('mousemove', function(e) {
-                    if (!isMouseDown) return;
-                    var currentMouseX = e.clientX;
-                    mouseDiffX = mouseStartX - currentMouseX;
+                    if (!isDraggingReviews) return;
+                    var currentX = e.touches[0].clientX;
+                    diffXReviews = startXReviews - currentX;
                     
                     var cardWidth = cards[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
-                    var baseOffset = currentIndex * slideWidth * cardsPerView;
-                    var dragOffset = mouseDiffX;
+                    var baseOffset = currentIndexReviews * slideWidth * cardsPerViewReviews;
+                    var dragOffset = diffXReviews;
                     track.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
-                });
+                }, { passive: true });
                 
-                wrapper.addEventListener('mouseup', function(e) {
-                    if (!isMouseDown) return;
-                    isMouseDown = false;
+                wrapper.addEventListener('touchend', function() {
+                    if (!isDraggingReviews) return;
+                    isDraggingReviews = false;
                     track.classList.remove('dragging');
                     
                     var threshold = 50;
                     
-                    if (mouseDiffX > threshold && currentIndex < totalSlides - 1) {
-                        goToSlide(currentIndex + 1);
-                    } else if (mouseDiffX < -threshold && currentIndex > 0) {
-                        goToSlide(currentIndex - 1);
+                    if (diffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) {
+                        goToReviewSlide(currentIndexReviews + 1);
+                    } else if (diffXReviews < -threshold && currentIndexReviews > 0) {
+                        goToReviewSlide(currentIndexReviews - 1);
                     } else {
-                        updateCarousel();
+                        updateReviewsCarousel();
                     }
                     
-                    mouseDiffX = 0;
-                    mouseStartX = 0;
+                    diffXReviews = 0;
+                    startXReviews = 0;
                     
-                    startAutoSlide();
+                    startAutoSlideReviews();
+                }, { passive: true });
+                
+                var isMouseDownReviews = false;
+                var mouseStartXReviews = 0;
+                var mouseDiffXReviews = 0;
+                
+                wrapper.addEventListener('mousedown', function(e) {
+                    stopAutoSlideReviews();
+                    isMouseDownReviews = true;
+                    mouseStartXReviews = e.clientX;
+                    track.classList.add('dragging');
+                });
+                
+                wrapper.addEventListener('mousemove', function(e) {
+                    if (!isMouseDownReviews) return;
+                    var currentMouseX = e.clientX;
+                    mouseDiffXReviews = mouseStartXReviews - currentMouseX;
+                    
+                    var cardWidth = cards[0].offsetWidth;
+                    var gap = 30;
+                    var slideWidth = cardWidth + gap;
+                    var baseOffset = currentIndexReviews * slideWidth * cardsPerViewReviews;
+                    var dragOffset = mouseDiffXReviews;
+                    track.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
+                });
+                
+                wrapper.addEventListener('mouseup', function() {
+                    if (!isMouseDownReviews) return;
+                    isMouseDownReviews = false;
+                    track.classList.remove('dragging');
+                    
+                    var threshold = 50;
+                    
+                    if (mouseDiffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) {
+                        goToReviewSlide(currentIndexReviews + 1);
+                    } else if (mouseDiffXReviews < -threshold && currentIndexReviews > 0) {
+                        goToReviewSlide(currentIndexReviews - 1);
+                    } else {
+                        updateReviewsCarousel();
+                    }
+                    
+                    mouseDiffXReviews = 0;
+                    mouseStartXReviews = 0;
+                    
+                    startAutoSlideReviews();
                 });
                 
                 wrapper.addEventListener('mouseleave', function() {
-                    if (isMouseDown) {
-                        isMouseDown = false;
+                    if (isMouseDownReviews) {
+                        isMouseDownReviews = false;
                         track.classList.remove('dragging');
-                        updateCarousel();
-                        startAutoSlide();
+                        updateReviewsCarousel();
+                        startAutoSlideReviews();
                     }
                 });
                 
-                // Responsive
                 window.addEventListener('resize', function() {
                     var newCardsPerView = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
-                    if (newCardsPerView !== cardsPerView) {
-                        cardsPerView = newCardsPerView;
-                        totalSlides = Math.ceil(cards.length / cardsPerView);
-                        // Reset to first slide
-                        goToSlide(0);
+                    if (newCardsPerView !== cardsPerViewReviews) {
+                        cardsPerViewReviews = newCardsPerView;
+                        totalSlidesReviews = Math.ceil(cards.length / cardsPerViewReviews);
+                        goToReviewSlide(0);
                     } else {
-                        updateCarousel();
+                        updateReviewsCarousel();
                     }
                 });
                 
-                // Initial update
                 setTimeout(function() {
-                    updateCarousel();
-                    startAutoSlide();
+                    updateReviewsCarousel();
+                    startAutoSlideReviews();
                 }, 100);
                 
-                // Pause auto slide on hover
                 wrapper.addEventListener('mouseenter', function() {
-                    stopAutoSlide();
+                    stopAutoSlideReviews();
                 });
                 
                 wrapper.addEventListener('mouseleave', function() {
-                    startAutoSlide();
+                    startAutoSlideReviews();
                 });
             }
         });
