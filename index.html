@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Levi Interiors</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         /* ===== CUSTOM FONT - TACHYON ===== */
         @font-face {
             font-family: 'Tachyon';
-            src: url('fonts/Tachyon-W00-Regular.ttf') format('truetype');
+            src: url('Tachyon-W00-Regular.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
 
-        /* ===== CSS RESET & VARIABLES ===== */
+        /* ===== CSS VARIABLES ===== */
         :root {
             --primary: #2A4B8C;
             --primary-dark: #1A3A6E;
@@ -45,8 +45,11 @@
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             --gradient-gold: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
             --header-font: 'Tachyon', 'Poppins', sans-serif;
+            --header-height: 130px;
+            --header-height-mobile: 85px;
         }
 
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -91,6 +94,7 @@
             scroll-margin-top: 100px;
         }
 
+        /* ===== UTILITY ===== */
         .section-title {
             text-align: center;
             margin-bottom: 70px;
@@ -167,7 +171,70 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* ===== FLOATING CONSULTATION BUTTON - TOP LEFT ===== */
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            height: var(--header-height);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo-img {
+            height: 100px;
+            width: auto;
+            filter: drop-shadow(0 5px 15px rgba(90, 90, 140, 0.2));
+            transition: var(--transition);
+        }
+
+        .logo-img:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .logo-text {
+            font-family: var(--header-font);
+            font-size: 4.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .logo-text span:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* ===== FLOATING CONSULTATION BUTTON ===== */
         .consultation-float {
             position: fixed;
             top: 120px;
@@ -569,70 +636,211 @@
             box-shadow: none !important;
         }
 
-        /* ===== PREMIUM HEADER ===== */
-        header {
-            position: fixed;
+        /* ===== HERO ===== */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 150px;
+            background: linear-gradient(135deg, rgba(42, 75, 140, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            height: 130px;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1615529328331-f8917597711f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 0;
         }
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
             align-items: center;
-            height: 90px;
+            position: relative;
+            z-index: 1;
         }
 
-        .logo-container {
-            display: flex;
+        .hero-content {
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 25px;
+            gap: 15px;
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .logo-img {
-            height: 130px;
-            width: auto;
-            filter: drop-shadow(0 5px 15px rgba(90, 90, 140, 0.2));
-            transition: var(--transition);
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
-        .logo-img:hover {
-            transform: rotate(-5deg) scale(1.05);
+        .hero-badge i {
+            font-size: 2rem;
+            color: var(--secondary);
         }
 
-        .logo-text {
-            font-family: var(--header-font);
-            font-size: 2.8rem;
-            font-weight: 400;
+        .hero-badge span {
+            font-weight: 700;
             color: var(--primary);
-            letter-spacing: 0.5px;
+            font-size: 1.1rem;
         }
 
-        .logo-text span {
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
             color: var(--primary);
             position: relative;
         }
 
-        .logo-text span:after {
+        .hero-content h1 span:after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: 5px;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
+            height: 8px;
+            background: rgba(212, 175, 55, 0.3);
+            z-index: -1;
         }
 
-        /* ===== PHOTO SLIDER SECTION ===== */
+        .hero-content p {
+            font-size: 1.4rem;
+            color: var(--dark-gray);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* ===== FEATURED ===== */
+        .featured {
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .featured:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 Q25,25 50,50 T100,50" stroke="%232A4B8C" stroke-width="0.5" fill="none" opacity="0.1"/></svg>');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .featured-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(42, 75, 140, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .featured-card:hover:before {
+            transform: scaleX(1);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .featured-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .featured-card:hover i {
+            transform: scale(1.2);
+            color: var(--secondary);
+        }
+
+        .featured-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* ===== PHOTO GALLERY ===== */
         .photo-gallery {
             padding-top: 180px;
             padding-bottom: 100px;
@@ -854,7 +1062,7 @@
             font-size: 1.1rem;
         }
 
-        /* ===== PROJECT GALLERY SECTION ===== */
+        /* ===== PROJECT GALLERY ===== */
         .project-gallery {
             background: var(--white);
             padding: 100px 0;
@@ -1031,7 +1239,6 @@
             margin-right: 4px;
         }
 
-        /* Gallery Navigation */
         .gallery-nav {
             display: flex;
             justify-content: center;
@@ -1117,7 +1324,7 @@
             margin-bottom: 20px;
         }
 
-        /* ===== CUSTOMER REVIEWS CAROUSEL ===== */
+        /* ===== REVIEWS ===== */
         .reviews-section {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 100px 0;
@@ -1262,7 +1469,6 @@
             right: 20px;
         }
 
-        /* Carousel Navigation */
         .reviews-nav {
             display: flex;
             justify-content: center;
@@ -1333,211 +1539,7 @@
             background: var(--secondary);
         }
 
-        /* ===== PREMIUM HERO SECTION ===== */
-        .hero {
-            padding-top: 180px;
-            padding-bottom: 150px;
-            background: linear-gradient(135deg, rgba(42, 75, 140, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1615529328331-f8917597711f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
-            z-index: 0;
-        }
-
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: var(--white);
-            padding: 15px 25px;
-            border-radius: 50px;
-            box-shadow: var(--shadow);
-            margin-bottom: 30px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .hero-badge i {
-            font-size: 2rem;
-            color: var(--secondary);
-        }
-
-        .hero-badge span {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            color: var(--dark);
-            line-height: 1.1;
-        }
-
-        .hero-content h1 span {
-            color: var(--primary);
-            position: relative;
-        }
-
-        .hero-content h1 span:after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: rgba(212, 175, 55, 0.3);
-            z-index: -1;
-        }
-
-        .hero-content p {
-            font-size: 1.4rem;
-            color: var(--dark-gray);
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: var(--gray);
-            font-weight: 500;
-        }
-
-        /* ===== PREMIUM FEATURED SECTION ===== */
-        .featured {
-            background-color: var(--white);
-            position: relative;
-        }
-
-        .featured:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 Q25,25 50,50 T100,50" stroke="%232A4B8C" stroke-width="0.5" fill="none" opacity="0.1"/></svg>');
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .featured-cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .featured-card {
-            background-color: var(--white);
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(42, 75, 140, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient-gold);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: var(--transition);
-        }
-
-        .featured-card:hover:before {
-            transform: scaleX(1);
-        }
-
-        .featured-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .featured-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-            display: inline-block;
-            transition: var(--transition);
-        }
-
-        .featured-card:hover i {
-            transform: scale(1.2);
-            color: var(--secondary);
-        }
-
-        .featured-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        /* ===== WHATSAPP POPUP - FIXED Z-INDEX ===== */
+        /* ===== WHATSAPP POPUP ===== */
         .whatsapp-popup {
             position: fixed;
             bottom: 30px;
@@ -1710,7 +1712,7 @@
             transform: rotate(90deg);
         }
 
-        /* ===== FOOTER STYLES ===== */
+        /* ===== FOOTER ===== */
         footer {
             background: var(--gradient);
             color: var(--white);
@@ -1855,16 +1857,14 @@
             text-decoration: underline;
         }
 
-        /* ===== RESPONSIVE MEDIA QUERIES ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1200px) {
             .container {
                 padding: 0 30px;
             }
-
             .hero-content h1 {
                 font-size: 3.5rem;
             }
-
             .section-title h2 {
                 font-size: 2.8rem;
             }
@@ -1874,103 +1874,80 @@
             .hero:before {
                 display: none;
             }
-
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 50px;
             }
-
             .hero-content h1 {
                 font-size: 3rem;
             }
-
             .hero-content p {
                 font-size: 1.2rem;
             }
-
             .hero-stats {
                 gap: 30px;
             }
-
             .slider-container {
                 height: 400px;
             }
-
             .slider-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
             }
-
             .featured-cards {
                 grid-template-columns: 1fr 1fr;
             }
-
             .gallery-card {
                 flex: 0 0 calc(50% - 13px);
                 min-width: calc(50% - 13px);
             }
-
             .gallery-card-image {
                 height: 240px;
             }
-
             .review-card {
                 flex: 0 0 calc(50% - 15px);
                 min-width: calc(50% - 15px);
             }
-
             .footer-content {
                 grid-template-columns: 1fr 1fr;
                 gap: 40px;
             }
-
             .room-title h2 {
                 font-size: 2.5rem;
             }
-
             .whatsapp-options {
                 width: 320px;
                 right: 0;
             }
-
             .consultation-float {
                 top: 110px;
                 left: 15px;
             }
-
             .consultation-toggle {
                 padding: 14px 28px;
                 font-size: 1rem;
             }
-
             .gallery-filters {
                 gap: 8px;
             }
-
             .gallery-filter-btn {
                 padding: 8px 16px;
                 font-size: 0.75rem;
             }
-
-            /* Tablet Logo */
             header {
                 height: 110px;
                 padding: 15px 0;
             }
-
             .header-container {
                 height: 80px;
             }
-
             .logo-img {
                 height: 100px;
             }
-
             .logo-text {
                 font-size: 2.2rem;
             }
-
             .logo-container {
                 gap: 18px;
             }
@@ -1980,200 +1957,156 @@
             .container {
                 padding: 0 20px;
             }
-
             section {
                 padding: 70px 0;
             }
-
             .section-title {
                 margin-bottom: 50px;
             }
-
             .section-title h2 {
                 font-size: 2.2rem;
             }
-
             .section-title p {
                 font-size: 1.1rem;
             }
-
             .hero {
                 padding-top: 140px;
                 padding-bottom: 100px;
             }
-
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-
             .hero-content p {
                 font-size: 1.1rem;
             }
-
             .hero-btns {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .hero-stats {
                 flex-direction: row;
                 gap: 20px;
                 flex-wrap: wrap;
             }
-
             .stat-number {
                 font-size: 2rem;
             }
-
             .photo-gallery {
                 padding-top: 140px;
             }
-
             .slider-container {
                 height: 350px;
             }
-
             .slider-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 1rem;
             }
-
             .features-list {
                 grid-template-columns: 1fr;
             }
-
             .room-title h2 {
                 font-size: 2rem;
             }
-
             .room-description {
                 padding: 30px;
             }
-
             .room-description h3 {
                 font-size: 1.5rem;
             }
-
             .featured-cards {
                 grid-template-columns: 1fr 1fr;
                 gap: 20px;
             }
-
             .gallery-card {
                 flex: 0 0 calc(50% - 13px);
                 min-width: calc(50% - 13px);
             }
-
             .gallery-card-image {
                 height: 200px;
             }
-
             .gallery-filters {
                 gap: 6px;
             }
-
             .gallery-filter-btn {
                 padding: 6px 14px;
                 font-size: 0.7rem;
             }
-
             .review-card {
                 flex: 0 0 100%;
                 min-width: 100%;
             }
-
             .review-card .work-photo {
                 height: 120px;
             }
-
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 35px;
             }
-
             .footer-col:first-child {
                 grid-column: span 1;
             }
-
             .whatsapp-options {
                 width: 290px;
                 right: -10px;
                 padding: 25px;
             }
-
             .whatsapp-toggle {
                 width: 60px;
                 height: 60px;
                 font-size: 1.6rem;
             }
-
             .whatsapp-popup {
                 bottom: 20px;
                 right: 20px;
             }
-
             .consultation-float {
                 top: 100px;
                 left: 10px;
             }
-
             .consultation-toggle {
                 padding: 12px 20px;
                 font-size: 0.85rem;
                 border-radius: 8px;
             }
-
-            /* Mobile Logo */
             header {
                 height: 95px;
                 padding: 12px 0;
             }
-
             .header-container {
                 height: 70px;
             }
-
             .logo-img {
                 height: 80px;
             }
-
             .logo-text {
                 font-size: 1.8rem;
             }
-
             .logo-container {
                 gap: 14px;
             }
-
             .popup-container {
                 padding: 30px 20px;
-                width: 95%;
+                width: 45%;
             }
-
             .popup-title {
                 font-size: 1.4rem;
             }
-
             .property-types {
                 grid-template-columns: 1fr 1fr;
             }
-
             .popup-features {
                 grid-template-columns: 1fr 1fr 1fr;
                 gap: 8px;
             }
-
             .popup-features .feature {
                 font-size: 0.7rem;
             }
-
             .gallery-nav-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 1rem;
             }
-
             .reviews-nav-btn {
                 width: 45px;
                 height: 45px;
@@ -2185,328 +2118,255 @@
             .container {
                 padding: 0 15px;
             }
-
             section {
                 padding: 60px 0;
             }
-
             .section-title h2 {
                 font-size: 1.8rem;
             }
-
             .section-title p {
                 font-size: 0.95rem;
             }
-
             .hero {
                 padding-top: 120px;
                 padding-bottom: 70px;
             }
-
             .hero-content h1 {
                 font-size: 2rem;
             }
-
             .hero-content p {
                 font-size: 1rem;
             }
-
             .hero-stats {
                 flex-direction: column;
                 gap: 15px;
             }
-
             .hero-badge {
                 padding: 10px 18px;
                 font-size: 0.85rem;
             }
-
             .hero-badge i {
                 font-size: 1.2rem;
             }
-
             .photo-gallery {
                 padding-top: 120px;
             }
-
             .slider-container {
                 height: 250px;
             }
-
             .slider-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 0.85rem;
             }
-
             .slider-nav {
                 padding: 0 10px;
             }
-
             .slide-overlay {
                 padding: 15px;
             }
-
             .slide-overlay h4 {
                 font-size: 1rem;
             }
-
             .slide-overlay p {
                 font-size: 0.8rem;
             }
-
             .room-title h2 {
                 font-size: 1.5rem;
             }
-
             .room-title h2 i {
                 font-size: 1.5rem;
             }
-
             .room-title p {
                 font-size: 0.95rem;
             }
-
             .room-description {
                 padding: 20px 15px;
             }
-
             .room-description h3 {
                 font-size: 1.2rem;
             }
-
             .room-description p {
                 font-size: 0.95rem;
             }
-
             .featured-cards {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-
             .featured-card {
                 padding: 30px 20px;
             }
-
             .featured-card i {
                 font-size: 2.5rem;
             }
-
             .featured-card h3 {
                 font-size: 1.2rem;
             }
-
             .gallery-card {
                 flex: 0 0 100%;
                 min-width: 100%;
             }
-
             .gallery-card-image {
                 height: 200px;
             }
-
             .gallery-filters {
                 gap: 5px;
             }
-
             .gallery-filter-btn {
                 padding: 5px 10px;
                 font-size: 0.65rem;
             }
-
             .gallery-nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 0.85rem;
             }
-
             .gallery-dot {
                 width: 10px;
                 height: 10px;
             }
-
             .review-card {
                 padding: 25px 20px;
             }
-
             .review-card .customer-photo {
                 width: 80px;
                 height: 80px;
             }
-
             .review-card .customer-name {
                 font-size: 1.1rem;
             }
-
             .review-card .work-photo {
                 height: 100px;
             }
-
             .reviews-nav-btn {
                 width: 40px;
                 height: 40px;
                 font-size: 0.85rem;
             }
-
             .whatsapp-options {
                 width: 260px;
                 right: -15px;
                 padding: 20px;
             }
-
             .whatsapp-options h3 {
                 font-size: 1.2rem;
             }
-
             .whatsapp-option {
                 padding: 15px;
                 gap: 12px;
             }
-
             .option-avatar {
                 width: 45px;
                 height: 45px;
                 font-size: 1.2rem;
             }
-
             .option-details h4 {
                 font-size: 1rem;
             }
-
             .option-details p {
                 font-size: 0.8rem;
             }
-
             .option-cta {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
             }
-
             .whatsapp-toggle {
                 width: 55px;
                 height: 55px;
                 font-size: 1.4rem;
             }
-
             .consultation-float {
                 top: 90px;
                 left: 5px;
             }
-
             .consultation-toggle {
                 padding: 8px 14px;
                 font-size: 0.7rem;
                 border-radius: 6px;
             }
-
-            /* Small Mobile Logo */
             header {
                 height: 85px;
                 padding: 10px 0;
             }
-
             .header-container {
                 height: 65px;
             }
-
             .logo-img {
                 height: 65px;
             }
-
             .logo-text {
                 font-size: 1.4rem;
             }
-
             .logo-container {
                 gap: 10px;
             }
-
             .popup-container {
                 padding: 20px 15px;
                 width: 98%;
             }
-
             .popup-badge {
                 font-size: 0.65rem;
                 padding: 4px 12px;
             }
-
             .popup-title {
                 font-size: 1.1rem;
             }
-
             .popup-form .form-group {
                 margin-bottom: 15px;
             }
-
             .property-types {
                 grid-template-columns: 1fr 1fr;
                 gap: 5px;
             }
-
             .property-type-btn {
                 padding: 6px 0;
                 font-size: 0.7rem;
             }
-
             .popup-features {
                 grid-template-columns: 1fr 1fr 1fr;
                 gap: 5px;
             }
-
             .popup-features .feature {
                 font-size: 0.6rem;
             }
-
             .popup-features .feature i {
                 font-size: 1rem;
             }
-
             .popup-offer {
                 padding: 10px 15px;
             }
-
             .popup-offer .offer-text {
                 font-size: 0.9rem;
             }
-
             .popup-offer .offer-sub {
                 font-size: 0.75rem;
             }
-
             .popup-submit {
                 padding: 14px;
                 font-size: 0.95rem;
             }
-
             .footer-logo-text {
                 font-size: 1.4rem;
             }
-
             .footer-col h3 {
                 font-size: 1.2rem;
             }
-
             .footer-links li {
                 margin-bottom: 10px;
             }
-
             .copyright {
                 font-size: 0.8rem;
                 padding-top: 30px;
             }
-
             .slider-dots {
                 gap: 6px;
                 bottom: 10px;
             }
-
             .slider-dot {
                 width: 8px;
                 height: 8px;
             }
-
             .features-list .feature-item {
                 font-size: 0.85rem;
             }
@@ -2516,59 +2376,46 @@
             .container {
                 padding: 0 10px;
             }
-
-            /* Extra Small Mobile Logo */
             header {
                 height: 75px;
                 padding: 8px 0;
             }
-
             .header-container {
                 height: 60px;
             }
-
             .logo-img {
                 height: 55px;
             }
-
             .logo-text {
                 font-size: 1.1rem;
             }
-
             .logo-container {
                 gap: 8px;
             }
-
             .hero-content h1 {
                 font-size: 1.6rem;
             }
-
             .section-title h2 {
                 font-size: 1.5rem;
             }
-
             .section-title h2:after {
                 width: 50px;
                 bottom: -10px;
             }
-
             .gallery-filter-btn {
                 font-size: 0.6rem;
                 padding: 4px 8px;
             }
-
             .whatsapp-options {
                 width: 240px;
                 right: -20px;
                 padding: 15px;
             }
-
             .whatsapp-toggle {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
             }
-
             .consultation-toggle {
                 font-size: 0.6rem;
                 padding: 6px 10px;
@@ -2577,34 +2424,30 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- ===== HEADER ===== -->
     <header>
         <div class="container header-container">
             <div class="logo-container">
-                <img src="https://i.imgur.com/g05r9kZ.png" alt="Levi Interiors Logo" class="logo-img">
-                <div class="logo-text">LEVI <span>INTERIORs</span></div>
+                <img src="https://i.imgur.com/g05r9kZ.png" alt="Levi Interiors Logo" class="logo-img" />
+                <div class="logo-text">LEVI <span>INTERIOR</span></div>
             </div>
         </div>
     </header>
 
-    <!-- FLOATING CONSULTATION BUTTON - TOP LEFT -->
+    <!-- ===== FLOATING CONSULTATION BUTTON ===== -->
     <div class="consultation-float">
         <button class="consultation-toggle" id="openPopupBtn">
-            <i class="fas fa-calendar-alt" style="margin-right: 10px;"></i> Book Free Consultation
+            <i class="fas fa-calendar-alt" style="margin-right:10px;"></i> Book Free Consultation
         </button>
     </div>
 
     <!-- ===== CONSULTATION POPUP ===== -->
     <div class="popup-overlay" id="consultationPopup">
         <div class="popup-container">
-            <button class="popup-close" id="closePopupBtn">
-                <i class="fas fa-times"></i>
-            </button>
-
+            <button class="popup-close" id="closePopupBtn"><i class="fas fa-times"></i></button>
             <div id="popupFormContent">
                 <div class="popup-badge">✨ Free Consultation</div>
                 <h2 class="popup-title">Get a free design consultation</h2>
-
                 <form class="popup-form" id="consultationForm">
                     <!-- Property Type -->
                     <div class="form-group">
@@ -2615,7 +2458,7 @@
                             <button type="button" class="property-type-btn" data-value="3 BHK">3 BHK</button>
                             <button type="button" class="property-type-btn" data-value="4+ BHK / Duplex">4+ BHK / Duplex</button>
                         </div>
-                        <input type="hidden" id="selectedPropertyType" value="">
+                        <input type="hidden" id="selectedPropertyType" value="" />
                         <div class="error-message" id="popupPropertyError">Please select a property type</div>
                     </div>
 
@@ -2637,9 +2480,9 @@
                         <div class="error-message" id="popupLocationError">Please select a location</div>
                     </div>
 
-                    <!-- Budget Range -->
+                    <!-- Budget -->
                     <div class="form-group">
-                        <label>Budget Range <span style="color: #e74c3c;">*</span></label>
+                        <label>Budget Range <span style="color:#e74c3c;">*</span></label>
                         <select id="popupBudgetRange">
                             <option value="">Select your budget range</option>
                             <option value="₹2 Lakhs - ₹5 Lakhs">₹2 Lakhs - ₹5 Lakhs</option>
@@ -2659,34 +2502,30 @@
                     <!-- Name -->
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" id="popupCustomerName" placeholder="Enter your valid name">
+                        <input type="text" id="popupCustomerName" placeholder="Enter your valid name" />
                         <div class="error-message" id="popupNameError">Please enter your name</div>
                     </div>
 
-                    <!-- Mobile Number -->
+                    <!-- Mobile -->
                     <div class="form-group">
                         <label>Mobile Number</label>
                         <div class="mobile-number-wrapper">
                             <span class="country-code">+91</span>
-                            <input type="tel" id="popupCustomerMobile" placeholder="Enter a valid mobile phone number" maxlength="10">
+                            <input type="tel" id="popupCustomerMobile" placeholder="Enter a valid mobile phone number" maxlength="10" />
                         </div>
                         <div class="error-message" id="popupMobileError">Please enter a valid 10-digit mobile number</div>
                     </div>
 
                     <!-- WhatsApp Updates -->
                     <div class="checkbox-group">
-                        <input type="checkbox" id="whatsappUpdates" checked>
+                        <input type="checkbox" id="whatsappUpdates" checked />
                         <label for="whatsappUpdates">Yes, send me updates via WhatsApp.</label>
                     </div>
 
                     <!-- Offer -->
                     <div class="popup-offer">
-                        <div class="offer-text">
-                            🎉 Flat <span>25% OFF</span> — On Modular Interiors
-                        </div>
-                        <div class="offer-sub">
-                            Hurry, Book Before <strong>30th June 2026</strong>
-                        </div>
+                        <div class="offer-text">🎉 Flat <span>25% OFF</span> — On Modular Interiors</div>
+                        <div class="offer-sub">Hurry, Book Before <strong>30th June 2026</strong></div>
                     </div>
 
                     <!-- Features -->
@@ -2708,122 +2547,84 @@
                         </div>
                     </div>
 
-                    <!-- Submit -->
-                    <button type="submit" class="popup-submit">
-                        Book a Free Consultation
-                    </button>
-
+                    <button type="submit" class="popup-submit">Book a Free Consultation</button>
                     <div class="popup-terms">
                         By submitting, you consent to <a href="#">privacy policy</a> and <a href="#">terms of use</a>
                     </div>
                 </form>
             </div>
 
-            <!-- Success Message -->
+            <!-- Success -->
             <div class="popup-success" id="popupSuccess">
                 <i class="fas fa-check-circle"></i>
                 <h3>🎉 Consultation Booked!</h3>
                 <p>Thank you for choosing Levi Interiors. Our design expert will contact you within 24 hours with a personalized consultation.</p>
-                <button class="popup-submit" style="margin-top: 20px;" id="closeSuccessBtn">
-                    Done
-                </button>
+                <button class="popup-submit" style="margin-top:20px;" id="closeSuccessBtn">Done</button>
             </div>
         </div>
     </div>
 
-    <!-- WhatsApp Popup -->
+    <!-- ===== WHATSAPP POPUP ===== -->
     <div class="whatsapp-popup">
         <div class="whatsapp-options" id="whatsappOptions">
-            <button class="close-popup" id="closePopup">
-                <i class="fas fa-times"></i>
-            </button>
+            <button class="close-popup" id="closePopup"><i class="fas fa-times"></i></button>
             <h3><i class="fab fa-whatsapp"></i> Contact Us on WhatsApp</h3>
             <div class="whatsapp-option" data-contact="owner">
-                <div class="option-avatar owner">
-                    <i class="fas fa-crown"></i>
-                </div>
+                <div class="option-avatar owner"><i class="fas fa-crown"></i></div>
                 <div class="option-details">
                     <h4>Mr. Arun Reddy</h4>
-                    <p>Founder & CEO</p>
+                    <p>Founder &amp; CEO</p>
                 </div>
-                <div class="option-cta">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
+                <div class="option-cta"><i class="fab fa-whatsapp"></i></div>
             </div>
             <div class="whatsapp-option" data-contact="marketing">
-                <div class="option-avatar marketing">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
+                <div class="option-avatar marketing"><i class="fas fa-bullhorn"></i></div>
                 <div class="option-details">
                     <h4>Mr. Shiva</h4>
                     <p>Marketing Head</p>
                 </div>
-                <div class="option-cta">
-                    <i class="fab fa-whatsapp"></i>
-                </div>
+                <div class="option-cta"><i class="fab fa-whatsapp"></i></div>
             </div>
         </div>
-        <div class="whatsapp-toggle" id="whatsappToggle">
-            <i class="fab fa-whatsapp"></i>
-        </div>
+        <div class="whatsapp-toggle" id="whatsappToggle"><i class="fab fa-whatsapp"></i></div>
     </div>
 
-    <!-- Photo Gallery Section -->
+    <!-- ===== PHOTO GALLERY ===== -->
     <section class="photo-gallery" id="photo-gallery">
         <div class="container">
-            <!-- Hotel Section -->
+            <!-- Hotel -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-hotel"></i> Luxury Hotel Interiors</h2>
                     <p>Experience opulent hotel-style living with our premium interior designs that combine luxury with functionality</p>
                 </div>
-                
                 <div class="photo-slider" id="hotelSlider">
                     <div class="slider-container">
                         <div class="slider-track">
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Lobby">
-                                <div class="slide-overlay">
-                                    <h4>Grand Lobby</h4>
-                                    <p>Impressive entrance with marble flooring and crystal chandeliers</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Lobby" />
+                                <div class="slide-overlay"><h4>Grand Lobby</h4><p>Impressive entrance with marble flooring and crystal chandeliers</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Suite">
-                                <div class="slide-overlay">
-                                    <h4>Executive Suite</h4>
-                                    <p>Spacious living with premium amenities and panoramic views</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Suite" />
+                                <div class="slide-overlay"><h4>Executive Suite</h4><p>Spacious living with premium amenities and panoramic views</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Bathroom">
-                                <div class="slide-overlay">
-                                    <h4>Luxury Bathroom</h4>
-                                    <p>Marble finishes with rain shower and premium fixtures</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Bathroom" />
+                                <div class="slide-overlay"><h4>Luxury Bathroom</h4><p>Marble finishes with rain shower and premium fixtures</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Restaurant">
-                                <div class="slide-overlay">
-                                    <h4>Fine Dining Area</h4>
-                                    <p>Elegant restaurant-style dining with custom lighting</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Restaurant" />
+                                <div class="slide-overlay"><h4>Fine Dining Area</h4><p>Elegant restaurant-style dining with custom lighting</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Pool">
-                                <div class="slide-overlay">
-                                    <h4>Infinity Pool Area</h4>
-                                    <p>Luxury outdoor entertainment space with premium finishes</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Hotel Pool" />
+                                <div class="slide-overlay"><h4>Infinity Pool Area</h4><p>Luxury outdoor entertainment space with premium finishes</p></div>
                             </div>
                         </div>
                         <div class="slider-nav">
-                            <button class="slider-btn prev-btn">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-btn next-btn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         </div>
                         <div class="slider-dots">
                             <button class="slider-dot active"></button>
@@ -2834,7 +2635,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="room-description">
                     <h3><i class="fas fa-star"></i> Hotel Luxury Design Features</h3>
                     <p>Transform your home into a 5-star luxury hotel experience with our premium hotel interior designs. We bring the opulence of world-class hotels to your residence with meticulous attention to detail and premium materials.</p>
@@ -2850,60 +2650,40 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Villa Section -->
+
+            <!-- Villa -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-home"></i> Luxury Villa Interiors</h2>
                     <p>Grand villa designs that embody luxury living with spacious layouts and premium finishes</p>
                 </div>
-                
                 <div class="photo-slider" id="villaSlider">
                     <div class="slider-container">
                         <div class="slider-track">
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Exterior">
-                                <div class="slide-overlay">
-                                    <h4>Grand Entrance</h4>
-                                    <p>Impressive villa facade with custom architectural details</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Exterior" />
+                                <div class="slide-overlay"><h4>Grand Entrance</h4><p>Impressive villa facade with custom architectural details</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Living Room">
-                                <div class="slide-overlay">
-                                    <h4>Double Height Living</h4>
-                                    <p>Spacious living area with gallery and statement lighting</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Living Room" />
+                                <div class="slide-overlay"><h4>Double Height Living</h4><p>Spacious living area with gallery and statement lighting</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Master Bedroom">
-                                <div class="slide-overlay">
-                                    <h4>Master Suite</h4>
-                                    <p>Luxurious bedroom with sitting area and premium finishes</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Master Bedroom" />
+                                <div class="slide-overlay"><h4>Master Suite</h4><p>Luxurious bedroom with sitting area and premium finishes</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Kitchen">
-                                <div class="slide-overlay">
-                                    <h4>Chef's Kitchen</h4>
-                                    <p>Professional grade kitchen setup with premium appliances</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Kitchen" />
+                                <div class="slide-overlay"><h4>Chef's Kitchen</h4><p>Professional grade kitchen setup with premium appliances</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Garden">
-                                <div class="slide-overlay">
-                                    <h4>Landscaped Garden</h4>
-                                    <p>Beautiful outdoor entertainment area with custom lighting</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Villa Garden" />
+                                <div class="slide-overlay"><h4>Landscaped Garden</h4><p>Beautiful outdoor entertainment area with custom lighting</p></div>
                             </div>
                         </div>
                         <div class="slider-nav">
-                            <button class="slider-btn prev-btn">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-btn next-btn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         </div>
                         <div class="slider-dots">
                             <button class="slider-dot active"></button>
@@ -2914,7 +2694,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="room-description">
                     <h3><i class="fas fa-crown"></i> Villa Design Excellence</h3>
                     <p>Experience grand living with our villa interior designs that combine traditional elegance with modern luxury. Each villa project is customized to reflect your personal style while maintaining architectural integrity.</p>
@@ -2925,65 +2704,45 @@
                         <div class="feature-item"><i class="fas fa-check-circle"></i> Indoor-outdoor living spaces</div>
                         <div class="feature-item"><i class="fas fa-check-circle"></i> Private pool areas</div>
                         <div class="feature-item"><i class="fas fa-check-circle"></i> Landscaped gardens</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> Wine cellar & bar</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> Home gym & spa</div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> Wine cellar &amp; bar</div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> Home gym &amp; spa</div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Master Bedroom Section -->
+
+            <!-- Master Bedroom -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-bed"></i> Master Bedroom Designs</h2>
                     <p>Create your personal sanctuary with our luxurious master bedroom designs</p>
                 </div>
-                
                 <div class="photo-slider" id="bedroomSlider">
                     <div class="slider-container">
                         <div class="slider-track">
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Modern Master Bedroom">
-                                <div class="slide-overlay">
-                                    <h4>Contemporary Design</h4>
-                                    <p>Clean lines with premium finishes and smart lighting</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Modern Master Bedroom" />
+                                <div class="slide-overlay"><h4>Contemporary Design</h4><p>Clean lines with premium finishes and smart lighting</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Luxury Bedroom">
-                                <div class="slide-overlay">
-                                    <h4>Luxury Suite</h4>
-                                    <p>Opulent bedroom with seating area and custom wardrobe</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Luxury Bedroom" />
+                                <div class="slide-overlay"><h4>Luxury Suite</h4><p>Opulent bedroom with seating area and custom wardrobe</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Walk-in Wardrobe">
-                                <div class="slide-overlay">
-                                    <h4>Walk-in Wardrobe</h4>
-                                    <p>Custom closet organization system with premium finishes</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Walk-in Wardrobe" />
+                                <div class="slide-overlay"><h4>Walk-in Wardrobe</h4><p>Custom closet organization system with premium finishes</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Bedroom Bathroom">
-                                <div class="slide-overlay">
-                                    <h4>Ensuite Bathroom</h4>
-                                    <p>Luxury bathroom attached to bedroom with premium fixtures</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Bedroom Bathroom" />
+                                <div class="slide-overlay"><h4>Ensuite Bathroom</h4><p>Luxury bathroom attached to bedroom with premium fixtures</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Bedroom Balcony">
-                                <div class="slide-overlay">
-                                    <h4>Private Balcony</h4>
-                                    <p>Personal outdoor relaxation space with scenic views</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Bedroom Balcony" />
+                                <div class="slide-overlay"><h4>Private Balcony</h4><p>Personal outdoor relaxation space with scenic views</p></div>
                             </div>
                         </div>
                         <div class="slider-nav">
-                            <button class="slider-btn prev-btn">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-btn next-btn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         </div>
                         <div class="slider-dots">
                             <button class="slider-dot active"></button>
@@ -2994,7 +2753,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="room-description">
                     <h3><i class="fas fa-heart"></i> Your Personal Sanctuary</h3>
                     <p>Transform your master bedroom into a luxurious retreat with our customized designs. We focus on creating spaces that promote relaxation, comfort, and elegance while incorporating smart storage solutions and premium amenities.</p>
@@ -3010,60 +2768,40 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Kitchen Section -->
+
+            <!-- Kitchen -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-utensils"></i> Modular Kitchen Designs</h2>
                     <p>State-of-the-art kitchen designs that combine functionality with aesthetic appeal</p>
                 </div>
-                
                 <div class="photo-slider" id="kitchenSlider">
                     <div class="slider-container">
                         <div class="slider-track">
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Modern Kitchen">
-                                <div class="slide-overlay">
-                                    <h4>Contemporary Kitchen</h4>
-                                    <p>Clean, modern design with smart storage and premium appliances</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Modern Kitchen" />
+                                <div class="slide-overlay"><h4>Contemporary Kitchen</h4><p>Clean, modern design with smart storage and premium appliances</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Island Kitchen">
-                                <div class="slide-overlay">
-                                    <h4>Island Kitchen</h4>
-                                    <p>Central island for preparation & seating with waterfall countertop</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Island Kitchen" />
+                                <div class="slide-overlay"><h4>Island Kitchen</h4><p>Central island for preparation &amp; seating with waterfall countertop</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Open Kitchen">
-                                <div class="slide-overlay">
-                                    <h4>Open Plan Kitchen</h4>
-                                    <p>Seamless integration with living area for social cooking</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Open Kitchen" />
+                                <div class="slide-overlay"><h4>Open Plan Kitchen</h4><p>Seamless integration with living area for social cooking</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Kitchen Storage">
-                                <div class="slide-overlay">
-                                    <h4>Smart Storage</h4>
-                                    <p>Innovative storage solutions with pull-out systems</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Kitchen Storage" />
+                                <div class="slide-overlay"><h4>Smart Storage</h4><p>Innovative storage solutions with pull-out systems</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Kitchen Appliances">
-                                <div class="slide-overlay">
-                                    <h4>Premium Appliances</h4>
-                                    <p>Integrated high-end appliances for professional cooking</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Kitchen Appliances" />
+                                <div class="slide-overlay"><h4>Premium Appliances</h4><p>Integrated high-end appliances for professional cooking</p></div>
                             </div>
                         </div>
                         <div class="slider-nav">
-                            <button class="slider-btn prev-btn">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-btn next-btn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         </div>
                         <div class="slider-dots">
                             <button class="slider-dot active"></button>
@@ -3074,7 +2812,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="room-description">
                     <h3><i class="fas fa-chef-hat"></i> Culinary Excellence</h3>
                     <p>Our modular kitchen designs are engineered for both functionality and style. We create kitchens that are not just cooking spaces but the heart of your home, where memories are made and shared.</p>
@@ -3085,65 +2822,45 @@
                         <div class="feature-item"><i class="fas fa-check-circle"></i> Quartz/granite countertops</div>
                         <div class="feature-item"><i class="fas fa-check-circle"></i> Professional ventilation</div>
                         <div class="feature-item"><i class="fas fa-check-circle"></i> Integrated appliances</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> Task & ambient lighting</div>
+                        <div class="feature-item"><i class="fas fa-check-circle"></i> Task &amp; ambient lighting</div>
                         <div class="feature-item"><i class="fas fa-check-circle"></i> Waterproof materials</div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Living Room Section -->
+
+            <!-- Living Room -->
             <div class="room-section">
                 <div class="room-title">
                     <h2><i class="fas fa-couch"></i> Living Room Designs</h2>
                     <p>Create impressive living spaces that reflect your style and personality</p>
                 </div>
-                
                 <div class="photo-slider" id="livingSlider">
                     <div class="slider-container">
                         <div class="slider-track">
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Modern Living Room">
-                                <div class="slide-overlay">
-                                    <h4>Contemporary Living</h4>
-                                    <p>Clean design with statement pieces and custom lighting</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Modern Living Room" />
+                                <div class="slide-overlay"><h4>Contemporary Living</h4><p>Clean design with statement pieces and custom lighting</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Minimalist Living">
-                                <div class="slide-overlay">
-                                    <h4>Minimalist Design</h4>
-                                    <p>Simplistic elegance with focus on space and natural light</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Minimalist Living" />
+                                <div class="slide-overlay"><h4>Minimalist Design</h4><p>Simplistic elegance with focus on space and natural light</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Traditional Living">
-                                <div class="slide-overlay">
-                                    <h4>Traditional Elegance</h4>
-                                    <p>Classic design with modern comforts and premium materials</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Traditional Living" />
+                                <div class="slide-overlay"><h4>Traditional Elegance</h4><p>Classic design with modern comforts and premium materials</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Entertainment Center">
-                                <div class="slide-overlay">
-                                    <h4>Entertainment Wall</h4>
-                                    <p>Integrated media & storage unit with custom cabinetry</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Entertainment Center" />
+                                <div class="slide-overlay"><h4>Entertainment Wall</h4><p>Integrated media &amp; storage unit with custom cabinetry</p></div>
                             </div>
                             <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Open Plan Living">
-                                <div class="slide-overlay">
-                                    <h4>Open Concept</h4>
-                                    <p>Seamless flow between spaces for modern living</p>
-                                </div>
+                                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Open Plan Living" />
+                                <div class="slide-overlay"><h4>Open Concept</h4><p>Seamless flow between spaces for modern living</p></div>
                             </div>
                         </div>
                         <div class="slider-nav">
-                            <button class="slider-btn prev-btn">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-btn next-btn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
                         </div>
                         <div class="slider-dots">
                             <button class="slider-dot active"></button>
@@ -3154,7 +2871,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="room-description">
                     <h3><i class="fas fa-home-heart"></i> Heart of Your Home</h3>
                     <p>The living room is where families gather, guests are entertained, and memories are created. Our designs focus on creating spaces that are both beautiful and functional, reflecting your personal style while maximizing comfort and utility.</p>
@@ -3173,7 +2889,7 @@
         </div>
     </section>
 
-    <!-- Hero Section -->
+    <!-- ===== HERO ===== -->
     <section class="hero" id="home">
         <div class="container hero-container">
             <div class="hero-content">
@@ -3185,8 +2901,7 @@
                 <p>India's most premium home interior brand. Experience luxury living with our end-to-end interior design services featuring a 45-day delivery guarantee and comprehensive 10-year warranty.</p>
                 <div class="hero-btns">
                     <a href="#photo-gallery" class="btn btn-outline">
-                        <i class="fas fa-images"></i>
-                        View Our Designs
+                        <i class="fas fa-images"></i> View Our Designs
                     </a>
                 </div>
                 <div class="hero-stats">
@@ -3207,7 +2922,7 @@
         </div>
     </section>
 
-    <!-- Featured Section -->
+    <!-- ===== FEATURED ===== -->
     <section class="featured">
         <div class="container">
             <div class="featured-cards">
@@ -3235,7 +2950,7 @@
         </div>
     </section>
 
-    <!-- ===== PROJECT GALLERY SECTION ===== -->
+    <!-- ===== PROJECT GALLERY ===== -->
     <section class="project-gallery" id="projects">
         <div class="container">
             <div class="section-title">
@@ -3243,7 +2958,6 @@
                 <p>Explore our premium interior design portfolio across various categories</p>
             </div>
 
-            <!-- Category Filters -->
             <div class="gallery-filters" id="galleryFilters">
                 <button class="gallery-filter-btn active" data-category="all">ALL <span class="count">0</span></button>
                 <button class="gallery-filter-btn" data-category="kitchen">Kitchen <span class="count">0</span></button>
@@ -3258,37 +2972,24 @@
                 <button class="gallery-filter-btn" data-category="partition">Partition <span class="count">0</span></button>
             </div>
 
-            <!-- Gallery Slider -->
             <div class="gallery-slider-wrapper" id="galleryWrapper">
-                <div class="gallery-slider-track" id="galleryTrack">
-                    <!-- Projects will be dynamically loaded here -->
-                </div>
+                <div class="gallery-slider-track" id="galleryTrack"></div>
             </div>
 
-            <!-- No Projects Message -->
             <div class="no-projects" id="noProjects">
                 <i class="fas fa-images"></i>
                 <p>No projects found in this category</p>
             </div>
 
-            <!-- Gallery Navigation -->
             <div class="gallery-nav">
-                <button class="gallery-nav-btn" id="galleryPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="gallery-dots" id="galleryDots">
-                    <!-- Dots will be dynamically generated -->
-                </div>
-                
-                <button class="gallery-nav-btn" id="galleryNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="gallery-nav-btn" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
+                <div class="gallery-dots" id="galleryDots"></div>
+                <button class="gallery-nav-btn" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- ===== CUSTOMER REVIEWS CAROUSEL ===== -->
+    <!-- ===== REVIEWS ===== -->
     <section class="reviews-section" id="reviews">
         <div class="container">
             <div class="section-title">
@@ -3300,170 +3001,86 @@
                 <div class="reviews-carousel-track" id="reviewsTrack">
                     <!-- Review 1 -->
                     <div class="review-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <div class="customer-photo">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Rajesh Kumar">
-                        </div>
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <div class="customer-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Rajesh Kumar" /></div>
                         <h4 class="customer-name">Mr. Rajesh Kumar</h4>
                         <p class="customer-location">📍 Mumbai, Maharashtra</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text">"Levi Interiors transformed our 3BHK apartment into a luxury haven. The 45-day delivery was spot on, and the quality exceeded our expectations. Highly recommend!"</p>
-                        <div class="work-photo">
-                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project Work">
-                        </div>
+                        <div class="work-photo"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project Work" /></div>
                         <span class="project-tag">🏠 3BHK Luxury Apartment</span>
                     </div>
-
                     <!-- Review 2 -->
                     <div class="review-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <div class="customer-photo">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Priya Sharma">
-                        </div>
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <div class="customer-photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Priya Sharma" /></div>
                         <h4 class="customer-name">Mrs. Priya Sharma</h4>
                         <p class="customer-location">📍 Bangalore, Karnataka</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text">"The team at Levi Interiors understood our vision perfectly. Our villa's interiors now reflect our personality with elegance. The attention to detail is remarkable!"</p>
-                        <div class="work-photo">
-                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa Project">
-                        </div>
+                        <div class="work-photo"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa Project" /></div>
                         <span class="project-tag">🏡 Luxury Villa</span>
                     </div>
-
                     <!-- Review 3 -->
                     <div class="review-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <div class="customer-photo">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Amit Patel">
-                        </div>
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <div class="customer-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Amit Patel" /></div>
                         <h4 class="customer-name">Mr. Amit Patel</h4>
                         <p class="customer-location">📍 Ahmedabad, Gujarat</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text">"The modular kitchen and living room designs are stunning. Levi Interiors made our dream home a reality with their innovative designs and professional execution."</p>
-                        <div class="work-photo">
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kitchen Design">
-                        </div>
+                        <div class="work-photo"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kitchen Design" /></div>
                         <span class="project-tag">🍳 Modular Kitchen</span>
                     </div>
-
                     <!-- Review 4 -->
                     <div class="review-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <div class="customer-photo">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Ananya Reddy">
-                        </div>
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <div class="customer-photo"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Ananya Reddy" /></div>
                         <h4 class="customer-name">Mrs. Ananya Reddy</h4>
                         <p class="customer-location">📍 Hyderabad, Telangana</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text">"From consultation to delivery, the experience was seamless. Our master bedroom now feels like a 5-star suite. Thank you Levi Interiors for the exceptional work!"</p>
-                        <div class="work-photo">
-                            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bedroom Design">
-                        </div>
+                        <div class="work-photo"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bedroom Design" /></div>
                         <span class="project-tag">🛏️ Master Bedroom Suite</span>
                     </div>
-
                     <!-- Review 5 -->
                     <div class="review-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <div class="customer-photo">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Deepak Gupta">
-                        </div>
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <div class="customer-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mr. Deepak Gupta" /></div>
                         <h4 class="customer-name">Mr. Deepak Gupta</h4>
                         <p class="customer-location">📍 Delhi</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text">"The hotel-style interiors for our penthouse are breathtaking. Levi Interiors delivered exactly what they promised - luxury, quality, and on-time completion."</p>
-                        <div class="work-photo">
-                            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse Design">
-                        </div>
+                        <div class="work-photo"><img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse Design" /></div>
                         <span class="project-tag">✨ Luxury Penthouse</span>
                     </div>
-
                     <!-- Review 6 -->
                     <div class="review-card">
-                        <div class="quote-icon">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <div class="customer-photo">
-                            <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Sneha Nair">
-                        </div>
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <div class="customer-photo"><img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Mrs. Sneha Nair" /></div>
                         <h4 class="customer-name">Mrs. Sneha Nair</h4>
                         <p class="customer-location">📍 Pune, Maharashtra</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="review-text">"Absolutely loved the interior design for our new home. The team was professional, creative, and delivered beyond our expectations. 10/10 recommended!"</p>
-                        <div class="work-photo">
-                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living Room Design">
-                        </div>
+                        <div class="work-photo"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Living Room Design" /></div>
                         <span class="project-tag">🛋️ Modern Living Room</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Carousel Navigation -->
             <div class="reviews-nav">
-                <button class="reviews-nav-btn" id="reviewsPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
+                <button class="reviews-nav-btn" id="reviewsPrev"><i class="fas fa-chevron-left"></i></button>
                 <div class="reviews-dots" id="reviewsDots">
                     <button class="reviews-dot active" data-index="0"></button>
                     <button class="reviews-dot" data-index="1"></button>
                     <button class="reviews-dot" data-index="2"></button>
                 </div>
-                
-                <button class="reviews-nav-btn" id="reviewsNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button class="reviews-nav-btn" id="reviewsNext"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -3497,7 +3114,7 @@
                         <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Design Blog</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Press & Media</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Press &amp; Media</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Showrooms</a></li>
                         <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
                     </ul>
@@ -3516,17 +3133,16 @@
             </div>
             <div class="copyright">
                 <p>&copy; 2023 Levi Interiors. All rights reserved. | Email: concierge@leviinteriors.com</p>
-                <p style="margin-top: 15px;">Head Office: Levi Design Tower, Bandra Kurla Complex, Mumbai 400051 | GST: 27AAECL1234M1Z5</p>
+                <p style="margin-top:15px;">Head Office: Levi Design Tower, Bandra Kurla Complex, Mumbai 400051 | GST: 27AAECL1234M1Z5</p>
             </div>
         </div>
     </footer>
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // Wait for DOM to load
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded - popup script ready');
-            
-            // ===== POPUP ELEMENTS =====
+
+            // ===== POPUP =====
             var popupOverlay = document.getElementById('consultationPopup');
             var openPopupBtn = document.getElementById('openPopupBtn');
             var closePopupBtn = document.getElementById('closePopupBtn');
@@ -3535,16 +3151,11 @@
             var popupSuccess = document.getElementById('popupSuccess');
             var consultationForm = document.getElementById('consultationForm');
 
-            // ===== OPEN POPUP =====
-            if (openPopupBtn) {
-                openPopupBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    popupOverlay.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
+            function openPopup() {
+                popupOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
 
-            // ===== CLOSE POPUP =====
             function closePopup() {
                 popupOverlay.classList.remove('active');
                 document.body.style.overflow = '';
@@ -3557,27 +3168,17 @@
                 document.querySelectorAll('.error-message').forEach(function(el) { el.style.display = 'none'; });
             }
 
+            if (openPopupBtn) openPopupBtn.addEventListener('click', openPopup);
             if (closePopupBtn) closePopupBtn.addEventListener('click', closePopup);
             if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closePopup);
-
             if (popupOverlay) {
-                popupOverlay.addEventListener('click', function(e) {
-                    if (e.target === popupOverlay) {
-                        closePopup();
-                    }
-                });
+                popupOverlay.addEventListener('click', function(e) { if (e.target === popupOverlay) closePopup(); });
             }
+            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && popupOverlay.classList.contains('active')) closePopup(); });
 
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-                    closePopup();
-                }
-            });
-
-            // ===== PROPERTY TYPE SELECTION =====
+            // Property type selection
             var propertyTypeBtns = document.querySelectorAll('.property-type-btn');
             var selectedPropertyType = document.getElementById('selectedPropertyType');
-
             propertyTypeBtns.forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     propertyTypeBtns.forEach(function(b) { b.classList.remove('active'); });
@@ -3587,7 +3188,7 @@
                 });
             });
 
-            // ===== FORM VALIDATION & SUBMISSION =====
+            // Form submission
             if (consultationForm) {
                 consultationForm.addEventListener('submit', function(e) {
                     e.preventDefault();
@@ -3644,7 +3245,7 @@
                     if (isValid) {
                         popupFormContent.style.display = 'none';
                         popupSuccess.style.display = 'block';
-                        
+
                         var formData = {
                             propertyType: selectedPropertyType.value,
                             location: location.value,
@@ -3653,15 +3254,19 @@
                             mobile: mobile.value.trim(),
                             whatsappUpdates: document.getElementById('whatsappUpdates').checked
                         };
-                        
-                        var message = '🏡 *LEVI INTERIORS - NEW CONSULTATION REQUEST* 🏡%0A%0A*Property Type:* ' + formData.propertyType + '%0A*Location:* ' + formData.location + '%0A*Budget Range:* ' + formData.budgetRange + '%0A*Name:* ' + formData.name + '%0A*Mobile:* ' + formData.mobile + '%0A*WhatsApp Updates:* ' + (formData.whatsappUpdates ? 'Yes ✅' : 'No ❌') + '%0A%0A_This request was submitted via the website consultation popup._';
-                        
+
+                        var message = '🏡 *LEVI INTERIORS - NEW CONSULTATION REQUEST* 🏡%0A%0A*Property Type:* ' + formData
+                            .propertyType + '%0A*Location:* ' + formData.location + '%0A*Budget Range:* ' + formData
+                            .budgetRange + '%0A*Name:* ' + formData.name + '%0A*Mobile:* ' + formData.mobile +
+                            '%0A*WhatsApp Updates:* ' + (formData.whatsappUpdates ? 'Yes ✅' : 'No ❌') +
+                            '%0A%0A_This request was submitted via the website consultation popup._';
+
                         window.open('https://wa.me/917674095888?text=' + message, '_blank');
                     }
                 });
             }
 
-            // ===== MOBILE NUMBER VALIDATION =====
+            // Mobile number validation
             var mobileInput = document.getElementById('popupCustomerMobile');
             if (mobileInput) {
                 mobileInput.addEventListener('input', function() {
@@ -3680,22 +3285,20 @@
             // ===== WHATSAPP POPUP =====
             var whatsappToggle = document.getElementById('whatsappToggle');
             var whatsappOptions = document.getElementById('whatsappOptions');
-            var closePopup = document.getElementById('closePopup');
-            
+            var closePopupWhatsapp = document.getElementById('closePopup');
+
             if (whatsappToggle) {
                 whatsappToggle.addEventListener('click', function(e) {
                     e.stopPropagation();
                     whatsappOptions.classList.toggle('active');
                 });
             }
-            
-            if (closePopup) {
-                closePopup.addEventListener('click', function(e) {
+            if (closePopupWhatsapp) {
+                closePopupWhatsapp.addEventListener('click', function(e) {
                     e.stopPropagation();
                     whatsappOptions.classList.remove('active');
                 });
             }
-            
             document.addEventListener('click', function(e) {
                 if (whatsappOptions && whatsappToggle) {
                     if (!whatsappOptions.contains(e.target) && !whatsappToggle.contains(e.target)) {
@@ -3704,21 +3307,20 @@
                 }
             });
 
-            // ===== WHATSAPP OPTIONS =====
             var whatsappOptionsList = document.querySelectorAll('.whatsapp-option');
             whatsappOptionsList.forEach(function(option) {
                 option.addEventListener('click', function() {
                     var contactType = this.getAttribute('data-contact');
                     var phoneNumber, message;
-                    
                     if (contactType === 'owner') {
                         phoneNumber = '917207885880';
-                        message = 'Hello Mr. Arun Reddy, I am interested in Levi Interiors premium home design services. Can you please assist me?';
+                        message =
+                            'Hello Mr. Arun Reddy, I am interested in Levi Interiors premium home design services. Can you please assist me?';
                     } else {
                         phoneNumber = '917674095888';
-                        message = 'Hello Mr. Shiva, I would like to know more about Levi Interiors premium packages. Can you please share details?';
+                        message =
+                            'Hello Mr. Shiva, I would like to know more about Levi Interiors premium packages. Can you please share details?';
                     }
-                    
                     var encodedMessage = encodeURIComponent(message);
                     window.open('https://wa.me/' + phoneNumber + '?text=' + encodedMessage, '_blank');
                     whatsappOptions.classList.remove('active');
@@ -3749,10 +3351,7 @@
                     if (targetId === '#') return;
                     var targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 120,
-                            behavior: 'smooth'
-                        });
+                        window.scrollTo({ top: targetElement.offsetTop - 120, behavior: 'smooth' });
                     }
                 });
             });
@@ -3765,105 +3364,112 @@
                 var prevBtn = slider.querySelector('.prev-btn');
                 var nextBtn = slider.querySelector('.next-btn');
                 var dots = slider.querySelectorAll('.slider-dot');
-                
                 var currentSlide = 0;
                 var totalSlides = slides.length;
-                
+
                 function updateSlider() {
                     track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
                     dots.forEach(function(dot, index) {
                         dot.classList.toggle('active', index === currentSlide);
                     });
                 }
-                
-                function nextSlide() {
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                    updateSlider();
-                }
-                
-                function prevSlide() {
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                    updateSlider();
-                }
-                
-                function goToSlide(index) {
-                    currentSlide = index;
-                    updateSlider();
-                }
-                
+
+                function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides;
+                    updateSlider(); }
+
+                function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateSlider(); }
+
+                function goToSlide(index) { currentSlide = index;
+                    updateSlider(); }
+
                 if (nextBtn) nextBtn.addEventListener('click', nextSlide);
                 if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-                
                 dots.forEach(function(dot, index) {
                     dot.addEventListener('click', function() { goToSlide(index); });
                 });
-                
+
                 var slideInterval = setInterval(nextSlide, 5000);
-                
-                slider.addEventListener('mouseenter', function() {
-                    clearInterval(slideInterval);
-                });
-                
-                slider.addEventListener('mouseleave', function() {
-                    slideInterval = setInterval(nextSlide, 5000);
-                });
+                slider.addEventListener('mouseenter', function() { clearInterval(slideInterval); });
+                slider.addEventListener('mouseleave', function() { slideInterval = setInterval(nextSlide, 5000); });
             });
 
-            // ===== PROJECT GALLERY - UPDATED CATEGORIES =====
+            // ===== PROJECT GALLERY =====
             var projects = [
-                // KITCHEN
-                { id: 1, title: 'Modern Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 2, title: 'Italian Kitchen with Island', category: 'kitchen', image: 'https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 3, title: 'Open Plan Kitchen Design', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                { id: 4, title: 'Luxury Kitchen with Premium Appliances', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                
-                // CROCKERY
-                { id: 5, title: 'Elegant Crockery Display Unit', category: 'crockery', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2024' },
-                { id: 6, title: 'Glass Crockery Cabinet', category: 'crockery', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2023' },
-                { id: 7, title: 'Modern Crockery Unit with Lighting', category: 'crockery', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                
-                // TV UNIT
-                { id: 8, title: 'Wall-mounted TV Unit Design', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
-                { id: 9, title: 'Modern Entertainment Wall', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2023' },
-                { id: 10, title: 'Luxury TV Unit with Storage', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                
-                // WARDROBE
-                { id: 11, title: 'Walk-in Wardrobe System', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 12, title: 'Modern Sliding Wardrobe', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2024' },
-                { id: 13, title: 'Custom Wardrobe with Dressing Area', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                
-                // POOJA UNIT
-                { id: 14, title: 'Wooden Pooja Mandir Design', category: 'pooja', image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
-                { id: 15, title: 'Modern Pooja Unit with Backlight', category: 'pooja', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 16, title: 'Traditional Pooja Cabinet', category: 'pooja', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2023' },
-                
-                // STUDY UNIT
-                { id: 17, title: 'Modern Study Desk with Storage', category: 'study', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                { id: 18, title: 'Luxury Home Office Design', category: 'study', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
-                { id: 19, title: 'Study Unit with Bookshelf', category: 'study', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
-                
-                // COT
-                { id: 20, title: 'Luxury King Size Cot', category: 'cot', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 21, title: 'Modern Cot with Storage', category: 'cot', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 22, title: 'Upholstered Bed Design', category: 'cot', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2023' },
-                
-                // SHOE RACK
-                { id: 23, title: 'Modern Shoe Rack with Seating', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
-                { id: 24, title: 'Wall-mounted Shoe Storage', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                { id: 25, title: 'Custom Shoe Cabinet', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
-                
-                // WALL PANELLING
-                { id: 26, title: 'Wooden Wall Panelling Design', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 27, title: 'Modern 3D Wall Panelling', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 28, title: 'Luxury Wall Panelling with Lighting', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                
-                // PARTITION
-                { id: 29, title: 'Modern Glass Partition', category: 'partition', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
-                { id: 30, title: 'Wooden Room Partition Design', category: 'partition', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                { id: 31, title: 'Decorative Partition Wall', category: 'partition', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
+                // Kitchen
+                { id: 1, title: 'Modern Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 2, title: 'Italian Kitchen with Island', category: 'kitchen', image: 'https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 3, title: 'Open Plan Kitchen Design', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2023' },
+                { id: 4, title: 'Luxury Kitchen with Premium Appliances', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                // Crockery
+                { id: 5, title: 'Elegant Crockery Display Unit', category: 'crockery', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2024' },
+                { id: 6, title: 'Glass Crockery Cabinet', category: 'crockery', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2023' },
+                { id: 7, title: 'Modern Crockery Unit with Lighting', category: 'crockery', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                // TV Unit
+                { id: 8, title: 'Wall-mounted TV Unit Design', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2024' },
+                { id: 9, title: 'Modern Entertainment Wall', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2023' },
+                { id: 10, title: 'Luxury TV Unit with Storage', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                // Wardrobe
+                { id: 11, title: 'Walk-in Wardrobe System', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 12, title: 'Modern Sliding Wardrobe', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2024' },
+                { id: 13, title: 'Custom Wardrobe with Dressing Area', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2023' },
+                // Pooja
+                { id: 14, title: 'Wooden Pooja Mandir Design', category: 'pooja', image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2024' },
+                { id: 15, title: 'Modern Pooja Unit with Backlight', category: 'pooja', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 16, title: 'Traditional Pooja Cabinet', category: 'pooja', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2023' },
+                // Study
+                { id: 17, title: 'Modern Study Desk with Storage', category: 'study', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 18, title: 'Luxury Home Office Design', category: 'study', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2024' },
+                { id: 19, title: 'Study Unit with Bookshelf', category: 'study', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2023' },
+                // Cot
+                { id: 20, title: 'Luxury King Size Cot', category: 'cot', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 21, title: 'Modern Cot with Storage', category: 'cot', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 22, title: 'Upholstered Bed Design', category: 'cot', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2023' },
+                // Shoe Rack
+                { id: 23, title: 'Modern Shoe Rack with Seating', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2024' },
+                { id: 24, title: 'Wall-mounted Shoe Storage', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 25, title: 'Custom Shoe Cabinet', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2023' },
+                // Wall Panelling
+                { id: 26, title: 'Wooden Wall Panelling Design', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Mumbai', year: '2024' },
+                { id: 27, title: 'Modern 3D Wall Panelling', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Bangalore', year: '2024' },
+                { id: 28, title: 'Luxury Wall Panelling with Lighting', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Delhi', year: '2023' },
+                // Partition
+                { id: 29, title: 'Modern Glass Partition', category: 'partition', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Chennai', year: '2024' },
+                { id: 30, title: 'Wooden Room Partition Design', category: 'partition', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Pune', year: '2024' },
+                { id: 31, title: 'Decorative Partition Wall', category: 'partition', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                    location: 'Hyderabad', year: '2023' },
             ];
 
-            // Get elements
             var galleryTrack = document.getElementById('galleryTrack');
             var galleryDotsContainer = document.getElementById('galleryDots');
             var galleryPrevBtn = document.getElementById('galleryPrev');
@@ -3877,7 +3483,6 @@
             var cardsPerView = 3;
             var autoSlideInterval = null;
 
-            // Category labels for badges
             var categoryLabels = {
                 'kitchen': '🍳 Kitchen',
                 'crockery': '🍽️ Crockery',
@@ -3898,14 +3503,15 @@
             }
 
             function renderProjects(category) {
-                var filteredProjects = category === 'all' 
-                    ? projects 
-                    : projects.filter(function(p) { return p.category === category; });
+                var filteredProjects = category === 'all' ? projects : projects.filter(function(p) { return p.category ===
+                        category; });
 
-                // Update filter counts
-                var categories = ['all', 'kitchen', 'crockery', 'tv-unit', 'wardrobe', 'pooja', 'study', 'cot', 'shoe-rack', 'wall-panelling', 'partition'];
+                var categories = ['all', 'kitchen', 'crockery', 'tv-unit', 'wardrobe', 'pooja', 'study', 'cot', 'shoe-rack',
+                    'wall-panelling', 'partition'
+                ];
                 categories.forEach(function(cat) {
-                    var count = cat === 'all' ? projects.length : projects.filter(function(p) { return p.category === cat; }).length;
+                    var count = cat === 'all' ? projects.length : projects.filter(function(p) { return p.category ===
+                            cat; }).length;
                     var btn = document.querySelector('.gallery-filter-btn[data-category="' + cat + '"] .count');
                     if (btn) btn.textContent = count;
                 });
@@ -3922,28 +3528,24 @@
                 var html = '';
                 filteredProjects.forEach(function(project) {
                     var label = categoryLabels[project.category] || project.category;
-                    
-                    html += `
-                        <div class="gallery-card" data-category="${project.category}">
-                            <div class="gallery-card-image">
-                                <img src="${project.image}" alt="${project.title}">
-                                <span class="category-badge">${label}</span>
-                                <div class="overlay-icon">
-                                    <i class="fas fa-search-plus"></i>
-                                </div>
-                            </div>
-                            <div class="gallery-card-body">
-                                <h4>${project.title}</h4>
-                                <p>${project.location}</p>
-                                <div class="project-meta">
-                                    <span><i class="fas fa-calendar-alt"></i> ${project.year}</span>
-                                    <span><i class="fas fa-tag"></i> ${project.category.replace('-', ' ').toUpperCase()}</span>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+                    html +=
+                        '<div class="gallery-card" data-category="' + project.category + '">' +
+                        '<div class="gallery-card-image">' +
+                        '<img src="' + project.image + '" alt="' + project.title + '">' +
+                        '<span class="category-badge">' + label + '</span>' +
+                        '<div class="overlay-icon"><i class="fas fa-search-plus"></i></div>' +
+                        '</div>' +
+                        '<div class="gallery-card-body">' +
+                        '<h4>' + project.title + '</h4>' +
+                        '<p>' + project.location + '</p>' +
+                        '<div class="project-meta">' +
+                        '<span><i class="fas fa-calendar-alt"></i> ' + project.year + '</span>' +
+                        '<span><i class="fas fa-tag"></i> ' + project.category.replace('-', ' ').toUpperCase() +
+                        '</span>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
                 });
-
                 galleryTrack.innerHTML = html;
                 currentIndex = 0;
                 cardsPerView = getCardsPerView();
@@ -3955,39 +3557,29 @@
             function updateGallery() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 if (cards.length === 0) return;
-                
                 var cardWidth = cards[0].offsetWidth;
                 var gap = 25;
                 var slideWidth = cardWidth + gap;
                 var totalCards = cards.length;
                 var totalSlides = Math.ceil(totalCards / cardsPerView);
-                
-                if (currentIndex >= totalSlides) {
-                    currentIndex = totalSlides - 1;
-                }
-                if (currentIndex < 0) {
-                    currentIndex = 0;
-                }
-                
+                if (currentIndex >= totalSlides) currentIndex = totalSlides - 1;
+                if (currentIndex < 0) currentIndex = 0;
                 var offset = currentIndex * slideWidth * cardsPerView;
                 galleryTrack.style.transform = 'translateX(-' + offset + 'px)';
-                
                 galleryPrevBtn.disabled = currentIndex === 0;
                 galleryNextBtn.disabled = currentIndex >= totalSlides - 1;
-                
                 updateDots();
             }
 
             function updateDots() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 var totalSlides = Math.ceil(cards.length / cardsPerView);
-                
                 var dotsHtml = '';
                 for (var i = 0; i < totalSlides; i++) {
-                    dotsHtml += `<button class="gallery-dot${i === currentIndex ? ' active' : ''}" data-index="${i}"></button>`;
+                    dotsHtml += '<button class="gallery-dot' + (i === currentIndex ? ' active' : '') + '" data-index="' + i +
+                        '"></button>';
                 }
                 galleryDotsContainer.innerHTML = dotsHtml;
-                
                 galleryDotsContainer.querySelectorAll('.gallery-dot').forEach(function(dot) {
                     dot.addEventListener('click', function() {
                         stopAutoSlide();
@@ -4001,49 +3593,28 @@
             function nextSlide() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 var totalSlides = Math.ceil(cards.length / cardsPerView);
-                if (currentIndex < totalSlides - 1) {
-                    currentIndex++;
-                    updateGallery();
-                } else {
-                    currentIndex = 0;
-                    updateGallery();
-                }
+                if (currentIndex < totalSlides - 1) { currentIndex++;
+                    updateGallery(); } else { currentIndex = 0;
+                    updateGallery(); }
             }
 
-            function prevSlide() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateGallery();
-                }
-            }
+            function prevSlide() { if (currentIndex > 0) { currentIndex--;
+                    updateGallery(); } }
 
             function startAutoSlide() {
                 stopAutoSlide();
                 autoSlideInterval = setInterval(nextSlide, 5000);
             }
 
-            function stopAutoSlide() {
-                if (autoSlideInterval) {
-                    clearInterval(autoSlideInterval);
-                    autoSlideInterval = null;
-                }
-            }
+            function stopAutoSlide() { if (autoSlideInterval) { clearInterval(autoSlideInterval);
+                    autoSlideInterval = null; } }
 
-            if (galleryPrevBtn) {
-                galleryPrevBtn.addEventListener('click', function() {
-                    stopAutoSlide();
-                    prevSlide();
-                    startAutoSlide();
-                });
-            }
-
-            if (galleryNextBtn) {
-                galleryNextBtn.addEventListener('click', function() {
-                    stopAutoSlide();
-                    nextSlide();
-                    startAutoSlide();
-                });
-            }
+            if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', function() { stopAutoSlide();
+                prevSlide();
+                startAutoSlide(); });
+            if (galleryNextBtn) galleryNextBtn.addEventListener('click', function() { stopAutoSlide();
+                nextSlide();
+                startAutoSlide(); });
 
             filterBtns.forEach(function(btn) {
                 btn.addEventListener('click', function() {
@@ -4056,18 +3627,16 @@
                 });
             });
 
-            // Touch swipe for gallery
-            var isDragging = false;
-            var startX = 0;
-            var diffX = 0;
-
+            // Touch / drag for gallery
+            var isDragging = false,
+                startX = 0,
+                diffX = 0;
             galleryWrapper.addEventListener('touchstart', function(e) {
                 stopAutoSlide();
                 isDragging = true;
                 startX = e.touches[0].clientX;
                 galleryTrack.classList.add('dragging');
             }, { passive: true });
-
             galleryWrapper.addEventListener('touchmove', function(e) {
                 if (!isDragging) return;
                 var currentX = e.touches[0].clientX;
@@ -4081,37 +3650,28 @@
                 var dragOffset = diffX;
                 galleryTrack.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
             }, { passive: true });
-
             galleryWrapper.addEventListener('touchend', function() {
                 if (!isDragging) return;
                 isDragging = false;
                 galleryTrack.classList.remove('dragging');
-                
                 var threshold = 50;
-                if (diffX > threshold) {
-                    nextSlide();
-                } else if (diffX < -threshold) {
-                    prevSlide();
-                } else {
-                    updateGallery();
-                }
+                if (diffX > threshold) nextSlide();
+                else if (diffX < -threshold) prevSlide();
+                else updateGallery();
                 diffX = 0;
                 startX = 0;
                 startAutoSlide();
             }, { passive: true });
 
-            // Mouse drag for desktop
-            var isMouseDown = false;
-            var mouseStartX = 0;
-            var mouseDiffX = 0;
-
+            var isMouseDown = false,
+                mouseStartX = 0,
+                mouseDiffX = 0;
             galleryWrapper.addEventListener('mousedown', function(e) {
                 stopAutoSlide();
                 isMouseDown = true;
                 mouseStartX = e.clientX;
                 galleryTrack.classList.add('dragging');
             });
-
             galleryWrapper.addEventListener('mousemove', function(e) {
                 if (!isMouseDown) return;
                 var currentMouseX = e.clientX;
@@ -4125,132 +3685,89 @@
                 var dragOffset = mouseDiffX;
                 galleryTrack.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
             });
-
             galleryWrapper.addEventListener('mouseup', function() {
                 if (!isMouseDown) return;
                 isMouseDown = false;
                 galleryTrack.classList.remove('dragging');
-                
                 var threshold = 50;
-                if (mouseDiffX > threshold) {
-                    nextSlide();
-                } else if (mouseDiffX < -threshold) {
-                    prevSlide();
-                } else {
-                    updateGallery();
-                }
+                if (mouseDiffX > threshold) nextSlide();
+                else if (mouseDiffX < -threshold) prevSlide();
+                else updateGallery();
                 mouseDiffX = 0;
                 mouseStartX = 0;
                 startAutoSlide();
             });
-
             galleryWrapper.addEventListener('mouseleave', function() {
-                if (isMouseDown) {
-                    isMouseDown = false;
+                if (isMouseDown) { isMouseDown = false;
                     galleryTrack.classList.remove('dragging');
                     updateGallery();
-                    startAutoSlide();
-                }
+                    startAutoSlide(); }
             });
 
             window.addEventListener('resize', function() {
                 var newCardsPerView = getCardsPerView();
-                if (newCardsPerView !== cardsPerView) {
-                    cardsPerView = newCardsPerView;
-                    updateGallery();
-                } else {
-                    updateGallery();
-                }
+                if (newCardsPerView !== cardsPerView) { cardsPerView = newCardsPerView;
+                    updateGallery(); } else { updateGallery(); }
             });
-
-            galleryWrapper.addEventListener('mouseenter', function() {
-                stopAutoSlide();
-            });
-
-            galleryWrapper.addEventListener('mouseleave', function() {
-                startAutoSlide();
-            });
+            galleryWrapper.addEventListener('mouseenter', function() { stopAutoSlide(); });
+            galleryWrapper.addEventListener('mouseleave', function() { startAutoSlide(); });
 
             renderProjects('all');
 
             // ===== REVIEWS CAROUSEL =====
-            var track = document.getElementById('reviewsTrack');
-            var wrapper = document.getElementById('reviewsWrapper');
-            var prevBtn = document.getElementById('reviewsPrev');
-            var nextBtn = document.getElementById('reviewsNext');
-            var dots = document.querySelectorAll('.reviews-dot');
-            
-            if (track && prevBtn && nextBtn) {
-                var cards = track.querySelectorAll('.review-card');
+            var trackReviews = document.getElementById('reviewsTrack');
+            var wrapperReviews = document.getElementById('reviewsWrapper');
+            var prevBtnReviews = document.getElementById('reviewsPrev');
+            var nextBtnReviews = document.getElementById('reviewsNext');
+            var dotsReviews = document.querySelectorAll('.reviews-dot');
+
+            if (trackReviews && prevBtnReviews && nextBtnReviews) {
+                var cardsReviews = trackReviews.querySelectorAll('.review-card');
                 var cardsPerViewReviews = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
-                var totalSlidesReviews = Math.ceil(cards.length / cardsPerViewReviews);
+                var totalSlidesReviews = Math.ceil(cardsReviews.length / cardsPerViewReviews);
                 var currentIndexReviews = 0;
                 var autoSlideIntervalReviews = null;
-                var isDraggingReviews = false;
-                var startXReviews = 0;
-                var diffXReviews = 0;
-                
+
                 function updateReviewsCarousel() {
-                    var cardWidth = cards[0].offsetWidth;
+                    var cardWidth = cardsReviews[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
                     var offset = currentIndexReviews * slideWidth * cardsPerViewReviews;
-                    track.style.transform = 'translateX(-' + offset + 'px)';
-                    
-                    dots.forEach(function(dot, index) {
+                    trackReviews.style.transform = 'translateX(-' + offset + 'px)';
+                    dotsReviews.forEach(function(dot, index) {
                         dot.classList.toggle('active', index === currentIndexReviews);
                     });
-                    
-                    prevBtn.disabled = currentIndexReviews === 0;
-                    nextBtn.disabled = currentIndexReviews >= totalSlidesReviews - 1;
+                    prevBtnReviews.disabled = currentIndexReviews === 0;
+                    nextBtnReviews.disabled = currentIndexReviews >= totalSlidesReviews - 1;
                 }
-                
+
                 function goToReviewSlide(index) {
                     if (index < 0) index = 0;
                     if (index >= totalSlidesReviews) index = totalSlidesReviews - 1;
                     currentIndexReviews = index;
                     updateReviewsCarousel();
                 }
-                
+
                 function nextReviewSlide() {
-                    if (currentIndexReviews < totalSlidesReviews - 1) {
-                        goToReviewSlide(currentIndexReviews + 1);
-                    } else {
-                        goToReviewSlide(0);
-                    }
+                    if (currentIndexReviews < totalSlidesReviews - 1) { goToReviewSlide(currentIndexReviews + 1); } else { goToReviewSlide(
+                            0); }
                 }
-                
-                function prevReviewSlide() {
-                    if (currentIndexReviews > 0) {
-                        goToReviewSlide(currentIndexReviews - 1);
-                    }
-                }
-                
-                function startAutoSlideReviews() {
-                    if (autoSlideIntervalReviews) clearInterval(autoSlideIntervalReviews);
-                    autoSlideIntervalReviews = setInterval(nextReviewSlide, 5000);
-                }
-                
-                function stopAutoSlideReviews() {
-                    if (autoSlideIntervalReviews) {
-                        clearInterval(autoSlideIntervalReviews);
-                        autoSlideIntervalReviews = null;
-                    }
-                }
-                
-                prevBtn.addEventListener('click', function() {
-                    stopAutoSlideReviews();
+
+                function prevReviewSlide() { if (currentIndexReviews > 0) { goToReviewSlide(currentIndexReviews - 1); } }
+
+                function startAutoSlideReviews() { if (autoSlideIntervalReviews) clearInterval(autoSlideIntervalReviews);
+                    autoSlideIntervalReviews = setInterval(nextReviewSlide, 5000); }
+
+                function stopAutoSlideReviews() { if (autoSlideIntervalReviews) { clearInterval(autoSlideIntervalReviews);
+                        autoSlideIntervalReviews = null; } }
+
+                prevBtnReviews.addEventListener('click', function() { stopAutoSlideReviews();
                     prevReviewSlide();
-                    startAutoSlideReviews();
-                });
-                
-                nextBtn.addEventListener('click', function() {
-                    stopAutoSlideReviews();
+                    startAutoSlideReviews(); });
+                nextBtnReviews.addEventListener('click', function() { stopAutoSlideReviews();
                     nextReviewSlide();
-                    startAutoSlideReviews();
-                });
-                
-                dots.forEach(function(dot) {
+                    startAutoSlideReviews(); });
+                dotsReviews.forEach(function(dot) {
                     dot.addEventListener('click', function() {
                         stopAutoSlideReviews();
                         var index = parseInt(this.getAttribute('data-index'));
@@ -4258,125 +3775,93 @@
                         startAutoSlideReviews();
                     });
                 });
-                
-                wrapper.addEventListener('touchstart', function(e) {
+
+                // Touch / drag for reviews
+                var isDraggingReviews = false,
+                    startXReviews = 0,
+                    diffXReviews = 0;
+                wrapperReviews.addEventListener('touchstart', function(e) {
                     stopAutoSlideReviews();
                     isDraggingReviews = true;
                     startXReviews = e.touches[0].clientX;
-                    track.classList.add('dragging');
+                    trackReviews.classList.add('dragging');
                 }, { passive: true });
-                
-                wrapper.addEventListener('touchmove', function(e) {
+                wrapperReviews.addEventListener('touchmove', function(e) {
                     if (!isDraggingReviews) return;
                     var currentX = e.touches[0].clientX;
                     diffXReviews = startXReviews - currentX;
-                    
-                    var cardWidth = cards[0].offsetWidth;
+                    var cardWidth = cardsReviews[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
                     var baseOffset = currentIndexReviews * slideWidth * cardsPerViewReviews;
                     var dragOffset = diffXReviews;
-                    track.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
+                    trackReviews.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
                 }, { passive: true });
-                
-                wrapper.addEventListener('touchend', function() {
+                wrapperReviews.addEventListener('touchend', function() {
                     if (!isDraggingReviews) return;
                     isDraggingReviews = false;
-                    track.classList.remove('dragging');
-                    
+                    trackReviews.classList.remove('dragging');
                     var threshold = 50;
-                    
-                    if (diffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) {
-                        goToReviewSlide(currentIndexReviews + 1);
-                    } else if (diffXReviews < -threshold && currentIndexReviews > 0) {
-                        goToReviewSlide(currentIndexReviews - 1);
-                    } else {
-                        updateReviewsCarousel();
-                    }
-                    
+                    if (diffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) { goToReviewSlide(
+                            currentIndexReviews + 1); } else if (diffXReviews < -threshold && currentIndexReviews >
+                        0) { goToReviewSlide(currentIndexReviews - 1); } else { updateReviewsCarousel(); }
                     diffXReviews = 0;
                     startXReviews = 0;
-                    
                     startAutoSlideReviews();
                 }, { passive: true });
-                
-                var isMouseDownReviews = false;
-                var mouseStartXReviews = 0;
-                var mouseDiffXReviews = 0;
-                
-                wrapper.addEventListener('mousedown', function(e) {
+
+                var isMouseDownReviews = false,
+                    mouseStartXReviews = 0,
+                    mouseDiffXReviews = 0;
+                wrapperReviews.addEventListener('mousedown', function(e) {
                     stopAutoSlideReviews();
                     isMouseDownReviews = true;
                     mouseStartXReviews = e.clientX;
-                    track.classList.add('dragging');
+                    trackReviews.classList.add('dragging');
                 });
-                
-                wrapper.addEventListener('mousemove', function(e) {
+                wrapperReviews.addEventListener('mousemove', function(e) {
                     if (!isMouseDownReviews) return;
                     var currentMouseX = e.clientX;
                     mouseDiffXReviews = mouseStartXReviews - currentMouseX;
-                    
-                    var cardWidth = cards[0].offsetWidth;
+                    var cardWidth = cardsReviews[0].offsetWidth;
                     var gap = 30;
                     var slideWidth = cardWidth + gap;
                     var baseOffset = currentIndexReviews * slideWidth * cardsPerViewReviews;
                     var dragOffset = mouseDiffXReviews;
-                    track.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
+                    trackReviews.style.transform = 'translateX(-' + (baseOffset + dragOffset) + 'px)';
                 });
-                
-                wrapper.addEventListener('mouseup', function() {
+                wrapperReviews.addEventListener('mouseup', function() {
                     if (!isMouseDownReviews) return;
                     isMouseDownReviews = false;
-                    track.classList.remove('dragging');
-                    
+                    trackReviews.classList.remove('dragging');
                     var threshold = 50;
-                    
-                    if (mouseDiffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) {
-                        goToReviewSlide(currentIndexReviews + 1);
-                    } else if (mouseDiffXReviews < -threshold && currentIndexReviews > 0) {
-                        goToReviewSlide(currentIndexReviews - 1);
-                    } else {
-                        updateReviewsCarousel();
-                    }
-                    
+                    if (mouseDiffXReviews > threshold && currentIndexReviews < totalSlidesReviews - 1) { goToReviewSlide(
+                            currentIndexReviews + 1); } else if (mouseDiffXReviews < -threshold && currentIndexReviews >
+                        0) { goToReviewSlide(currentIndexReviews - 1); } else { updateReviewsCarousel(); }
                     mouseDiffXReviews = 0;
                     mouseStartXReviews = 0;
-                    
                     startAutoSlideReviews();
                 });
-                
-                wrapper.addEventListener('mouseleave', function() {
-                    if (isMouseDownReviews) {
-                        isMouseDownReviews = false;
-                        track.classList.remove('dragging');
+                wrapperReviews.addEventListener('mouseleave', function() {
+                    if (isMouseDownReviews) { isMouseDownReviews = false;
+                        trackReviews.classList.remove('dragging');
                         updateReviewsCarousel();
-                        startAutoSlideReviews();
-                    }
+                        startAutoSlideReviews(); }
                 });
-                
+
                 window.addEventListener('resize', function() {
                     var newCardsPerView = window.innerWidth > 992 ? 3 : (window.innerWidth > 576 ? 2 : 1);
                     if (newCardsPerView !== cardsPerViewReviews) {
                         cardsPerViewReviews = newCardsPerView;
-                        totalSlidesReviews = Math.ceil(cards.length / cardsPerViewReviews);
+                        totalSlidesReviews = Math.ceil(cardsReviews.length / cardsPerViewReviews);
                         goToReviewSlide(0);
-                    } else {
-                        updateReviewsCarousel();
-                    }
+                    } else { updateReviewsCarousel(); }
                 });
-                
-                setTimeout(function() {
-                    updateReviewsCarousel();
-                    startAutoSlideReviews();
-                }, 100);
-                
-                wrapper.addEventListener('mouseenter', function() {
-                    stopAutoSlideReviews();
-                });
-                
-                wrapper.addEventListener('mouseleave', function() {
-                    startAutoSlideReviews();
-                });
+
+                setTimeout(function() { updateReviewsCarousel();
+                    startAutoSlideReviews(); }, 100);
+                wrapperReviews.addEventListener('mouseenter', function() { stopAutoSlideReviews(); });
+                wrapperReviews.addEventListener('mouseleave', function() { startAutoSlideReviews(); });
             }
         });
     </script>
