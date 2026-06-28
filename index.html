@@ -640,64 +640,7 @@
             border-radius: 2px;
         }
 
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .main-nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .main-nav a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--gradient-gold);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-
-        .main-nav a:hover {
-            color: var(--primary);
-        }
-
-        .main-nav a:hover:after {
-            width: 100%;
-        }
-
-        .header-cta {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--dark);
-            cursor: pointer;
-            padding: 10px;
-            border-radius: var(--radius);
-            transition: var(--transition);
-        }
-
-        .mobile-menu-btn:hover {
-            background: var(--light-gray);
-        }
+        
 
         /* ===== PHOTO SLIDER SECTION ===== */
         .photo-gallery {
@@ -1651,33 +1594,7 @@
                 padding: 0 20px;
             }
             
-            .main-nav {
-                display: none;
-                position: fixed;
-                top: 100px;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 30px;
-                box-shadow: var(--shadow-lg);
-            }
             
-            .main-nav.active {
-                display: block;
-            }
-            
-            .main-nav ul {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                padding-top: 180px;
-            }
             
             .hero:before {
                 display: none;
@@ -1879,17 +1796,9 @@
         <div class="container header-container">
             <div class="logo-container">
                 <img src="https://i.imgur.com/g05r9kZ.png" alt="Levi Interiors Logo" class="logo-img">
-                <div class="logo-text">LEVI <span>INTERIORS</span></div>
+                <div class="logo-text">LEVI <span>INTERIOR</span></div>
             </div>
-            
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#photo-gallery">Our Designs</a></li>
-                    <li><a href="#designs">Services</a></li>
-                    <li><a href="#cities">Cities</a></li>
-                </ul>
-            </nav>
+           
             
             <div class="header-cta">
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
