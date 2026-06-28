@@ -44,7 +44,6 @@
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             --gradient-gold: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
-            /* Header font variable */
             --header-font: 'Tachyon', 'Poppins', sans-serif;
         }
 
@@ -615,7 +614,6 @@
             transform: rotate(-5deg);
         }
 
-        /* ===== HEADER TEXT WITH TACHYON FONT ===== */
         .logo-text {
             font-family: var(--header-font);
             font-size: 2.2rem;
@@ -856,19 +854,19 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 50px;
         }
 
         .gallery-filter-btn {
-            padding: 12px 28px;
+            padding: 10px 22px;
             border: 2px solid var(--primary);
             border-radius: 50px;
             background: transparent;
             color: var(--primary);
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: var(--transition);
             position: relative;
@@ -890,10 +888,10 @@
 
         .gallery-filter-btn .count {
             background: rgba(255, 255, 255, 0.2);
-            padding: 2px 10px;
+            padding: 1px 8px;
             border-radius: 20px;
-            font-size: 0.75rem;
-            margin-left: 6px;
+            font-size: 0.7rem;
+            margin-left: 5px;
         }
 
         .gallery-filter-btn.active .count {
@@ -960,9 +958,9 @@
             right: 15px;
             background: var(--gradient-gold);
             color: var(--white);
-            padding: 5px 16px;
+            padding: 4px 14px;
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -1116,6 +1114,15 @@
             .gallery-card-image {
                 height: 240px;
             }
+
+            .gallery-filters {
+                gap: 8px;
+            }
+
+            .gallery-filter-btn {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1129,12 +1136,12 @@
             }
             
             .gallery-filter-btn {
-                padding: 8px 18px;
-                font-size: 0.8rem;
+                padding: 6px 12px;
+                font-size: 0.7rem;
             }
             
             .gallery-filters {
-                gap: 8px;
+                gap: 6px;
             }
 
             .gallery-nav-btn {
@@ -2755,13 +2762,16 @@
             <!-- Category Filters -->
             <div class="gallery-filters" id="galleryFilters">
                 <button class="gallery-filter-btn active" data-category="all">ALL <span class="count">0</span></button>
-                <button class="gallery-filter-btn" data-category="bedroom">Bedroom <span class="count">0</span></button>
                 <button class="gallery-filter-btn" data-category="kitchen">Kitchen <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="crockery">Crockery <span class="count">0</span></button>
                 <button class="gallery-filter-btn" data-category="tv-unit">TV Unit <span class="count">0</span></button>
-                <button class="gallery-filter-btn" data-category="crockery-unit">Crockery Unit <span class="count">0</span></button>
-                <button class="gallery-filter-btn" data-category="poja-mandir">POJA Mandir <span class="count">0</span></button>
-                <button class="gallery-filter-btn" data-category="fall-ceiling">Fall Ceiling <span class="count">0</span></button>
-                <button class="gallery-filter-btn" data-category="partitions">Partitions <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="wardrobe">Wardrobe <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="pooja">Pooja Unit <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="study">Study Unit <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="cot">Cot <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="shoe-rack">Shoe Rack <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="wall-panelling">Wall Panelling <span class="count">0</span></button>
+                <button class="gallery-filter-btn" data-category="partition">Partition <span class="count">0</span></button>
             </div>
 
             <!-- Gallery Slider -->
@@ -3041,24 +3051,17 @@
             var popupSuccess = document.getElementById('popupSuccess');
             var consultationForm = document.getElementById('consultationForm');
 
-            console.log('openPopupBtn:', openPopupBtn);
-            console.log('popupOverlay:', popupOverlay);
-
             // ===== OPEN POPUP =====
             if (openPopupBtn) {
                 openPopupBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    console.log('Popup button clicked - opening popup');
                     popupOverlay.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 });
-            } else {
-                console.error('openPopupBtn not found!');
             }
 
             // ===== CLOSE POPUP =====
             function closePopup() {
-                console.log('Closing popup');
                 popupOverlay.classList.remove('active');
                 document.body.style.overflow = '';
                 popupFormContent.style.display = 'block';
@@ -3073,7 +3076,6 @@
             if (closePopupBtn) closePopupBtn.addEventListener('click', closePopup);
             if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closePopup);
 
-            // Close on overlay click
             if (popupOverlay) {
                 popupOverlay.addEventListener('click', function(e) {
                     if (e.target === popupOverlay) {
@@ -3082,7 +3084,6 @@
                 });
             }
 
-            // Close on Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
                     closePopup();
@@ -3106,10 +3107,8 @@
             if (consultationForm) {
                 consultationForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    console.log('Form submitted');
                     var isValid = true;
 
-                    // Validate Property Type
                     if (!selectedPropertyType.value) {
                         document.getElementById('popupPropertyError').style.display = 'block';
                         isValid = false;
@@ -3117,7 +3116,6 @@
                         document.getElementById('popupPropertyError').style.display = 'none';
                     }
 
-                    // Validate Location
                     var location = document.getElementById('popupPropertyLocation');
                     if (!location.value) {
                         location.classList.add('error');
@@ -3128,7 +3126,6 @@
                         document.getElementById('popupLocationError').style.display = 'none';
                     }
 
-                    // Validate Budget Range
                     var budgetRange = document.getElementById('popupBudgetRange');
                     if (!budgetRange.value) {
                         budgetRange.classList.add('error');
@@ -3139,7 +3136,6 @@
                         document.getElementById('popupBudgetError').style.display = 'none';
                     }
 
-                    // Validate Name
                     var name = document.getElementById('popupCustomerName');
                     if (!name.value.trim()) {
                         name.classList.add('error');
@@ -3150,7 +3146,6 @@
                         document.getElementById('popupNameError').style.display = 'none';
                     }
 
-                    // Validate Mobile
                     var mobile = document.getElementById('popupCustomerMobile');
                     var mobileRegex = /^[6-9]\d{9}$/;
                     if (!mobileRegex.test(mobile.value.trim())) {
@@ -3163,7 +3158,6 @@
                     }
 
                     if (isValid) {
-                        console.log('Form is valid - showing success');
                         popupFormContent.style.display = 'none';
                         popupSuccess.style.display = 'block';
                         
@@ -3175,8 +3169,6 @@
                             mobile: mobile.value.trim(),
                             whatsappUpdates: document.getElementById('whatsappUpdates').checked
                         };
-                        
-                        console.log('Form Data:', formData);
                         
                         var message = '🏡 *LEVI INTERIORS - NEW CONSULTATION REQUEST* 🏡%0A%0A*Property Type:* ' + formData.propertyType + '%0A*Location:* ' + formData.location + '%0A*Budget Range:* ' + formData.budgetRange + '%0A*Name:* ' + formData.name + '%0A*Mobile:* ' + formData.mobile + '%0A*WhatsApp Updates:* ' + (formData.whatsappUpdates ? 'Yes ✅' : 'No ❌') + '%0A%0A_This request was submitted via the website consultation popup._';
                         
@@ -3198,19 +3190,6 @@
                         this.classList.remove('error');
                         document.getElementById('popupMobileError').style.display = 'none';
                     }
-                });
-            }
-
-            // ===== MOBILE MENU TOGGLE =====
-            var mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            var mainNav = document.getElementById('mainNav');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mainNav.classList.toggle('active');
-                    mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                        ? '<i class="fas fa-times"></i>' 
-                        : '<i class="fas fa-bars"></i>';
                 });
             }
 
@@ -3346,24 +3325,58 @@
                 });
             });
 
-            // ===== PROJECT GALLERY =====
-            // Sample project data
+            // ===== PROJECT GALLERY - UPDATED CATEGORIES =====
             var projects = [
-                { id: 1, title: 'Modern Master Bedroom Suite', category: 'bedroom', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 2, title: 'Luxury Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 3, title: 'Elegant TV Unit Design', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                { id: 4, title: 'Premium Crockery Display Unit', category: 'crockery-unit', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
-                { id: 5, title: 'Beautiful POJA Mandir', category: 'poja-mandir', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
-                { id: 6, title: 'Stylish Fall Ceiling Design', category: 'fall-ceiling', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
-                { id: 7, title: 'Modern Glass Partitions', category: 'partitions', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 8, title: 'Contemporary Bedroom with Walk-in', category: 'bedroom', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
-                { id: 9, title: 'Italian Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
-                { id: 10, title: 'Wall-mounted TV Unit with Storage', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2023' },
-                { id: 11, title: 'Elegant Crockery Cabinet', category: 'crockery-unit', image: 'https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Ahmedabad', year: '2024' },
-                { id: 12, title: 'Wooden POJA Mandir Design', category: 'poja-mandir', image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
-                { id: 13, title: 'Modern Fall Ceiling with Lighting', category: 'fall-ceiling', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
-                { id: 14, title: 'Wooden Room Partitions', category: 'partitions', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
-                { id: 15, title: 'Luxury Master Bedroom', category: 'bedroom', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
+                // KITCHEN
+                { id: 1, title: 'Modern Modular Kitchen', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                { id: 2, title: 'Italian Kitchen with Island', category: 'kitchen', image: 'https://images.unsplash.com/photo-1570211773006-1236c8c47c07?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
+                { id: 3, title: 'Open Plan Kitchen Design', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
+                { id: 4, title: 'Luxury Kitchen with Premium Appliances', category: 'kitchen', image: 'https://images.unsplash.com/photo-1556909115-6ce2b04c91a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
+                
+                // CROCKERY
+                { id: 5, title: 'Elegant Crockery Display Unit', category: 'crockery', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2024' },
+                { id: 6, title: 'Glass Crockery Cabinet', category: 'crockery', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2023' },
+                { id: 7, title: 'Modern Crockery Unit with Lighting', category: 'crockery', image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                
+                // TV UNIT
+                { id: 8, title: 'Wall-mounted TV Unit Design', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
+                { id: 9, title: 'Modern Entertainment Wall', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2023' },
+                { id: 10, title: 'Luxury TV Unit with Storage', category: 'tv-unit', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
+                
+                // WARDROBE
+                { id: 11, title: 'Walk-in Wardrobe System', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                { id: 12, title: 'Modern Sliding Wardrobe', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2024' },
+                { id: 13, title: 'Custom Wardrobe with Dressing Area', category: 'wardrobe', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
+                
+                // POOJA UNIT
+                { id: 14, title: 'Wooden Pooja Mandir Design', category: 'pooja', image: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
+                { id: 15, title: 'Modern Pooja Unit with Backlight', category: 'pooja', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
+                { id: 16, title: 'Traditional Pooja Cabinet', category: 'pooja', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2023' },
+                
+                // STUDY UNIT
+                { id: 17, title: 'Modern Study Desk with Storage', category: 'study', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
+                { id: 18, title: 'Luxury Home Office Design', category: 'study', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
+                { id: 19, title: 'Study Unit with Bookshelf', category: 'study', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
+                
+                // COT
+                { id: 20, title: 'Luxury King Size Cot', category: 'cot', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                { id: 21, title: 'Modern Cot with Storage', category: 'cot', image: 'https://images.unsplash.com/photo-1504309729-1252f2f4b2f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
+                { id: 22, title: 'Upholstered Bed Design', category: 'cot', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2023' },
+                
+                // SHOE RACK
+                { id: 23, title: 'Modern Shoe Rack with Seating', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2024' },
+                { id: 24, title: 'Wall-mounted Shoe Storage', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1556909114-9c5f7c2bcc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
+                { id: 25, title: 'Custom Shoe Cabinet', category: 'shoe-rack', image: 'https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
+                
+                // WALL PANELLING
+                { id: 26, title: 'Wooden Wall Panelling Design', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Mumbai', year: '2024' },
+                { id: 27, title: 'Modern 3D Wall Panelling', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Bangalore', year: '2024' },
+                { id: 28, title: 'Luxury Wall Panelling with Lighting', category: 'wall-panelling', image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Delhi', year: '2023' },
+                
+                // PARTITION
+                { id: 29, title: 'Modern Glass Partition', category: 'partition', image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Chennai', year: '2024' },
+                { id: 30, title: 'Wooden Room Partition Design', category: 'partition', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Pune', year: '2024' },
+                { id: 31, title: 'Decorative Partition Wall', category: 'partition', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', location: 'Hyderabad', year: '2023' },
             ];
 
             // Get elements
@@ -3380,28 +3393,39 @@
             var cardsPerView = 3;
             var autoSlideInterval = null;
 
-            // Function to update cards per view based on screen size
+            // Category labels for badges
+            var categoryLabels = {
+                'kitchen': '🍳 Kitchen',
+                'crockery': '🍽️ Crockery',
+                'tv-unit': '📺 TV Unit',
+                'wardrobe': '👔 Wardrobe',
+                'pooja': '🕉️ Pooja Unit',
+                'study': '📚 Study Unit',
+                'cot': '🛏️ Cot',
+                'shoe-rack': '👟 Shoe Rack',
+                'wall-panelling': '🎨 Wall Panelling',
+                'partition': '🚪 Partition'
+            };
+
             function getCardsPerView() {
                 if (window.innerWidth > 992) return 3;
                 if (window.innerWidth > 576) return 2;
                 return 1;
             }
 
-            // Function to render projects
             function renderProjects(category) {
                 var filteredProjects = category === 'all' 
                     ? projects 
                     : projects.filter(function(p) { return p.category === category; });
 
                 // Update filter counts
-                var categories = ['all', 'bedroom', 'kitchen', 'tv-unit', 'crockery-unit', 'poja-mandir', 'fall-ceiling', 'partitions'];
+                var categories = ['all', 'kitchen', 'crockery', 'tv-unit', 'wardrobe', 'pooja', 'study', 'cot', 'shoe-rack', 'wall-panelling', 'partition'];
                 categories.forEach(function(cat) {
                     var count = cat === 'all' ? projects.length : projects.filter(function(p) { return p.category === cat; }).length;
                     var btn = document.querySelector('.gallery-filter-btn[data-category="' + cat + '"] .count');
                     if (btn) btn.textContent = count;
                 });
 
-                // Show/hide no projects message
                 if (filteredProjects.length === 0) {
                     noProjects.style.display = 'block';
                     galleryTrack.innerHTML = '';
@@ -3411,18 +3435,8 @@
                     noProjects.style.display = 'none';
                 }
 
-                // Build project cards
                 var html = '';
                 filteredProjects.forEach(function(project) {
-                    var categoryLabels = {
-                        'bedroom': '🛏️ Bedroom',
-                        'kitchen': '🍳 Kitchen',
-                        'tv-unit': '📺 TV Unit',
-                        'crockery-unit': '🍽️ Crockery Unit',
-                        'poja-mandir': '🕉️ POJA Mandir',
-                        'fall-ceiling': '✨ Fall Ceiling',
-                        'partitions': '🚪 Partitions'
-                    };
                     var label = categoryLabels[project.category] || project.category;
                     
                     html += `
@@ -3454,7 +3468,6 @@
                 startAutoSlide();
             }
 
-            // Function to update gallery position
             function updateGallery() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 if (cards.length === 0) return;
@@ -3475,14 +3488,12 @@
                 var offset = currentIndex * slideWidth * cardsPerView;
                 galleryTrack.style.transform = 'translateX(-' + offset + 'px)';
                 
-                // Update buttons
                 galleryPrevBtn.disabled = currentIndex === 0;
                 galleryNextBtn.disabled = currentIndex >= totalSlides - 1;
                 
                 updateDots();
             }
 
-            // Function to update dots
             function updateDots() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 var totalSlides = Math.ceil(cards.length / cardsPerView);
@@ -3493,7 +3504,6 @@
                 }
                 galleryDotsContainer.innerHTML = dotsHtml;
                 
-                // Add click listeners to dots
                 galleryDotsContainer.querySelectorAll('.gallery-dot').forEach(function(dot) {
                     dot.addEventListener('click', function() {
                         stopAutoSlide();
@@ -3504,7 +3514,6 @@
                 });
             }
 
-            // Navigation functions
             function nextSlide() {
                 var cards = galleryTrack.querySelectorAll('.gallery-card');
                 var totalSlides = Math.ceil(cards.length / cardsPerView);
@@ -3524,7 +3533,6 @@
                 }
             }
 
-            // Auto slide
             function startAutoSlide() {
                 stopAutoSlide();
                 autoSlideInterval = setInterval(nextSlide, 5000);
@@ -3537,7 +3545,6 @@
                 }
             }
 
-            // Event listeners
             if (galleryPrevBtn) {
                 galleryPrevBtn.addEventListener('click', function() {
                     stopAutoSlide();
@@ -3554,7 +3561,6 @@
                 });
             }
 
-            // Filter buttons
             filterBtns.forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     filterBtns.forEach(function(b) { b.classList.remove('active'); });
@@ -3663,7 +3669,6 @@
                 }
             });
 
-            // Responsive
             window.addEventListener('resize', function() {
                 var newCardsPerView = getCardsPerView();
                 if (newCardsPerView !== cardsPerView) {
@@ -3674,7 +3679,6 @@
                 }
             });
 
-            // Pause auto slide on hover
             galleryWrapper.addEventListener('mouseenter', function() {
                 stopAutoSlide();
             });
@@ -3683,10 +3687,9 @@
                 startAutoSlide();
             });
 
-            // Initialize gallery
             renderProjects('all');
 
-            // ===== REVIEWS CAROUSEL WITH TOUCH SWIPE & AUTO SLIDE =====
+            // ===== REVIEWS CAROUSEL =====
             var track = document.getElementById('reviewsTrack');
             var wrapper = document.getElementById('reviewsWrapper');
             var prevBtn = document.getElementById('reviewsPrev');
