@@ -204,6 +204,8 @@
             width: auto;
             filter: drop-shadow(0 5px 15px rgba(90, 90, 140, 0.2));
             transition: var(--transition);
+            display: block;
+            object-fit: contain;
         }
 
         .logo-img:hover {
@@ -643,6 +645,7 @@
             background: linear-gradient(135deg, rgba(42, 75, 140, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
             position: relative;
             overflow: hidden;
+            min-height: 600px;
         }
 
         .hero:before {
@@ -664,6 +667,7 @@
             align-items: center;
             position: relative;
             z-index: 1;
+            min-height: 400px;
         }
 
         .hero-content {
@@ -840,7 +844,7 @@
             margin-bottom: 15px;
         }
 
-        /* ===== PHOTO GALLERY ===== */
+        /* ===== PHOTO GALLERY - FIXED SLIDER ===== */
         .photo-gallery {
             padding-top: 180px;
             padding-bottom: 100px;
@@ -884,6 +888,7 @@
             line-height: 1.8;
         }
 
+        /* ===== FIXED SLIDER CSS ===== */
         .photo-slider {
             position: relative;
             margin-bottom: 40px;
@@ -903,22 +908,30 @@
 
         .slider-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            width: 100%;
             height: 100%;
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
         }
 
         .slide {
+            flex: 0 0 100%;
+            width: 100%;
             min-width: 100%;
+            max-width: 100%;
             height: 100%;
             position: relative;
+            overflow: hidden;
             flex-shrink: 0;
         }
 
         .slide img {
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             pointer-events: none;
         }
 
@@ -1150,6 +1163,8 @@
             border: 1px solid rgba(42, 75, 140, 0.08);
             user-select: none;
             -webkit-user-select: none;
+            display: flex;
+            flex-direction: column;
         }
 
         .gallery-card:hover {
@@ -1161,12 +1176,15 @@
             position: relative;
             height: 280px;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .gallery-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
             transition: var(--transition);
             pointer-events: none;
         }
@@ -1207,6 +1225,9 @@
 
         .gallery-card-body {
             padding: 20px 25px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .gallery-card-body h4 {
@@ -1224,7 +1245,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 12px;
+            margin-top: auto;
             padding-top: 12px;
             border-top: 1px solid var(--light-gray);
         }
@@ -1376,6 +1397,9 @@
             border: 1px solid rgba(42, 75, 140, 0.08);
             user-select: none;
             -webkit-user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .review-card:hover {
@@ -1392,12 +1416,15 @@
             border: 4px solid var(--secondary);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
             position: relative;
+            flex-shrink: 0;
         }
 
         .review-card .customer-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .review-card .customer-name {
@@ -1426,6 +1453,7 @@
             font-size: 1rem;
             line-height: 1.7;
             font-style: italic;
+            flex: 1;
         }
 
         .review-card .work-photo {
@@ -1433,13 +1461,17 @@
             border-radius: var(--radius);
             overflow: hidden;
             height: 160px;
+            width: 100%;
             box-shadow: var(--shadow);
+            flex-shrink: 0;
         }
 
         .review-card .work-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
             transition: var(--transition);
             pointer-events: none;
         }
@@ -1951,6 +1983,9 @@
             .logo-container {
                 gap: 18px;
             }
+            .review-card .work-photo {
+                height: 140px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1972,6 +2007,7 @@
             .hero {
                 padding-top: 140px;
                 padding-bottom: 100px;
+                min-height: 500px;
             }
             .hero-content h1 {
                 font-size: 2.5rem;
@@ -2130,6 +2166,7 @@
             .hero {
                 padding-top: 120px;
                 padding-bottom: 70px;
+                min-height: 400px;
             }
             .hero-content h1 {
                 font-size: 2rem;
@@ -2420,6 +2457,15 @@
                 font-size: 0.6rem;
                 padding: 6px 10px;
             }
+            .slider-container {
+                height: 200px;
+            }
+            .gallery-card-image {
+                height: 160px;
+            }
+            .review-card .work-photo {
+                height: 80px;
+            }
         }
     </style>
 </head>
@@ -2429,7 +2475,7 @@
         <div class="container header-container">
             <div class="logo-container">
                 <img src="images/logo/logo.png" alt="Levi Interiors Logo" class="logo-img" />
-                <div class="logo-text">LEVI <span>INTERIOR</span></div>
+                <div class="logo-text">LEVI <span>INTERIORS</span></div>
             </div>
         </div>
     </header>
@@ -2449,7 +2495,6 @@
                 <div class="popup-badge">✨ Free Consultation</div>
                 <h2 class="popup-title">Get a free design consultation</h2>
                 <form class="popup-form" id="consultationForm">
-                    <!-- Property Type -->
                     <div class="form-group">
                         <label>Property Type</label>
                         <div class="property-types">
@@ -2462,7 +2507,6 @@
                         <div class="error-message" id="popupPropertyError">Please select a property type</div>
                     </div>
 
-                    <!-- Property Location -->
                     <div class="form-group">
                         <label>Property Location</label>
                         <select id="popupPropertyLocation">
@@ -2480,7 +2524,6 @@
                         <div class="error-message" id="popupLocationError">Please select a location</div>
                     </div>
 
-                    <!-- Budget -->
                     <div class="form-group">
                         <label>Budget Range <span style="color:#e74c3c;">*</span></label>
                         <select id="popupBudgetRange">
@@ -2499,14 +2542,12 @@
                         <div class="error-message" id="popupBudgetError">Please select your budget range</div>
                     </div>
 
-                    <!-- Name -->
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" id="popupCustomerName" placeholder="Enter your valid name" />
                         <div class="error-message" id="popupNameError">Please enter your name</div>
                     </div>
 
-                    <!-- Mobile -->
                     <div class="form-group">
                         <label>Mobile Number</label>
                         <div class="mobile-number-wrapper">
@@ -2516,19 +2557,16 @@
                         <div class="error-message" id="popupMobileError">Please enter a valid 10-digit mobile number</div>
                     </div>
 
-                    <!-- WhatsApp Updates -->
                     <div class="checkbox-group">
                         <input type="checkbox" id="whatsappUpdates" checked />
                         <label for="whatsappUpdates">Yes, send me updates via WhatsApp.</label>
                     </div>
 
-                    <!-- Offer -->
                     <div class="popup-offer">
                         <div class="offer-text">🎉 Flat <span>25% OFF</span> — On Modular Interiors</div>
                         <div class="offer-sub">Hurry, Book Before <strong>30th June 2026</strong></div>
                     </div>
 
-                    <!-- Features -->
                     <div class="popup-features">
                         <div class="feature">
                             <i class="fas fa-pencil-ruler"></i>
@@ -2554,7 +2592,6 @@
                 </form>
             </div>
 
-            <!-- Success -->
             <div class="popup-success" id="popupSuccess">
                 <i class="fas fa-check-circle"></i>
                 <h3>🎉 Consultation Booked!</h3>
@@ -2999,7 +3036,6 @@
 
             <div class="reviews-carousel-wrapper" id="reviewsWrapper">
                 <div class="reviews-carousel-track" id="reviewsTrack">
-                    <!-- Review 1 -->
                     <div class="review-card">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
                         <div class="customer-photo"><img src="images/reviews/customers/1.jpg" alt="Mr. Rajesh Kumar" /></div>
@@ -3010,7 +3046,6 @@
                         <div class="work-photo"><img src="images/reviews/projects/1.jpg" alt="Project Work" /></div>
                         <span class="project-tag">🏠 3BHK Luxury Apartment</span>
                     </div>
-                    <!-- Review 2 -->
                     <div class="review-card">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
                         <div class="customer-photo"><img src="images/reviews/customers/2.jpg" alt="Mrs. Priya Sharma" /></div>
@@ -3021,7 +3056,6 @@
                         <div class="work-photo"><img src="images/reviews/projects/2.jpg" alt="Villa Project" /></div>
                         <span class="project-tag">🏡 Luxury Villa</span>
                     </div>
-                    <!-- Review 3 -->
                     <div class="review-card">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
                         <div class="customer-photo"><img src="images/reviews/customers/3.jpg" alt="Mr. Amit Patel" /></div>
@@ -3032,7 +3066,6 @@
                         <div class="work-photo"><img src="images/reviews/projects/3.jpg" alt="Kitchen Design" /></div>
                         <span class="project-tag">🍳 Modular Kitchen</span>
                     </div>
-                    <!-- Review 4 -->
                     <div class="review-card">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
                         <div class="customer-photo"><img src="images/reviews/customers/4.jpg" alt="Mrs. Ananya Reddy" /></div>
@@ -3043,7 +3076,6 @@
                         <div class="work-photo"><img src="images/reviews/projects/4.jpg" alt="Bedroom Design" /></div>
                         <span class="project-tag">🛏️ Master Bedroom Suite</span>
                     </div>
-                    <!-- Review 5 -->
                     <div class="review-card">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
                         <div class="customer-photo"><img src="images/reviews/customers/5.jpg" alt="Mr. Deepak Gupta" /></div>
@@ -3054,7 +3086,6 @@
                         <div class="work-photo"><img src="images/reviews/projects/5.jpg" alt="Penthouse Design" /></div>
                         <span class="project-tag">✨ Luxury Penthouse</span>
                     </div>
-                    <!-- Review 6 -->
                     <div class="review-card">
                         <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
                         <div class="customer-photo"><img src="images/reviews/customers/6.jpg" alt="Mrs. Sneha Nair" /></div>
@@ -3356,47 +3387,189 @@
                 });
             });
 
-            // ===== PHOTO SLIDER =====
+            // ===== PHOTO SLIDER - FIXED WITH PIXEL-BASED TRANSLATION =====
             var sliders = document.querySelectorAll('.photo-slider');
             sliders.forEach(function(slider) {
                 var track = slider.querySelector('.slider-track');
                 var slides = slider.querySelectorAll('.slide');
+                var container = slider.querySelector('.slider-container');
                 var prevBtn = slider.querySelector('.prev-btn');
                 var nextBtn = slider.querySelector('.next-btn');
                 var dots = slider.querySelectorAll('.slider-dot');
                 var currentSlide = 0;
                 var totalSlides = slides.length;
+                var slideWidth = 0;
+                var isAnimating = false;
 
-                function updateSlider() {
-                    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+                function getSlideWidth() {
+                    slideWidth = container.offsetWidth;
+                    return slideWidth;
+                }
+
+                function updateSlider(animate = true) {
+                    if (isAnimating && animate) return;
+                    if (animate) isAnimating = true;
+                    
+                    var width = getSlideWidth();
+                    var translateX = -currentSlide * width;
+                    track.style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
+                    
                     dots.forEach(function(dot, index) {
                         dot.classList.toggle('active', index === currentSlide);
                     });
+                    
+                    if (animate) {
+                        setTimeout(function() {
+                            isAnimating = false;
+                        }, 500);
+                    } else {
+                        isAnimating = false;
+                    }
                 }
 
-                function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides;
-                    updateSlider(); }
+                function nextSlide() {
+                    if (isAnimating) return;
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    updateSlider(true);
+                }
 
-                function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                    updateSlider(); }
+                function prevSlide() {
+                    if (isAnimating) return;
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                    updateSlider(true);
+                }
 
-                function goToSlide(index) { currentSlide = index;
-                    updateSlider(); }
+                function goToSlide(index) {
+                    if (isAnimating) return;
+                    currentSlide = index;
+                    updateSlider(true);
+                }
 
+                // Initialize
+                getSlideWidth();
+                updateSlider(false);
+
+                // Event listeners
                 if (nextBtn) nextBtn.addEventListener('click', nextSlide);
                 if (prevBtn) prevBtn.addEventListener('click', prevSlide);
                 dots.forEach(function(dot, index) {
                     dot.addEventListener('click', function() { goToSlide(index); });
                 });
 
+                // Auto-slide
                 var slideInterval = setInterval(nextSlide, 5000);
                 slider.addEventListener('mouseenter', function() { clearInterval(slideInterval); });
                 slider.addEventListener('mouseleave', function() { slideInterval = setInterval(nextSlide, 5000); });
+
+                // Handle resize
+                var resizeTimer;
+                window.addEventListener('resize', function() {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function() {
+                        getSlideWidth();
+                        updateSlider(false);
+                    }, 250);
+                });
+
+                // ===== TOUCH SWIPE SUPPORT =====
+                var touchStartX = 0;
+                var touchEndX = 0;
+                var isSwiping = false;
+
+                slider.addEventListener('touchstart', function(e) {
+                    clearInterval(slideInterval);
+                    touchStartX = e.changedTouches[0].screenX;
+                    isSwiping = true;
+                }, { passive: true });
+
+                slider.addEventListener('touchmove', function(e) {
+                    if (!isSwiping) return;
+                    touchEndX = e.changedTouches[0].screenX;
+                    var diff = touchStartX - touchEndX;
+                    var width = getSlideWidth();
+                    var currentTranslate = -currentSlide * width - diff;
+                    track.style.transition = 'none';
+                    track.style.transform = 'translate3d(' + currentTranslate + 'px, 0, 0)';
+                }, { passive: true });
+
+                slider.addEventListener('touchend', function(e) {
+                    if (!isSwiping) return;
+                    isSwiping = false;
+                    track.style.transition = '';
+                    
+                    var diff = touchStartX - touchEndX;
+                    var threshold = 50;
+                    
+                    if (diff > threshold) {
+                        nextSlide();
+                    } else if (diff < -threshold) {
+                        prevSlide();
+                    } else {
+                        updateSlider(true);
+                    }
+                    
+                    touchStartX = 0;
+                    touchEndX = 0;
+                    slideInterval = setInterval(nextSlide, 5000);
+                }, { passive: true });
+
+                // Mouse drag support
+                var isDragging = false;
+                var dragStartX = 0;
+                var dragEndX = 0;
+
+                slider.addEventListener('mousedown', function(e) {
+                    clearInterval(slideInterval);
+                    isDragging = true;
+                    dragStartX = e.clientX;
+                    slider.style.cursor = 'grabbing';
+                });
+
+                slider.addEventListener('mousemove', function(e) {
+                    if (!isDragging) return;
+                    dragEndX = e.clientX;
+                    var diff = dragStartX - dragEndX;
+                    var width = getSlideWidth();
+                    var currentTranslate = -currentSlide * width - diff;
+                    track.style.transition = 'none';
+                    track.style.transform = 'translate3d(' + currentTranslate + 'px, 0, 0)';
+                });
+
+                slider.addEventListener('mouseup', function(e) {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    slider.style.cursor = '';
+                    track.style.transition = '';
+                    
+                    var diff = dragStartX - dragEndX;
+                    var threshold = 50;
+                    
+                    if (diff > threshold) {
+                        nextSlide();
+                    } else if (diff < -threshold) {
+                        prevSlide();
+                    } else {
+                        updateSlider(true);
+                    }
+                    
+                    dragStartX = 0;
+                    dragEndX = 0;
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+
+                slider.addEventListener('mouseleave', function() {
+                    if (isDragging) {
+                        isDragging = false;
+                        slider.style.cursor = '';
+                        track.style.transition = '';
+                        updateSlider(true);
+                        slideInterval = setInterval(nextSlide, 5000);
+                    }
+                });
             });
 
             // ===== PROJECT GALLERY =====
             var projects = [
-                // Kitchen
                 { id: 1, title: 'Modern Modular Kitchen', category: 'kitchen', image: 'images/projects/kitchen/1.jpg',
                     location: 'Mumbai', year: '2024' },
                 { id: 2, title: 'Italian Kitchen with Island', category: 'kitchen', image: 'images/projects/kitchen/2.jpg',
@@ -3405,63 +3578,54 @@
                     location: 'Delhi', year: '2023' },
                 { id: 4, title: 'Luxury Kitchen with Premium Appliances', category: 'kitchen', image: 'images/projects/kitchen/4.jpg',
                     location: 'Pune', year: '2024' },
-                // Crockery
                 { id: 5, title: 'Elegant Crockery Display Unit', category: 'crockery', image: 'images/projects/crockery/1.jpg',
                     location: 'Hyderabad', year: '2024' },
                 { id: 6, title: 'Glass Crockery Cabinet', category: 'crockery', image: 'images/projects/crockery/2.jpg',
                     location: 'Chennai', year: '2023' },
                 { id: 7, title: 'Modern Crockery Unit with Lighting', category: 'crockery', image: 'images/projects/crockery/3.jpg',
                     location: 'Mumbai', year: '2024' },
-                // TV Unit
                 { id: 8, title: 'Wall-mounted TV Unit Design', category: 'tv-unit', image: 'images/projects/tv-unit/1.jpg',
                     location: 'Delhi', year: '2024' },
                 { id: 9, title: 'Modern Entertainment Wall', category: 'tv-unit', image: 'images/projects/tv-unit/2.jpg',
                     location: 'Bangalore', year: '2023' },
                 { id: 10, title: 'Luxury TV Unit with Storage', category: 'tv-unit', image: 'images/projects/tv-unit/3.jpg',
                     location: 'Pune', year: '2024' },
-                // Wardrobe
                 { id: 11, title: 'Walk-in Wardrobe System', category: 'wardrobe', image: 'images/projects/wardrobe/1.jpg',
                     location: 'Mumbai', year: '2024' },
                 { id: 12, title: 'Modern Sliding Wardrobe', category: 'wardrobe', image: 'images/projects/wardrobe/2.jpg',
                     location: 'Hyderabad', year: '2024' },
                 { id: 13, title: 'Custom Wardrobe with Dressing Area', category: 'wardrobe', image: 'images/projects/wardrobe/3.jpg',
                     location: 'Delhi', year: '2023' },
-                // Pooja
                 { id: 14, title: 'Wooden Pooja Mandir Design', category: 'pooja', image: 'images/projects/pooja/1.jpg',
                     location: 'Chennai', year: '2024' },
                 { id: 15, title: 'Modern Pooja Unit with Backlight', category: 'pooja', image: 'images/projects/pooja/2.jpg',
                     location: 'Bangalore', year: '2024' },
                 { id: 16, title: 'Traditional Pooja Cabinet', category: 'pooja', image: 'images/projects/pooja/3.jpg',
                     location: 'Mumbai', year: '2023' },
-                // Study
                 { id: 17, title: 'Modern Study Desk with Storage', category: 'study', image: 'images/projects/study/1.jpg',
                     location: 'Pune', year: '2024' },
                 { id: 18, title: 'Luxury Home Office Design', category: 'study', image: 'images/projects/study/2.jpg',
                     location: 'Delhi', year: '2024' },
                 { id: 19, title: 'Study Unit with Bookshelf', category: 'study', image: 'images/projects/study/3.jpg',
                     location: 'Hyderabad', year: '2023' },
-                // Cot
                 { id: 20, title: 'Luxury King Size Cot', category: 'cot', image: 'images/projects/cot/1.jpg',
                     location: 'Mumbai', year: '2024' },
                 { id: 21, title: 'Modern Cot with Storage', category: 'cot', image: 'images/projects/cot/2.jpg',
                     location: 'Bangalore', year: '2024' },
                 { id: 22, title: 'Upholstered Bed Design', category: 'cot', image: 'images/projects/cot/3.jpg',
                     location: 'Chennai', year: '2023' },
-                // Shoe Rack
                 { id: 23, title: 'Modern Shoe Rack with Seating', category: 'shoe-rack', image: 'images/projects/shoe-rack/1.jpg',
                     location: 'Delhi', year: '2024' },
                 { id: 24, title: 'Wall-mounted Shoe Storage', category: 'shoe-rack', image: 'images/projects/shoe-rack/2.jpg',
                     location: 'Pune', year: '2024' },
                 { id: 25, title: 'Custom Shoe Cabinet', category: 'shoe-rack', image: 'images/projects/shoe-rack/3.jpg',
                     location: 'Hyderabad', year: '2023' },
-                // Wall Panelling
                 { id: 26, title: 'Wooden Wall Panelling Design', category: 'wall-panelling', image: 'images/projects/wall-panelling/1.jpg',
                     location: 'Mumbai', year: '2024' },
                 { id: 27, title: 'Modern 3D Wall Panelling', category: 'wall-panelling', image: 'images/projects/wall-panelling/2.jpg',
                     location: 'Bangalore', year: '2024' },
                 { id: 28, title: 'Luxury Wall Panelling with Lighting', category: 'wall-panelling', image: 'images/projects/wall-panelling/3.jpg',
                     location: 'Delhi', year: '2023' },
-                // Partition
                 { id: 29, title: 'Modern Glass Partition', category: 'partition', image: 'images/projects/partition/1.jpg',
                     location: 'Chennai', year: '2024' },
                 { id: 30, title: 'Wooden Room Partition Design', category: 'partition', image: 'images/projects/partition/2.jpg',
@@ -3627,7 +3791,6 @@
                 });
             });
 
-            // Touch / drag for gallery
             var isDragging = false,
                 startX = 0,
                 diffX = 0;
@@ -3776,7 +3939,6 @@
                     });
                 });
 
-                // Touch / drag for reviews
                 var isDraggingReviews = false,
                     startXReviews = 0,
                     diffXReviews = 0;
